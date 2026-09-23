@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "com.deluxedesing.app-merged_res-4:/drawable-nodpi_logo_deluxe.png.flat",
+        "source": "com.deluxedesing.app-main-6:/drawable-nodpi/logo_deluxe.png"
+    },
+    {
+        "merged": "com.deluxedesing.app-merged_res-4:/drawable-nodpi_bg_porsche_gt3.jpg.flat",
+        "source": "com.deluxedesing.app-main-6:/drawable-nodpi/bg_porsche_gt3.jpg"
+    }
+]

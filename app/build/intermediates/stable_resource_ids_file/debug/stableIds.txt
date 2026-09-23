@@ -1,0 +1,17 @@
+com.deluxedesing.app:string/app_name = 0x7f030000
+com.deluxedesing.app:drawable/logo_deluxe = 0x7f020001
+com.deluxedesing.app:color/white = 0x7f01000c
+com.deluxedesing.app:color/warning = 0x7f01000b
+com.deluxedesing.app:color/surface = 0x7f010008
+com.deluxedesing.app:color/success = 0x7f010007
+com.deluxedesing.app:drawable/bg_porsche_gt3 = 0x7f020000
+com.deluxedesing.app:color/red_bright = 0x7f010006
+com.deluxedesing.app:color/red = 0x7f010005
+com.deluxedesing.app:color/surface_elevated = 0x7f010009
+com.deluxedesing.app:color/night = 0x7f010004
+com.deluxedesing.app:color/magenta = 0x7f010002
+com.deluxedesing.app:color/violet = 0x7f01000a
+com.deluxedesing.app:style/Theme.DeluxeDesing = 0x7f040000
+com.deluxedesing.app:color/field = 0x7f010001
+com.deluxedesing.app:color/muted = 0x7f010003
+com.deluxedesing.app:color/black = 0x7f010000

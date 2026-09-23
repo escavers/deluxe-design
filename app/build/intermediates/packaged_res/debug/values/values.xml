@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#000000</color>
+    <color name="field">#292E39</color>
+    <color name="magenta">#EF0050</color>
+    <color name="muted">#9AA1AD</color>
+    <color name="night">#050914</color>
+    <color name="red">#F21B3F</color>
+    <color name="red_bright">#FF1238</color>
+    <color name="success">#2AB673</color>
+    <color name="surface">#161B26</color>
+    <color name="surface_elevated">#222834</color>
+    <color name="violet">#7545B8</color>
+    <color name="warning">#FFB020</color>
+    <color name="white">#FFFFFF</color>
+    <string name="app_name">DELUXE DESING</string>
+    <style name="Theme.DeluxeDesing" parent="android:style/Theme.Material.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:statusBarColor">@color/night</item>
+        <item name="android:navigationBarColor">@color/black</item>
+        <item name="android:colorAccent">@color/red</item>
+    </style>
+</resources>
