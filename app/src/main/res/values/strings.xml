@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DELUXE DESIGN</string>
+    <string name="menu_home">Inicio</string>
+    <string name="menu_catalog">Catálogo</string>
+    <string name="menu_projects">Proyectos</string>
+    <string name="menu_quotes">Cotizaciones</string>
+    <string name="menu_profile">Perfil</string>
+
+    <!-- Welcome -->
+    <string name="welcome_slogan">Tu vehículo, tu estilo, sin límites</string>
+    <string name="btn_start">Comienza a soñar</string>
+
+    <!-- Auth -->
+    <string name="login_title">DELUXE DESIGN</string>
+    <string name="login_demo_hint">Credenciales DEMO: demo@deluxedesign.com / demo1234</string>
+    <string name="hint_email">Correo electrónico</string>
+    <string name="hint_password">Contraseña</string>
+    <string name="btn_login">Ingresar</string>
+    <string name="btn_forgot_password">Olvidé mi contraseña</string>
+    <string name="btn_create_account">Crear cuenta</string>
+    <string name="register_title">Crear cuenta</string>
+    <string name="register_demo_notice">Modo DEMO: Las cuentas no se guardan en un servidor real.</string>
+    <string name="hint_name">Nombre completo</string>
+    <string name="hint_phone">Teléfono</string>
+    <string name="hint_confirm_password">Confirmar contraseña</string>
+    <string name="btn_register_demo">Registrarse (DEMO)</string>
+    <string name="btn_back_login">Volver al Login</string>
+
+    <!-- Home -->
+    <string name="home_welcome_demo">Hola, Usuario DEMO</string>
+    <string name="home_title">Ideas que cobran vida</string>
+    <string name="btn_new_project">Nuevo Proyecto</string>
+    <string name="btn_my_vehicles">Mis Vehículos (DEMO)</string>
+    <string name="btn_my_designs">Mis Diseños (DEMO)</string>
+    <string name="btn_branches">Sucursales (DEMO)</string>
+    <string name="home_empty_projects">No tienes proyectos recientes todavía. ¡Crea uno nuevo!</string>
+
+    <!-- Catalog -->
+    <string name="hint_search_vehicle">Buscar por marca, modelo o año...</string>
+    <string name="cat_all">Todos</string>
+    <string name="cat_sports">Deportivos</string>
+    <string name="cat_suv">SUV</string>
+    <string name="cat_sedan">Sedán</string>
+    <string name="cat_pickup">PickUp</string>
+    <string name="catalog_empty">No se encontraron vehículos. Toca para limpiar.</string>
+    <string name="action_view_detail">Ver detalle →</string>
+
+    <!-- Detail & Editor -->
+    <string name="label_specs">Especificaciones Técnicas</string>
+    <string name="btn_personalize">Personalizar</string>
+    <string name="btn_save">Guardar</string>
+    <string name="btn_undo">← Deshacer</string>
+    <string name="btn_redo">Rehacer →</string>
+    <string name="label_angle">ÁNGULO DE VISTA</string>
+    <string name="label_paint">PINTURA Y ACABADO (VARIANTES)</string>
+    <string name="angle_front">Frente</string>
+    <string name="angle_side">Perfil (DEMO)</string>
+
+    <!-- Projects & Quotes -->
+    <string name="title_my_projects">Mis Proyectos</string>
+    <string name="empty_projects">Aún no tienes ningún proyecto guardado.</string>
+    <string name="title_my_quotes">Mis Cotizaciones</string>
+    <string name="btn_new_quote">+ Nueva</string>
+    <string name="empty_quotes">Aún no has solicitado ninguna cotización.</string>
+    <string name="quote_demo_notice">* Estimación DEMO: El precio oficial definitivo será asignado y aprobado únicamente por los mecánicos y diseñadores del taller.</string>
+
+    <!-- Profile -->
+    <string name="profile_demo_name">Usuario DEMO</string>
+    <string name="label_projects">Proyectos</string>
+    <string name="label_favorites">Favoritos</string>
+    <string name="btn_edit_profile">Editar Perfil</string>
+    <string name="btn_change_password">Cambiar Contraseña</string>
+    <string name="btn_branches_profile">Sucursales</string>
+    <string name="btn_logout">Cerrar Sesión</string>
+
+    <!-- Misc -->
+    <string name="desc_back">Atrás</string>
+    <string name="desc_favorite">Favorito</string>
+    <string name="desc_notifications">Notificaciones</string>
+    <string name="desc_logo">Deluxe Design Logo</string>
+</resources>

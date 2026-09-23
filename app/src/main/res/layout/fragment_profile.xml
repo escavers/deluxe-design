@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="24dp">
+
+        <ImageView
+            android:id="@+id/btnBackProfile"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Perfil"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginStart="16dp"
+            app:layout_constraintTop_toTopOf="@+id/btnBackProfile"
+            app:layout_constraintBottom_toBottomOf="@+id/btnBackProfile"
+            app:layout_constraintStart_toEndOf="@+id/btnBackProfile" />
+
+        <ImageView
+            android:id="@+id/imgProfileAvatar"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/img_avatar_placeholder"
+            android:padding="4dp"
+            android:background="@drawable/bg_chip_selected"
+            android:layout_marginTop="32dp"
+            app:layout_constraintTop_toBottomOf="@+id/btnBackProfile"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/txtProfileName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Samuel Jimenez"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginTop="12dp"
+            app:layout_constraintTop_toBottomOf="@+id/imgProfileAvatar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/layoutCounters"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@drawable/bg_card_glass"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@+id/txtProfileName">
+
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                <TextView android:id="@+id/txtVehCount" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="2" android:textColor="@color/white" android:textStyle="bold" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Mis vehiculos" android:textColor="@color/gray_text" android:textSize="10sp" />
+            </LinearLayout>
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                <TextView android:id="@+id/txtCotCount" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="8" android:textColor="@color/white" android:textStyle="bold" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cotizaciones" android:textColor="@color/gray_text" android:textSize="10sp" />
+            </LinearLayout>
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                <TextView android:id="@+id/txtProjCount" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="3" android:textColor="@color/white" android:textStyle="bold" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Proyectos" android:textColor="@color/gray_text" android:textSize="10sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutActions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/bg_card_charcoal"
+            android:padding="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/layoutCounters">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnEditProfile"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Editar perfil"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                android:gravity="start|center_vertical"
+                app:icon="@drawable/ic_action"
+                app:iconTint="@color/red_primary" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnMyVehiclesList"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mis vehículos"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:gravity="start|center_vertical"
+                app:icon="@drawable/ic_catalog"
+                app:iconTint="@color/red_primary" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnMyQuotesList"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mis cotizaciones"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:gravity="start|center_vertical"
+                app:icon="@drawable/ic_quotes"
+                app:iconTint="@color/red_primary" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnMyProjectsList"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mis proyectos"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:gravity="start|center_vertical"
+                app:icon="@drawable/ic_projects"
+                app:iconTint="@color/red_primary" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnProfileNotifications"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Notificaciones"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:gravity="start|center_vertical"
+                app:icon="@drawable/ic_notifications"
+                app:iconTint="@color/red_primary" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnLogout"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cerrar sesion"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:gravity="start|center_vertical"
+                app:icon="@drawable/ic_action"
+                app:iconTint="@color/red_primary" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtSupport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SOPORTE Y CONTACTO"
+            android:textColor="@color/gray_text"
+            android:textSize="12sp"
+            android:layout_marginTop="32dp"
+            app:layout_constraintTop_toBottomOf="@+id/layoutActions"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_card_glass"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/txtSupport">
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_action" app:tint="@color/red_primary" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="+591 73596502" android:textColor="@color/white" android:layout_marginStart="12dp" />
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginTop="12dp">
+                <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_action" app:tint="@color/red_primary" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="samuelja1602@gmail.com" android:textColor="@color/white" android:layout_marginStart="12dp" />
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginTop="12dp">
+                <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_action" app:tint="@color/red_primary" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Lunes a sabado | 9:00 a 18:00" android:textColor="@color/white" android:layout_marginStart="12dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

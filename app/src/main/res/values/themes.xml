@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.DELUXEDESIGNV42" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/red_primary</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="android:windowBackground">@color/night_blue</item>
+        <item name="android:statusBarColor">@color/night_blue</item>
+        <item name="android:navigationBarColor">@color/night_blue</item>
+    </style>
+</resources>

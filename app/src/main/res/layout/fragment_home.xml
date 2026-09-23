@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/img_auto_bg_dark"
+        android:scaleType="centerCrop"
+        android:alpha="0.4" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="24dp">
+
+        <ImageView
+            android:id="@+id/imgHomeAvatar"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/img_avatar_placeholder"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/txtWelcomeLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bienvenido!"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:layout_marginStart="12dp"
+            app:layout_constraintTop_toTopOf="@+id/imgHomeAvatar"
+            app:layout_constraintStart_toEndOf="@+id/imgHomeAvatar" />
+
+        <TextView
+            android:id="@+id/txtHomeName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Samuel Jimenez"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/txtWelcomeLabel"
+            app:layout_constraintStart_toStartOf="@+id/txtWelcomeLabel" />
+
+        <ImageView
+            android:id="@+id/imgHomeNotifications"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_notifications"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imgHomeAvatar"
+            app:layout_constraintBottom_toBottomOf="@+id/imgHomeAvatar" />
+
+        <TextView
+            android:id="@+id/txtHomeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="IDEAS QUE\nCOBRAN VIDA"
+            android:textColor="@color/white"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:layout_marginTop="48dp"
+            app:layout_constraintTop_toBottomOf="@+id/imgHomeAvatar"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:rowCount="2"
+            android:layout_marginTop="32dp"
+            app:layout_constraintTop_toBottomOf="@+id/txtHomeTitle">
+
+            <LinearLayout
+                android:id="@+id/btnNewProject"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                android:background="@drawable/bg_card_glass"
+                android:orientation="vertical"
+                android:gravity="center">
+                <ImageView android:layout_width="32dp" android:layout_height="32dp" android:src="@drawable/ic_action" app:tint="@color/red_primary" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Nuevo\nProyecto" android:textColor="@color/white" android:textSize="12sp" android:gravity="center" android:layout_marginTop="8dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/btnMyVehicles"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                android:background="@drawable/bg_card_glass"
+                android:orientation="vertical"
+                android:gravity="center">
+                <ImageView android:layout_width="32dp" android:layout_height="32dp" android:src="@drawable/ic_catalog" app:tint="@color/red_primary" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Mis vehículos" android:textColor="@color/white" android:textSize="12sp" android:layout_marginTop="8dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/btnMyDesigns"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                android:background="@drawable/bg_card_glass"
+                android:orientation="vertical"
+                android:gravity="center">
+                <ImageView android:layout_width="32dp" android:layout_height="32dp" android:src="@drawable/ic_projects" app:tint="@color/red_primary" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Mis diseños" android:textColor="@color/white" android:textSize="12sp" android:layout_marginTop="8dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/gridBranches"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                android:background="@drawable/bg_card_glass"
+                android:orientation="vertical"
+                android:gravity="center">
+                <ImageView android:layout_width="32dp" android:layout_height="32dp" android:src="@drawable/ic_home" app:tint="@color/red_primary" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sucursales" android:textColor="@color/white" android:textSize="12sp" android:layout_marginTop="8dp" />
+            </LinearLayout>
+        </GridLayout>
+
+        <TextView
+            android:id="@+id/txtProjHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Proyectos recientes"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/txtEmptyProjects"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:id="@+id/btnVerTodosHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ver todos >"
+            android:textColor="@color/red_primary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/txtProjHeader" />
+
+        <TextView
+            android:id="@+id/txtEmptyProjects"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No tienes proyectos recientes todavía."
+            android:textColor="@color/gray_text"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="24dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

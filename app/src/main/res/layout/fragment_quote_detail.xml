@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/night_blue"
+    android:padding="24dp">
+
+    <ImageView
+        android:id="@+id/btnBackQuoteDetail"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/ic_back"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="Atrás" />
+
+    <TextView
+        android:id="@+id/txtQuoteDetailTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Detalle de Cotización"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_marginStart="16dp"
+        app:layout_constraintTop_toTopOf="@+id/btnBackQuoteDetail"
+        app:layout_constraintBottom_toBottomOf="@+id/btnBackQuoteDetail"
+        app:layout_constraintStart_toEndOf="@+id/btnBackQuoteDetail" />
+
+    <TextView
+        android:id="@+id/txtQuoteDetailInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:layout_marginTop="32dp"
+        android:lineSpacingExtra="6dp"
+        app:layout_constraintTop_toBottomOf="@+id/btnBackQuoteDetail" />
+
+    <TextView
+        android:id="@+id/txtQuoteDetailStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Estado: Pendiente de revisión del taller"
+        android:textColor="@color/red_primary"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@+id/txtQuoteDetailInfo" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

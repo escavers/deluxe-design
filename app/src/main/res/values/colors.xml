@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="night_blue">#0A0E1A</color>
+    <color name="charcoal">#1C1C1E</color>
+    <color name="red_primary">#E53935</color>
+    <color name="red_accent">#FF1744</color>
+    <color name="magenta_accent">#D81B60</color>
+    <color name="gray_text">#BDBDBD</color>
+    <color name="gray_surface">#2C2C2E</color>
+    <color name="transparent_black">#80000000</color>
+    <color name="glass_card">#CC1C1C1E</color>
+    <color name="glass_stroke">#33FFFFFF</color>
+    <color name="transparent">#00000000</color>
+</resources>

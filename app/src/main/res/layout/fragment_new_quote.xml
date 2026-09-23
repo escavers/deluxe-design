@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/night_blue">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nueva Solicitud de Cotización"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Selecciona uno de tus proyectos:"
+            android:textColor="@color/gray_text"
+            android:layout_marginTop="16dp" />
+
+        <Spinner
+            android:id="@+id/spinnerProjects"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_card_charcoal" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilClientName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Tu Nombre Completo"
+            android:layout_marginTop="16dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtClientName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Notas Especiales para el Taller"
+            android:layout_marginTop="16dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtQuoteNotes"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:gravity="top"
+                android:inputType="textMultiLine"
+                android:textColor="@color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="* Estimación DEMO: El precio oficial definitivo será asignado y aprobado únicamente por los mecánicos y diseñadores del taller."
+            android:textColor="@color/red_primary"
+            android:textSize="12sp"
+            android:layout_marginTop="16dp" />
+
+        <Button
+            android:id="@+id/btnSubmitQuote"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="Generar Solicitud"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/red_primary"
+            android:layout_marginTop="32dp" />
+
+    </LinearLayout>
+</ScrollView>
