@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_screen"
+    tools:context="com.deluxedesign.app.ui.home.HomeFragment">
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:paddingEnd="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/back"
+            android:layout_width="48dp"
+            android:layout_height="56dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:text="@string/branches_back_text"
+            android:textSize="32sp"
+            android:textColor="@color/white"
+            android:contentDescription="@string/back" />
+        <TextView
+            android:id="@+id/screenTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/home_screentitle_text"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-medium" />
+    </LinearLayout>
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@id/header"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/space_md"
+            android:paddingBottom="@dimen/space_lg"
+            android:orientation="vertical">
+            <ProgressBar
+                android:id="@+id/loading"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:visibility="gone" />
+            <TextView
+                android:id="@+id/error"
+                style="@style/Body"
+                android:textColor="@color/red"
+                android:accessibilityLiveRegion="polite"
+                android:visibility="gone"
+                tools:text="Mensaje de validación" />
+            <TextView
+                android:id="@+id/greeting"
+                style="@style/Body"
+                android:text="@string/home_greeting_text" />
+            <TextView
+                android:id="@+id/headline"
+                style="@style/Title"
+                android:text="@string/home_headline_text" />
+            <ImageView
+                android:id="@+id/hero"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:src="@drawable/home_background"
+                android:background="@drawable/bg_card"
+                android:scaleType="fitCenter"
+                android:contentDescription="@string/confirmation_hero_contentdescription"
+                android:layout_marginBottom="12dp" />
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2">
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/newProject"
+                    style="@style/Secondary"
+                    android:layout_width="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_height="84dp"
+                    android:layout_margin="4dp"
+                    android:text="@string/home_newproject_text" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/vehicles"
+                    style="@style/Secondary"
+                    android:layout_width="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_height="84dp"
+                    android:layout_margin="4dp"
+                    android:text="@string/home_vehicles_text" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/designs"
+                    style="@style/Secondary"
+                    android:layout_width="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_height="84dp"
+                    android:layout_margin="4dp"
+                    android:text="@string/home_designs_text" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/branches"
+                    style="@style/Secondary"
+                    android:layout_width="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_height="84dp"
+                    android:layout_margin="4dp"
+                    android:text="@string/branches_screentitle_text" />
+            </GridLayout>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/notifications"
+                style="@style/Secondary"
+                android:text="@string/home_notifications_text" />
+            <TextView
+                android:id="@+id/section"
+                style="@style/Title"
+                android:text="@string/home_section_text" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/item_card"
+                tools:itemCount="3" />
+            <TextView
+                android:id="@+id/empty"
+                style="@style/Label"
+                android:text="@string/branches_empty_text" />
+            <TextView
+                style="@style/Title"
+                android:text="@string/inspiration_title" />
+            <TextView
+                style="@style/Label"
+                android:text="@string/inspiration_caption" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/inspirationList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/item_card"
+                tools:itemCount="3" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

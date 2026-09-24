@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <bitmap
+            android:src="@drawable/brand_background"
+            android:gravity="fill" />
+    </item>
+    <item>
+        <shape>
+            <gradient
+                android:startColor="#F2030712"
+                android:centerColor="#CF030712"
+                android:endColor="#E0030712"
+                android:angle="270" />
+        </shape>
+    </item>
+</layer-list>

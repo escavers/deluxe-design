@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/welcome">
+    <fragment
+        android:id="@+id/welcome"
+        android:name="com.deluxedesign.app.ui.auth.WelcomeFragment"
+        android:label=""
+        tools:layout="@layout/fragment_welcome" />
+    <fragment
+        android:id="@+id/login"
+        android:name="com.deluxedesign.app.ui.auth.LoginFragment"
+        android:label="Bienvenido"
+        tools:layout="@layout/fragment_login" />
+    <fragment
+        android:id="@+id/register"
+        android:name="com.deluxedesign.app.ui.auth.RegisterFragment"
+        android:label="REGÍSTRATE"
+        tools:layout="@layout/fragment_register" />
+    <fragment
+        android:id="@+id/recover"
+        android:name="com.deluxedesign.app.ui.auth.RecoverFragment"
+        android:label="RECUPERAR CONTRASEÑA"
+        tools:layout="@layout/fragment_recover" />
+    <fragment
+        android:id="@+id/reset"
+        android:name="com.deluxedesign.app.ui.auth.ResetFragment"
+        android:label="RESTABLECER CONTRASEÑA"
+        tools:layout="@layout/fragment_reset" />
+    <fragment
+        android:id="@+id/change_password"
+        android:name="com.deluxedesign.app.ui.auth.ChangePasswordFragment"
+        android:label="ACTUALIZAR CONTRASEÑA"
+        tools:layout="@layout/fragment_change_password" />
+    <fragment
+        android:id="@+id/home"
+        android:name="com.deluxedesign.app.ui.home.HomeFragment"
+        android:label="Inicio"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/catalog"
+        android:name="com.deluxedesign.app.ui.catalog.CatalogFragment"
+        android:label="CATÁLOGO"
+        tools:layout="@layout/fragment_catalog" />
+    <fragment
+        android:id="@+id/vehicle_detail"
+        android:name="com.deluxedesign.app.ui.catalog.VehicleDetailFragment"
+        android:label="Detalle del vehículo"
+        tools:layout="@layout/fragment_vehicle_detail" />
+    <fragment
+        android:id="@+id/customizer"
+        android:name="com.deluxedesign.app.ui.customizer.CustomizerFragment"
+        android:label="PERSONALIZAR"
+        tools:layout="@layout/fragment_customizer" />
+    <fragment
+        android:id="@+id/confirmation"
+        android:name="com.deluxedesign.app.ui.customizer.ConfirmationFragment"
+        android:label="CONFIRMAR CAMBIOS"
+        tools:layout="@layout/fragment_confirmation" />
+    <fragment
+        android:id="@+id/project_ready"
+        android:name="com.deluxedesign.app.ui.projects.ProjectReadyFragment"
+        android:label="PROYECTO LISTO"
+        tools:layout="@layout/fragment_project_ready" />
+    <fragment
+        android:id="@+id/projects"
+        android:name="com.deluxedesign.app.ui.projects.ProjectsFragment"
+        android:label="PROYECTOS"
+        tools:layout="@layout/fragment_projects" />
+    <fragment
+        android:id="@+id/project_detail"
+        android:name="com.deluxedesign.app.ui.projects.ProjectDetailFragment"
+        android:label="DETALLE DEL PROYECTO"
+        tools:layout="@layout/fragment_project_detail" />
+    <fragment
+        android:id="@+id/quotes"
+        android:name="com.deluxedesign.app.ui.quotes.QuotesFragment"
+        android:label="COTIZACIONES"
+        tools:layout="@layout/fragment_quotes" />
+    <fragment
+        android:id="@+id/quote_detail"
+        android:name="com.deluxedesign.app.ui.quotes.QuoteDetailFragment"
+        android:label="COTIZACIÓN"
+        tools:layout="@layout/fragment_quote_detail" />
+    <fragment
+        android:id="@+id/new_quote"
+        android:name="com.deluxedesign.app.ui.quotes.NewQuoteFragment"
+        android:label="NUEVA COTIZACIÓN"
+        tools:layout="@layout/fragment_new_quote" />
+    <fragment
+        android:id="@+id/profile"
+        android:name="com.deluxedesign.app.ui.profile.ProfileFragment"
+        android:label="PERFIL"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/my_vehicles"
+        android:name="com.deluxedesign.app.ui.profile.MyVehiclesFragment"
+        android:label="MIS VEHÍCULOS"
+        tools:layout="@layout/fragment_my_vehicles" />
+    <fragment
+        android:id="@+id/branches"
+        android:name="com.deluxedesign.app.ui.profile.BranchesFragment"
+        android:label="SUCURSALES"
+        tools:layout="@layout/fragment_branches" />
+    <fragment
+        android:id="@+id/notifications"
+        android:name="com.deluxedesign.app.ui.profile.NotificationsFragment"
+        android:label="NOTIFICACIONES"
+        tools:layout="@layout/fragment_notifications" />
+</navigation>

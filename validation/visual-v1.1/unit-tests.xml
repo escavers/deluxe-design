@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.deluxedesign.app.DomainTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-09-23T01:35:11" hostname="MAX" time="0.248">
+  <properties/>
+  <testcase name="passwordsAreSaltedAndVerified" classname="com.deluxedesign.app.DomainTest" time="0.244"/>
+  <testcase name="negativeQuoteItemRejected" classname="com.deluxedesign.app.DomainTest" time="0.001"/>
+  <testcase name="validatesCredentials" classname="com.deluxedesign.app.DomainTest" time="0.001"/>
+  <testcase name="quoteBreakdownPreservesCents" classname="com.deluxedesign.app.DomainTest" time="0.0"/>
+  <testcase name="exactlyThreePresetsPerVehicleWithConsistentResources" classname="com.deluxedesign.app.DomainTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

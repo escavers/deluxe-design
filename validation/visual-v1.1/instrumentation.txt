@@ -1,0 +1,15 @@
+
+com.deluxedesign.app.ExportTest:.
+com.deluxedesign.app.RepositoryFlowTest:.
+com.deluxedesign.app.RoomPersistenceTest:.
+com.deluxedesign.app.UiInteractionTest:.
+com.deluxedesign.app.WorkflowTest:s_glBindAttribLocation: bind attrib 0 name position
+s_glBindAttribLocation: bind attrib 1 name localCoord
+.
+
+Time: 32.986
+
+OK (5 tests)
+
+
+

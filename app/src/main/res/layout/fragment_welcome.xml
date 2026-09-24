@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_cover"
+    tools:context="com.deluxedesign.app.ui.auth.WelcomeFragment">
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:paddingEnd="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/back"
+            android:layout_width="48dp"
+            android:layout_height="56dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:text="@string/branches_back_text"
+            android:textSize="32sp"
+            android:textColor="@color/white"
+            android:contentDescription="@string/back" />
+        <TextView
+            android:id="@+id/screenTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-medium" />
+    </LinearLayout>
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@id/header"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/space_md"
+            android:paddingBottom="@dimen/space_lg"
+            android:orientation="vertical">
+            <ProgressBar
+                android:id="@+id/loading"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:visibility="gone" />
+            <TextView
+                android:id="@+id/error"
+                style="@style/Body"
+                android:textColor="@color/red"
+                android:accessibilityLiveRegion="polite"
+                android:visibility="gone"
+                tools:text="Mensaje de validación" />
+            <Space
+                android:layout_width="1dp"
+                android:layout_height="28dp" />
+            <TextView
+                android:id="@+id/brand"
+                style="@style/Title"
+                android:text="@string/welcome_brand_text" />
+            <TextView
+                android:id="@+id/brandCaption"
+                style="@style/Label"
+                android:text="@string/welcome_brandcaption_text" />
+            <com.deluxedesign.app.ui.common.BrandLogoView
+                android:id="@+id/hero"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/brand_logo"
+                android:background="@android:color/transparent"
+                android:scaleType="fitCenter"
+                android:contentDescription="@string/confirmation_hero_contentdescription"
+                android:layout_marginBottom="12dp" />
+            <TextView
+                android:id="@+id/slogan"
+                style="@style/Title"
+                android:text="@string/welcome_slogan_text" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/start"
+                style="@style/Primary"
+                android:text="@string/welcome_start_text" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

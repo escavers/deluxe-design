@@ -1,0 +1,25 @@
+rules_version = '2';
+service cloud.firestore {
+ match /databases/{database}/documents {
+  function signedIn() { return request.auth != null; }
+  function owner() { return signedIn() && resource.data.userId == request.auth.uid; }
+  function incomingOwner() { return signedIn() && request.resource.data.userId == request.auth.uid; }
+  match /users/{id} { allow read, write: if signedIn() && request.auth.uid == id; }
+  match /vehicles/{id} { allow read: if signedIn(); allow write: if false; }
+  match /presets/{id} { allow read: if signedIn(); allow write: if false; }
+  match /branches/{id} { allow read: if signedIn(); allow write: if false; }
+  match /projects/{id} {
+   allow read, delete: if owner();
+   allow create: if incomingOwner() && request.resource.data.status == 'Borrador' && request.resource.data.progress == 0;
+   allow update: if owner() && incomingOwner() && request.resource.data.status == resource.data.status && request.resource.data.progress == resource.data.progress;
+  }
+  match /quotes/{id} {
+   allow read: if owner();
+   allow create: if incomingOwner() && request.resource.data.status == 'Pendiente' && get(/databases/$(database)/documents/projects/$(request.resource.data.projectId)).data.userId == request.auth.uid;
+   allow update, delete: if false;
+  }
+  match /favorites/{id} { allow read, delete: if owner(); allow create: if incomingOwner(); allow update: if owner() && incomingOwner(); }
+  match /notifications/{id} { allow read: if owner(); allow update: if owner() && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['read']); allow create, delete: if false; }
+ }
+}
+

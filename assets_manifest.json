@@ -1,0 +1,565 @@
+{
+  "assets": [
+    {
+      "name": "vehicle_porsche_racing_red_front.webp",
+      "status": "pending",
+      "size": "1200x800",
+      "vehicle": "porsche",
+      "preset": "racing_red",
+      "angle": "front",
+      "location": "app/src/main/res/drawable-nodpi/",
+      "usedBy": [
+        "vehicle_detail",
+        "customizer",
+        "confirmation",
+        "project_ready",
+        "projects",
+        "project_detail"
+      ]
+    },
+    {
+      "name": "vehicle_porsche_racing_red_side.webp",
+      "status": "pending",
+      "size": "1200x800",
+      "vehicle": "porsche",
+      "preset": "racing_red",
+      "angle": "side",
+      "location": "app/src/main/res/drawable-nodpi/",
+      "usedBy": [
+        "vehicle_detail",
+        "customizer",
+        "confirmation",
+        "project_ready",
+        "projects",
+        "project_detail"
+      ]
+    },
+    {
+      "name": "vehicle_porsche_racing_red_rear.webp",
+      "status": "pending",
+      "size": "1200x800",
+      "vehicle": "porsche",
+      "preset": "racing_red",
+      "angle": "rear",
+      "location": "app/src/main/res/drawable-nodpi/",
+      "usedBy": [
+        "vehicle_detail",
+        "customizer",
+        "confirmation",
+        "project_ready",
+        "projects",
+        "project_detail"
+      ]
+    },
+    {
+      "name": "vehicle_porsche_urban_dark_front.webp",
+      "status": "pending",
+      "size": "1200x800",
+      "vehicle": "porsche",
+      "preset": "urban_dark",
+      "angle": "front",
+      "location": "app/src/main/res/drawable-nodpi/",
+      "usedBy": [
+        "vehicle_detail",
+        "customizer",
+        "confirmation",
+        "project_ready",
+        "projects",
+        "project_detail"
+      ]
+    },
+    {
+      "name": "vehicle_porsche_urban_dark_side.webp",
+      "status": "pending",
+      "size": "1200x800",
+      "vehicle": "porsche",
+      "preset": "urban_dark",
+      "angle": "side",
+      "location": "app/src/main/res/drawable-nodpi/",
+      "usedBy": [
+        "vehicle_detail",
+        "customizer",
+        "confirmation",
+        "project_ready",
+        "projects",
+        "project_detail"
+      ]
+    },
+    {
+      "name": "vehicle_porsche_urban_dark_rear.webp",
+      "status": "pending",
+      "size": "1200x800",
+      "vehicle": "porsche",
+      "preset": "urban_dark",
+      "angle": "rear",
+      "location": "app/src/main/res/drawable-nodpi/",
+      "usedBy": [
+        "vehicle_detail",
+        "customizer",
+        "confirmation",
+        "project_ready",
+        "projects",
+        "project_detail"
+      ]
+    },
+    {
+      "name": "vehicle_porsche_street_blue_front.webp",
+      "status": "pending",
+      "size": "1200x800",
+      "vehicle": "porsche",
+      "preset": "street_blue",
+      "angle": "front",
+      "location": "app/src/main/res/drawable-nodpi/",
+      "usedBy": [
+        "vehicle_detail",
+        "customizer",
+        "confirmation",
+        "project_ready",
+        "projects",
+        "project_detail"
+      ]
+    },
+    {
+      "name": "vehicle_porsche_street_blue_side.webp",
+      "status": "pending",
+      "size": "1200x800",
+      "vehicle": "porsche",
+      "preset": "street_blue",
+      "angle": "side",
+      "location": "app/src/main/res/drawable-nodpi/",
+      "usedBy": [
+        "vehicle_detail",
+        "customizer",
+        "confirmation",
+        "project_ready",
+        "projects",
+        "project_detail"
+      ]
+    },
+    {
+      "name": "vehicle_porsche_street_blue_rear.webp",
+      "status": "pending",
+      "size": "1200x800",
+      "vehicle": "porsche",
+      "preset": "street_blue",
+      "angle": "rear",
+      "location": "app/src/main/res/drawable-nodpi/",
+      "usedBy": [
+        "vehicle_detail",
+        "customizer",
+        "confirmation",
+        "project_ready",
+        "projects",
+        "project_detail"
+      ]
+    },
+    {
+      "name": "vehicle_bmw_racing_red_front.webp",
+      "status": "pending",
+      "size": "1200x800",
+      "vehicle": "bmw",
+      "preset": "racing_red",
+      "angle": "front",
+      "location": "app/src/main/res/drawable-nodpi/",
+      "usedBy": [
+        "vehicle_detail",
+        "customizer",
+        "confirmation",
+        "project_ready",
+        "projects",
+        "project_detail"
+      ]
+    },
+    {
+      "name": "vehicle_bmw_racing_red_side.webp",
+      "status": "pending",
+      "size": "1200x800",
+      "vehicle": "bmw",
+      "preset": "racing_red",
+      "angle": "side",
+      "location": "app/src/main/res/drawable-nodpi/",
+      "usedBy": [
+        "vehicle_detail",
+        "customizer",
+        "confirmation",
+        "project_ready",
+        "projects",
+        "project_detail"
+      ]
+    },
+    {
+      "name": "vehicle_bmw_racing_red_rear.webp",
+      "status": "pending",
+      "size": "1200x800",
+      "vehicle": "bmw",
+      "preset": "racing_red",
+      "angle": "rear",
+      "location": "app/src/main/res/drawable-nodpi/",
+      "usedBy": [
+        "vehicle_detail",
+        "customizer",
+        "confirmation",
+        "project_ready",
+        "projects",
+        "project_detail"
+      ]
+    },
+    {
+      "name": "vehicle_bmw_urban_dark_front.webp",
+      "status": "pending",
+      "size": "1200x800",
+      "vehicle": "bmw",
+      "preset": "urban_dark",
+      "angle": "front",
+      "location": "app/src/main/res/drawable-nodpi/",
+      "usedBy": [
+        "vehicle_detail",
+        "customizer",
+        "confirmation",
+        "project_ready",
+        "projects",
+        "project_detail"
+      ]
+    },
+    {
+      "name": "vehicle_bmw_urban_dark_side.webp",
+      "status": "pending",
+      "size": "1200x800",
+      "vehicle": "bmw",
+      "preset": "urban_dark",
+      "angle": "side",
+      "location": "app/src/main/res/drawable-nodpi/",
+      "usedBy": [
+        "vehicle_detail",
+        "customizer",
+        "confirmation",
+        "project_ready",
+        "projects",
+        "project_detail"
+      ]
+    },
+    {
+      "name": "vehicle_bmw_urban_dark_rear.webp",
+      "status": "pending",
+      "size": "1200x800",
+      "vehicle": "bmw",
+      "preset": "urban_dark",
+      "angle": "rear",
+      "location": "app/src/main/res/drawable-nodpi/",
+      "usedBy": [
+        "vehicle_detail",
+        "customizer",
+        "confirmation",
+        "project_ready",
+        "projects",
+        "project_detail"
+      ]
+    },
+    {
+      "name": "vehicle_bmw_street_blue_front.webp",
+      "status": "pending",
+      "size": "1200x800",
+      "vehicle": "bmw",
+      "preset": "street_blue",
+      "angle": "front",
+      "location": "app/src/main/res/drawable-nodpi/",
+      "usedBy": [
+        "vehicle_detail",
+        "customizer",
+        "confirmation",
+        "project_ready",
+        "projects",
+        "project_detail"
+      ]
+    },
+    {
+      "name": "vehicle_bmw_street_blue_side.webp",
+      "status": "pending",
+      "size": "1200x800",
+      "vehicle": "bmw",
+      "preset": "street_blue",
+      "angle": "side",
+      "location": "app/src/main/res/drawable-nodpi/",
+      "usedBy": [
+        "vehicle_detail",
+        "customizer",
+        "confirmation",
+        "project_ready",
+        "projects",
+        "project_detail"
+      ]
+    },
+    {
+      "name": "vehicle_bmw_street_blue_rear.webp",
+      "status": "pending",
+      "size": "1200x800",
+      "vehicle": "bmw",
+      "preset": "street_blue",
+      "angle": "rear",
+      "location": "app/src/main/res/drawable-nodpi/",
+      "usedBy": [
+        "vehicle_detail",
+        "customizer",
+        "confirmation",
+        "project_ready",
+        "projects",
+        "project_detail"
+      ]
+    },
+    {
+      "name": "vehicle_mustang_racing_red_front.webp",
+      "status": "pending",
+      "size": "1200x800",
+      "vehicle": "mustang",
+      "preset": "racing_red",
+      "angle": "front",
+      "location": "app/src/main/res/drawable-nodpi/",
+      "usedBy": [
+        "vehicle_detail",
+        "customizer",
+        "confirmation",
+        "project_ready",
+        "projects",
+        "project_detail"
+      ]
+    },
+    {
+      "name": "vehicle_mustang_racing_red_side.webp",
+      "status": "pending",
+      "size": "1200x800",
+      "vehicle": "mustang",
+      "preset": "racing_red",
+      "angle": "side",
+      "location": "app/src/main/res/drawable-nodpi/",
+      "usedBy": [
+        "vehicle_detail",
+        "customizer",
+        "confirmation",
+        "project_ready",
+        "projects",
+        "project_detail"
+      ]
+    },
+    {
+      "name": "vehicle_mustang_racing_red_rear.webp",
+      "status": "pending",
+      "size": "1200x800",
+      "vehicle": "mustang",
+      "preset": "racing_red",
+      "angle": "rear",
+      "location": "app/src/main/res/drawable-nodpi/",
+      "usedBy": [
+        "vehicle_detail",
+        "customizer",
+        "confirmation",
+        "project_ready",
+        "projects",
+        "project_detail"
+      ]
+    },
+    {
+      "name": "vehicle_mustang_urban_dark_front.webp",
+      "status": "pending",
+      "size": "1200x800",
+      "vehicle": "mustang",
+      "preset": "urban_dark",
+      "angle": "front",
+      "location": "app/src/main/res/drawable-nodpi/",
+      "usedBy": [
+        "vehicle_detail",
+        "customizer",
+        "confirmation",
+        "project_ready",
+        "projects",
+        "project_detail"
+      ]
+    },
+    {
+      "name": "vehicle_mustang_urban_dark_side.webp",
+      "status": "pending",
+      "size": "1200x800",
+      "vehicle": "mustang",
+      "preset": "urban_dark",
+      "angle": "side",
+      "location": "app/src/main/res/drawable-nodpi/",
+      "usedBy": [
+        "vehicle_detail",
+        "customizer",
+        "confirmation",
+        "project_ready",
+        "projects",
+        "project_detail"
+      ]
+    },
+    {
+      "name": "vehicle_mustang_urban_dark_rear.webp",
+      "status": "pending",
+      "size": "1200x800",
+      "vehicle": "mustang",
+      "preset": "urban_dark",
+      "angle": "rear",
+      "location": "app/src/main/res/drawable-nodpi/",
+      "usedBy": [
+        "vehicle_detail",
+        "customizer",
+        "confirmation",
+        "project_ready",
+        "projects",
+        "project_detail"
+      ]
+    },
+    {
+      "name": "vehicle_mustang_street_blue_front.webp",
+      "status": "pending",
+      "size": "1200x800",
+      "vehicle": "mustang",
+      "preset": "street_blue",
+      "angle": "front",
+      "location": "app/src/main/res/drawable-nodpi/",
+      "usedBy": [
+        "vehicle_detail",
+        "customizer",
+        "confirmation",
+        "project_ready",
+        "projects",
+        "project_detail"
+      ]
+    },
+    {
+      "name": "vehicle_mustang_street_blue_side.webp",
+      "status": "pending",
+      "size": "1200x800",
+      "vehicle": "mustang",
+      "preset": "street_blue",
+      "angle": "side",
+      "location": "app/src/main/res/drawable-nodpi/",
+      "usedBy": [
+        "vehicle_detail",
+        "customizer",
+        "confirmation",
+        "project_ready",
+        "projects",
+        "project_detail"
+      ]
+    },
+    {
+      "name": "vehicle_mustang_street_blue_rear.webp",
+      "status": "pending",
+      "size": "1200x800",
+      "vehicle": "mustang",
+      "preset": "street_blue",
+      "angle": "rear",
+      "location": "app/src/main/res/drawable-nodpi/",
+      "usedBy": [
+        "vehicle_detail",
+        "customizer",
+        "confirmation",
+        "project_ready",
+        "projects",
+        "project_detail"
+      ]
+    },
+    {
+      "name": "brand_cover.webp",
+      "size": "804x1748",
+      "status": "replaced_by_provided_asset",
+      "location": "app/src/main/res/drawable-nodpi/",
+      "replacement": "brand_logo.png + brand_background.jpg"
+    },
+    {
+      "name": "home_background.webp",
+      "size": "804x1748",
+      "status": "replaced_by_provided_asset",
+      "location": "app/src/main/res/drawable-nodpi/",
+      "replacement": "home_background.png"
+    },
+    {
+      "name": "brand_logo.png",
+      "size": "512x512",
+      "status": "replaced_by_provided_asset",
+      "location": "app/src/main/res/drawable-nodpi/",
+      "replacement": "brand_logo.png"
+    }
+  ],
+  "providedAssets": [
+    {
+      "name": "brand_logo.png",
+      "status": "provided",
+      "location": "app/src/main/res/drawable-nodpi/",
+      "purpose": "Logo original, portada, acceso, perfil e icono. Se conserva la grafía de la imagen."
+    },
+    {
+      "name": "brand_background.jpg",
+      "status": "provided",
+      "location": "app/src/main/res/drawable-nodpi/",
+      "purpose": "Fondo de todas las pantallas con capas de contraste."
+    },
+    {
+      "name": "home_background.png",
+      "status": "provided",
+      "location": "app/src/main/res/drawable-nodpi/",
+      "purpose": "Fotografía principal de inicio."
+    },
+    {
+      "name": "vehicle_porsche_reference.png",
+      "status": "provided",
+      "location": "app/src/main/res/drawable-nodpi/",
+      "purpose": "Porsche: catálogo y referencia del personalizador."
+    },
+    {
+      "name": "vehicle_bmw_reference.png",
+      "status": "provided",
+      "location": "app/src/main/res/drawable-nodpi/",
+      "purpose": "BMW M4: catálogo y referencia del personalizador."
+    },
+    {
+      "name": "vehicle_mustang_reference.png",
+      "status": "provided",
+      "location": "app/src/main/res/drawable-nodpi/",
+      "purpose": "Mustang: catálogo y referencia del personalizador."
+    },
+    {
+      "name": "inspiration_audi.png",
+      "status": "provided",
+      "location": "app/src/main/res/drawable-nodpi/",
+      "purpose": "Galería de inspiración en Inicio."
+    },
+    {
+      "name": "inspiration_bmw.png",
+      "status": "provided",
+      "location": "app/src/main/res/drawable-nodpi/",
+      "purpose": "Galería de inspiración en Inicio."
+    },
+    {
+      "name": "inspiration_pickup.png",
+      "status": "provided",
+      "location": "app/src/main/res/drawable-nodpi/",
+      "purpose": "Galería de inspiración en Inicio."
+    },
+    {
+      "name": "inspiration_golf.png",
+      "status": "provided",
+      "location": "app/src/main/res/drawable-nodpi/",
+      "purpose": "Galería de inspiración en Inicio."
+    },
+    {
+      "name": "inspiration_mustang.png",
+      "status": "provided",
+      "location": "app/src/main/res/drawable-nodpi/",
+      "purpose": "Galería de inspiración en Inicio."
+    },
+    {
+      "name": "inspiration_toyota.png",
+      "status": "provided",
+      "location": "app/src/main/res/drawable-nodpi/",
+      "purpose": "Galería de inspiración en Inicio."
+    },
+    {
+      "name": "inspiration_porsche.png",
+      "status": "provided",
+      "location": "app/src/main/res/drawable-nodpi/",
+      "purpose": "Galería de inspiración en Inicio."
+    }
+  ],
+  "referencePolicy": "Las 27 vistas finales de presets siguen pendientes. Se muestra la foto del vehículo con aviso visible, sin simular color ni ángulo."
+}
