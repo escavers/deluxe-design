@@ -39,6 +39,7 @@
         android:layout_marginEnd="12dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/bg_nav_bar"
+        android:hapticFeedbackEnabled="true"
         app:itemBackground="@drawable/sl_nav_item_bg"
         app:itemIconTint="@color/nav_tint"
         app:itemTextColor="@color/nav_tint"

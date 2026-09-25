@@ -73,66 +73,9 @@ public class QuotesFragment extends BaseFragment {
 
       String dateStr = Formatters.date(q.createdAt > 0 ? q.createdAt : System.currentTimeMillis());
       String priceStr = Formatters.money(q.totalCents);
-      String imageRes = v != null ? "vehicle_" + v.id + "_reference" : "placeholder_vehicle";
+      String imageRes = v != null ? "ci_" + v.id + "_front34" : "placeholder_vehicle";
 
       displayItems.add(new QuoteDisplayItem(q.id, title, projectName, serviceName, dateStr, priceStr, q.status, imageRes));
-    }
-
-    // Default sample data matching the screenshot mockup if data is demo or empty
-    if (displayItems.isEmpty()) {
-      pending = 5;
-      approved = 15;
-      review = 3;
-
-      displayItems.add(new QuoteDisplayItem(
-          "demo_bmw_quote",
-          "BMW Serie 3",
-          "(nombre del proyecto)",
-          "Vinilado completo",
-          "02 Abr 2025",
-          "$ 25,500",
-          "En revision",
-          "vehicle_bmw_reference"
-      ));
-
-      displayItems.add(new QuoteDisplayItem(
-          "demo_hilux_quote",
-          "Toyota Hilux",
-          "(nombre del proyecto)",
-          "Body Kit + Llantas",
-          "14 Feb 2025",
-          "$ 18,900",
-          "Pendiente",
-          "inspiration_pickup"
-      ));
-
-      displayItems.add(new QuoteDisplayItem(
-          "demo_mustang_quote",
-          "Ford Mustang",
-          "(nombre del proyecto)",
-          "Pintado completo",
-          "31 Ago 2025",
-          "$ 32,100",
-          "Pendiente",
-          "vehicle_mustang_reference"
-      ));
-
-      displayItems.add(new QuoteDisplayItem(
-          "demo_golf_quote",
-          "VW Golf GTI",
-          "(nombre del proyecto)",
-          "Interiores",
-          "21 Sep 2025",
-          "$ 21,750",
-          "Aprobada",
-          "vehicle_porsche_reference"
-      ));
-    } else {
-      if (pending == 0 && approved == 0 && review == 0) {
-        pending = 5;
-        approved = 15;
-        review = 3;
-      }
     }
 
     binding.metricCountPending.setText(String.valueOf(pending));

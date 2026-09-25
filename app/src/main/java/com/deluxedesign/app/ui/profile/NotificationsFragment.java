@@ -81,7 +81,7 @@ public class NotificationsFragment extends BaseFragment {
     @Override
     public void onBindViewHolder(@NonNull Holder holder, int position) {
       NotificationItem notification = notifications.get(position);
-      boolean highlighted = !notification.read && position == 0;
+      boolean highlighted = !notification.read;
       holder.binding.getRoot().setBackgroundResource(
           highlighted ? R.drawable.bg_notification_unread : R.drawable.bg_notification_read);
       holder.binding.unreadDot.setVisibility(highlighted ? View.VISIBLE : View.GONE);

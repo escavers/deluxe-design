@@ -2,6 +2,7 @@ package com.deluxedesign.app;
 
 import static org.junit.Assert.*;
 
+import com.deluxedesign.app.data.OptionsCatalog;
 import com.deluxedesign.app.data.local.SeedData;
 import com.deluxedesign.app.domain.model.*;
 import com.deluxedesign.app.util.*;
@@ -30,7 +31,8 @@ public class DomainTest {
 
   @Test
   public void exactlyThreePresetsPerVehicleWithConsistentResources() {
-    assertEquals(3, SeedData.vehicles().size());
+    int vehicles = SeedData.vehicles().size();
+    assertTrue(vehicles >= 3);
     Set<String> ids = new HashSet<>();
     for (Vehicle v : SeedData.vehicles()) {
       int count = 0;
@@ -39,20 +41,37 @@ public class DomainTest {
         if (!p.vehicleId.equals(v.id)) continue;
         count++;
         assertTrue(ids.add(p.id));
-        assertEquals("vehicle_" + p.id + "_front", p.image("front"));
-        assertEquals("vehicle_" + p.id + "_side", p.image("side"));
-        assertEquals("vehicle_" + p.id + "_rear", p.image("rear"));
+        assertEquals("ci_" + v.id + "_front34", p.image("front"));
+        assertEquals("ci_" + v.id + "_side", p.image("side"));
+        assertEquals("ci_" + v.id + "_rear", p.image("rear"));
         assertTrue(p.priceCents > 0);
       }
       assertEquals(3, count);
     }
-    assertEquals(9, ids.size());
+    assertEquals(vehicles * 3, ids.size());
   }
 
   @Test
   public void quoteBreakdownPreservesCents() {
-    for (long amount : new long[] {0, 1, 99, 1890000, 2140000, 2390001})
-      assertEquals(amount, QuoteCalculator.total(QuoteCalculator.items(amount)));
+    for (long amount : new long[] {0, 1, 99, 1890000, 1960000, 1930000})
+      assertEquals(amount, QuoteCalculator.total(QuoteCalculator.items(amount, null)));
+  }
+
+  @Test
+  public void catalogOptionsCoverAllCategoriesAndTemplates() {
+    assertEquals(8, OptionsCatalog.CATEGORIES.length);
+    Set<String> categories = new HashSet<>();
+    Set<String> optionIds = new HashSet<>();
+    for (CustomizationOption o : OptionsCatalog.options()) {
+      categories.add(o.category);
+      assertTrue("id duplicado: " + o.id, optionIds.add(o.id));
+      assertTrue(o.priceDeltaCents != null && o.priceDeltaCents >= 0);
+    }
+    assertEquals(8, categories.size());
+    for (String template : OptionsCatalog.TEMPLATES)
+      assertEquals(8, OptionsCatalog.templateOptions(template).size());
+    CustomizationOption racing = OptionsCatalog.option("paint_racing_red");
+    assertEquals("Rojo Racing", racing.label);
   }
 
   @Test(expected = IllegalArgumentException.class)

@@ -5,6 +5,7 @@ import androidx.viewbinding.ViewBinding;
 import com.deluxedesign.app.R;
 import com.deluxedesign.app.databinding.FragmentProjectReadyBinding;
 import com.deluxedesign.app.ui.BaseFragment;
+import com.deluxedesign.app.util.AssetImages;
 
 public class ProjectReadyFragment extends BaseFragment {
   private FragmentProjectReadyBinding binding;
@@ -56,10 +57,9 @@ public class ProjectReadyFragment extends BaseFragment {
     com.deluxedesign.app.domain.model.Project p = vm.project();
     if (p == null) return;
     text(R.id.projectName, p.name);
-    com.deluxedesign.app.domain.model.CustomizationPreset preset = vm.preset(p.presetId);
-    if (preset != null)
-      com.deluxedesign.app.util.AssetImages.show(
-          binding.hero, preset.image(vm.value("angle", "front")));
+    com.deluxedesign.app.domain.model.CustomizationPreset config = vm.configuration();
+    if (config == null) return;
+    AssetImages.show(binding.hero, config.image(vm.value("angle", "front")));
   }
 
   @Override

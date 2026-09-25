@@ -52,11 +52,11 @@ public class WorkflowTest {
       scenario.onActivity(
           a -> {
             vm.selectVehicle("porsche");
-            vm.selectPreset("porsche_street_blue");
+            vm.selectTemplate("street_blue");
             vm.undo();
-            assertEquals("porsche_racing_red", vm.value("preset", ""));
+            assertEquals("racing_red", vm.templateOfCurrent());
             vm.redo();
-            assertEquals("porsche_street_blue", vm.value("preset", ""));
+            assertEquals("street_blue", vm.templateOfCurrent());
           });
       CountDownLatch saved = new CountDownLatch(1);
       scenario.onActivity(a -> vm.saveProject("Prueba completa", p -> saved.countDown()));
@@ -71,7 +71,7 @@ public class WorkflowTest {
       deadline = System.currentTimeMillis() + 10000;
       while (vm.quote() == null && System.currentTimeMillis() < deadline) Thread.sleep(100);
       assertNotNull(vm.quote());
-      assertEquals(2390000, vm.quote().totalCents);
+      assertEquals(3472200, vm.quote().totalCents);
       int[] destinations = {
         R.id.home,
         R.id.catalog,
@@ -126,7 +126,7 @@ public class WorkflowTest {
       scenario.onActivity(
           a -> {
             AppViewModel restored = new ViewModelProvider(a).get(AppViewModel.class);
-            assertEquals("porsche_street_blue", restored.value("preset", ""));
+            assertEquals("street_blue", restored.templateOfCurrent());
           });
     }
   }

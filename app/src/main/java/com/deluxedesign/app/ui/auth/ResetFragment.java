@@ -16,20 +16,30 @@ public class ResetFragment extends BaseFragment {
   }
 
   protected void configure() {
-    binding.email.setText(vm.value("resetEmail", ""));
     click(
         R.id.save,
         () -> {
-          if (!input(R.id.password).equals(input(R.id.confirmation))) {
+          String password = input(R.id.password);
+          String confirmation = input(R.id.confirmation);
+          String repeat = input(R.id.repeat);
+          if (password.isEmpty() || confirmation.isEmpty() || repeat.isEmpty()) {
+            vm.error.setValue("Completa todos los campos.");
+            return;
+          }
+          if (!com.deluxedesign.app.util.Validators.password(password)) {
+            vm.error.setValue("La contraseña debe tener al menos 8 caracteres.");
+            return;
+          }
+          if (!password.equals(confirmation) || !password.equals(repeat)) {
             vm.error.setValue("Las contraseñas no coinciden.");
             return;
           }
           vm.repositories
               .auth()
               .resetPassword(
-                  input(R.id.email),
-                  input(R.id.token),
-                  input(R.id.password),
+                  vm.value("resetEmail", ""),
+                  vm.value("resetCode", ""),
+                  password,
                   vm.task(
                       x -> {
                         toast("Contraseña actualizada.");

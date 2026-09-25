@@ -7,16 +7,18 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_screen"
     tools:context="com.deluxedesign.app.ui.customizer.CustomizerFragment">
+
     <LinearLayout
         android:id="@+id/header"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:paddingEnd="16dp"
+        android:paddingEnd="12dp"
         android:orientation="horizontal"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/back"
             android:layout_width="48dp"
@@ -26,6 +28,7 @@
             android:textSize="32sp"
             android:textColor="@color/white"
             android:contentDescription="@string/back" />
+
         <TextView
             android:id="@+id/screenTitle"
             android:layout_width="0dp"
@@ -36,7 +39,25 @@
             android:textSize="18sp"
             android:textStyle="bold"
             android:fontFamily="sans-serif-medium" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/undo"
+            style="@style/Secondary"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginEnd="6dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="@string/customizer_undo_text" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/redo"
+            style="@style/Secondary"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="@string/customizer_redo_text" />
     </LinearLayout>
+
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scroll"
         android:layout_width="0dp"
@@ -46,18 +67,21 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingHorizontal="@dimen/space_md"
             android:paddingBottom="@dimen/space_lg"
             android:orientation="vertical">
+
             <ProgressBar
                 android:id="@+id/loading"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_gravity="center"
                 android:visibility="gone" />
+
             <TextView
                 android:id="@+id/error"
                 style="@style/Body"
@@ -65,35 +89,88 @@
                 android:accessibilityLiveRegion="polite"
                 android:visibility="gone"
                 tools:text="Mensaje de validación" />
+
             <TextView
                 android:id="@+id/vehicleName"
-                style="@style/Label"
+                style="@style/Title"
                 android:text="@string/customizer_vehiclename_text" />
-            <ImageView
-                android:id="@+id/hero"
+
+            <FrameLayout
+                android:id="@+id/heroFrame"
                 android:layout_width="match_parent"
-                android:layout_height="245dp"
-                android:src="@drawable/placeholder_vehicle"
+                android:layout_height="270dp"
                 android:background="@drawable/bg_card"
-                android:scaleType="fitCenter"
-                android:contentDescription="@string/confirmation_hero_contentdescription"
-                android:layout_marginBottom="12dp" />
+                android:layout_marginBottom="10dp">
+
+                <ImageView
+                    android:id="@+id/heroPhoto"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ci_porsche_front34"
+                    android:scaleType="fitCenter"
+                    android:visibility="gone"
+                    android:contentDescription="@string/confirmation_hero_contentdescription" />
+
+                <WebView
+                    android:id="@+id/preview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#0c0e14" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/view3d"
+                    style="@style/Secondary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_gravity="top|end"
+                    android:layout_margin="10dp"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:text="@string/customizer_expand3d_text" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/togglePreview"
+                    style="@style/Secondary"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="40dp"
+                    android:text="@string/customizer_preview_text" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/togglePhoto"
+                    style="@style/Secondary"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="40dp"
+                    android:text="@string/customizer_photo_text" />
+            </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/front"
                     style="@style/Secondary"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:text="@string/customizer_front_text" />
+
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/side"
                     style="@style/Secondary"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:text="@string/customizer_side_text" />
+
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/rear"
                     style="@style/Secondary"
@@ -101,114 +178,86 @@
                     android:layout_weight="1"
                     android:text="@string/customizer_rear_text" />
             </LinearLayout>
+
+            <TextView
+                style="@style/Label"
+                android:text="@string/customizer_templates_text"
+                android:layout_marginTop="18dp" />
+
+            <LinearLayout
+                android:id="@+id/templateChips"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp" />
+
+            <TextView
+                style="@style/Label"
+                android:text="@string/customizer_configuration_text" />
+
+            <LinearLayout
+                android:id="@+id/optionsList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/undo"
-                    style="@style/Secondary"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:text="@string/customizer_undo_text" />
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/redo"
-                    style="@style/Secondary"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:text="@string/customizer_redo_text" />
+                android:orientation="vertical"
+                android:background="@drawable/bg_card"
+                android:padding="14dp"
+                android:layout_marginTop="6dp">
+
+                <TextView
+                    style="@style/Label"
+                    android:text="@string/customizer_total_text"
+                    android:layout_marginBottom="4dp" />
+
+                <LinearLayout
+                    android:id="@+id/breakdown"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/border"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/customizer_total_label_text"
+                        android:textColor="@color/white"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        android:fontFamily="sans-serif-medium" />
+
+                    <TextView
+                        android:id="@+id/total"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/cyan"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        tools:text="$ 21,400" />
+                </LinearLayout>
             </LinearLayout>
-            <TextView
-                android:id="@+id/presetLabel"
-                style="@style/Label"
-                android:text="@string/customizer_presetlabel_text" />
-            <Spinner
-                android:id="@+id/presetSelect"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:background="@drawable/bg_field"
-                android:padding="8dp"
-                android:layout_marginBottom="12dp" />
-            <TextView
-                android:id="@+id/presetHint"
-                style="@style/Label"
-                android:text="@string/customizer_presethint_text" />
-            <GridLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:columnCount="3">
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/paint"
-                    style="@style/Secondary"
-                    android:layout_width="0dp"
-                    android:layout_columnWeight="1"
-                    android:layout_height="64dp"
-                    android:layout_margin="3dp"
-                    android:textSize="12sp"
-                    android:text="@string/customizer_paint_text" />
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/vinyl"
-                    style="@style/Secondary"
-                    android:layout_width="0dp"
-                    android:layout_columnWeight="1"
-                    android:layout_height="64dp"
-                    android:layout_margin="3dp"
-                    android:textSize="12sp"
-                    android:text="@string/customizer_vinyl_text" />
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/wheels"
-                    style="@style/Secondary"
-                    android:layout_width="0dp"
-                    android:layout_columnWeight="1"
-                    android:layout_height="64dp"
-                    android:layout_margin="3dp"
-                    android:textSize="12sp"
-                    android:text="@string/customizer_wheels_text" />
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/bodyKit"
-                    style="@style/Secondary"
-                    android:layout_width="0dp"
-                    android:layout_columnWeight="1"
-                    android:layout_height="64dp"
-                    android:layout_margin="3dp"
-                    android:textSize="12sp"
-                    android:text="@string/customizer_bodykit_text" />
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/lights"
-                    style="@style/Secondary"
-                    android:layout_width="0dp"
-                    android:layout_columnWeight="1"
-                    android:layout_height="64dp"
-                    android:layout_margin="3dp"
-                    android:textSize="12sp"
-                    android:text="@string/customizer_lights_text" />
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/accessories"
-                    style="@style/Secondary"
-                    android:layout_width="0dp"
-                    android:layout_columnWeight="1"
-                    android:layout_height="64dp"
-                    android:layout_margin="3dp"
-                    android:textSize="12sp"
-                    android:text="@string/customizer_accessories_text" />
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/interior"
-                    style="@style/Secondary"
-                    android:layout_width="0dp"
-                    android:layout_columnWeight="1"
-                    android:layout_height="64dp"
-                    android:layout_margin="3dp"
-                    android:textSize="12sp"
-                    android:text="@string/customizer_interior_text" />
-            </GridLayout>
-            <TextView
-                android:id="@+id/summary"
-                style="@style/Body"
-                android:text="@string/customizer_summary_text" />
-            <TextView
-                android:id="@+id/price"
-                style="@style/Title"
-                android:text="@string/confirmation_price_text" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/reset"
+                style="@style/Secondary"
+                android:text="@string/customizer_reset_text" />
+
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/save"
                 style="@style/Primary"

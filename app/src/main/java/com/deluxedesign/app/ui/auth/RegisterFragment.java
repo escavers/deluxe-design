@@ -20,6 +20,16 @@ public class RegisterFragment extends BaseFragment {
     click(
         R.id.create,
         () -> {
+          String invalid = com.deluxedesign.app.util.Validators.credentials(
+              input(R.id.email), input(R.id.password));
+          if (invalid != null) {
+            vm.error.setValue(invalid);
+            return;
+          }
+          if (input(R.id.name).isEmpty()) {
+            vm.error.setValue("Escribe tu nombre.");
+            return;
+          }
           if (!input(R.id.password).equals(input(R.id.confirmation))) {
             vm.error.setValue("Las contraseñas no coinciden.");
             return;

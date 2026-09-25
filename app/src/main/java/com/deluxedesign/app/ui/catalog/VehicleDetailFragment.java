@@ -34,6 +34,10 @@ public class VehicleDetailFragment extends BaseFragment {
     com.deluxedesign.app.domain.model.Vehicle v = vm.vehicle();
     com.deluxedesign.app.domain.model.CustomizationPreset p = vm.preset();
     if (v == null) return;
+    String angle = vm.value("angle", "front");
+    setActive(R.id.front, "front".equals(angle));
+    setActive(R.id.side, "side".equals(angle));
+    setActive(R.id.rear, "rear".equals(angle));
     text(R.id.vehicleName, v.name);
     text(R.id.vehicleMeta, v.type + " | " + v.brand + " · " + v.year);
     text(
@@ -53,6 +57,13 @@ public class VehicleDetailFragment extends BaseFragment {
         vm.favorite(v.id) ? "♥  Guardado en mis vehículos" : "♡  Añadir a mis vehículos");
     if (p != null)
       com.deluxedesign.app.util.AssetImages.show(binding.hero, p.image(vm.value("angle", "front")));
+  }
+
+  private void setActive(int id, boolean active) {
+    android.view.View v = root.findViewById(id);
+    if (v == null) return;
+    v.setBackgroundResource(active ? R.drawable.bg_primary : R.drawable.bg_card);
+    v.setPressed(active);
   }
 
   @Override

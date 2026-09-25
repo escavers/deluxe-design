@@ -127,7 +127,8 @@
                             android:id="@+id/metricCountPending"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="5"
+                            android:text=""
+                            tools:text="0"
                             android:textColor="@color/white"
                             android:textSize="20sp"
                             android:textStyle="bold" />
@@ -173,15 +174,16 @@
                             android:id="@+id/metricCountApproved"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="15"
+                            android:text=""
+                            tools:text="0"
                             android:textColor="@color/white"
                             android:textSize="20sp"
                             android:textStyle="bold" />
 
-                        <TextView
+<TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Aprobadas"
+                            android:text="@string/quotes_metric_review"
                             android:textColor="#9CA3AF"
                             android:textSize="11sp" />
                     </LinearLayout>
@@ -219,7 +221,8 @@
                             android:id="@+id/metricCountReview"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="3"
+                            android:text=""
+                            tools:text="0"
                             android:textColor="@color/white"
                             android:textSize="20sp"
                             android:textStyle="bold" />

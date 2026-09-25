@@ -29,7 +29,7 @@ public class ExportTest {
     quote.customerName = "Cliente de prueba";
     quote.createdAt = System.currentTimeMillis();
     quote.totalCents = 2390000;
-    quote.itemsJson = new Gson().toJson(QuoteCalculator.items(quote.totalCents));
+    quote.itemsJson = new Gson().toJson(QuoteCalculator.items(quote.totalCents, null));
     quote.notes = "Porsche GT3 RS - Street Blue. Entrega y detalles por confirmar con el taller.";
     File pdf = ExportFiles.pdf(c, quote);
     assertTrue(pdf.length() > 1000);
@@ -75,7 +75,7 @@ public class ExportTest {
             () -> {
               try {
                 ImageView view = new ImageView(c);
-                AssetImages.show(view, "vehicle_porsche_street_blue_front");
+                AssetImages.show(view, "ci_porsche_front34");
                 png.set(ExportFiles.saveImage(c, view, "DeluxeTest"));
               } catch (Exception e) {
                 failure.set(e);

@@ -1,9 +1,16 @@
 plugins { id 'com.android.application' }
-def cloudEnabled = project.hasProperty('firebase') && project.property('firebase') == 'true'
+def cloudEnabled = !project.hasProperty('local')
 if (cloudEnabled && !file('google-services.json').exists()) {
- throw new GradleException('Firebase solicitado: falta app/google-services.json. Omita -Pfirebase=true para ejecutar la demo.')
+ throw new GradleException('Build de nube por defecto: falta app/google-services.json. Use -Plocal=true para compilar la demo local.')
 }
 if (cloudEnabled) { apply plugin: 'com.google.gms.google-services' }
+def googleWebClientId = ''
+if (file('google-services.json').exists()) {
+ def parsed = new groovy.json.JsonSlurper().parse(file('google-services.json')).client ?: []
+ def oauthClients = parsed.collectMany { it.oauth_client ?: [] }
+ def webClient = oauthClients.find { it.client_type == 3 }
+ googleWebClientId = webClient ? webClient.client_id : ''
+}
 android {
  namespace 'com.deluxedesign.app'
  compileSdk 31
@@ -11,10 +18,11 @@ android {
   applicationId 'com.deluxedesign.app'
   minSdk 31
   targetSdk 31
-  versionCode 2
-  versionName '1.1.0'
+  versionCode 4
+  versionName '1.2.1'
   testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
   buildConfigField 'boolean', 'FIREBASE_ENABLED', cloudEnabled.toString()
+  buildConfigField 'String', 'GOOGLE_WEB_CLIENT_ID', "\"${googleWebClientId}\""
  }
  buildFeatures { viewBinding true }
  compileOptions { sourceCompatibility JavaVersion.VERSION_11; targetCompatibility JavaVersion.VERSION_11 }
@@ -32,13 +40,15 @@ dependencies {
  implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
  implementation 'androidx.lifecycle:lifecycle-livedata:2.4.1'
  implementation 'androidx.recyclerview:recyclerview:1.2.1'
+  implementation 'androidx.webkit:webkit:1.4.0'
  implementation 'androidx.room:room-runtime:2.4.3'
  annotationProcessor 'androidx.room:room-compiler:2.4.3'
  implementation 'com.google.code.gson:gson:2.9.1'
- implementation platform('com.google.firebase:firebase-bom:30.5.0')
- implementation 'com.google.firebase:firebase-auth'
- implementation 'com.google.firebase:firebase-firestore'
- implementation 'com.google.firebase:firebase-storage'
+implementation platform('com.google.firebase:firebase-bom:30.5.0')
+  implementation 'com.google.firebase:firebase-auth'
+  implementation 'com.google.firebase:firebase-firestore'
+  implementation 'com.google.firebase:firebase-storage'
+  implementation 'com.google.android.gms:play-services-auth:20.4.1'
  testImplementation 'junit:junit:4.13.2'
  androidTestImplementation 'androidx.test.ext:junit:1.1.3'
  androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'

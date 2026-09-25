@@ -19,14 +19,19 @@ public class CatalogFragment extends BaseFragment {
 
   private String brand = "Todas las marcas", year = "Todos los años", type = "Todos", query = "";
 
+  private static final java.util.List<String> BRANDS =
+      java.util.Arrays.asList("Marca", "Porsche", "BMW", "Ford");
+  private static final java.util.List<String> TYPES =
+      java.util.Arrays.asList("Tipo", "Deportivo", "SUV", "Sedán", "PickUp");
+
   protected void configure() {
     click(R.id.notifications, () -> go(R.id.notifications));
 
     com.deluxedesign.app.ui.common.Ui.spinner(
         binding.brandFilter,
-        java.util.Arrays.asList("Marca", "Porsche", "BMW", "Ford", "Ferrari"),
+        BRANDS,
         i -> {
-          brand = i == 0 ? "Todas las marcas" : java.util.Arrays.asList("Marca", "Porsche", "BMW", "Ford", "Ferrari").get(i);
+          brand = i == 0 ? "Todas las marcas" : BRANDS.get(i);
           render();
         });
     com.deluxedesign.app.ui.common.Ui.spinner(
@@ -38,9 +43,9 @@ public class CatalogFragment extends BaseFragment {
         });
     com.deluxedesign.app.ui.common.Ui.spinner(
         binding.typeFilter,
-        java.util.Arrays.asList("Tipo", "Deportivo", "SUV", "Sedán", "PickUp"),
+        TYPES,
         i -> {
-          type = i == 0 ? "Todos" : java.util.Arrays.asList("Tipo", "Deportivo", "SUV", "Sedán", "PickUp").get(i);
+          type = i == 0 ? "Todos" : TYPES.get(i);
           updateChips(type);
           render();
         });
@@ -86,7 +91,7 @@ public class CatalogFragment extends BaseFragment {
     for (com.deluxedesign.app.domain.model.Vehicle v : AppViewModel.list(vm.vehicles)) {
       if (!brand.equals("Todas las marcas") && !brand.equalsIgnoreCase(v.brand)) continue;
       if (!year.equals("Todos los años") && !year.equals(String.valueOf(v.year))) continue;
-      if (!type.equals("Todos") && !type.equalsIgnoreCase(v.type)) continue;
+      if (!type.equals("Todos") && !matchesType(type, v.type)) continue;
       if (!(v.name + " " + v.brand + " " + v.year)
           .toLowerCase(java.util.Locale.ROOT)
           .contains(query)) continue;
@@ -94,7 +99,7 @@ public class CatalogFragment extends BaseFragment {
           new com.deluxedesign.app.ui.common.CardAdapter.Card(
               v.name,
               v.type,
-              "vehicle_" + v.id + "_reference",
+              "ci_" + v.id + "_front34",
               "Ver Detalles",
               -1,
               () -> {
@@ -104,6 +109,18 @@ public class CatalogFragment extends BaseFragment {
     }
     text(R.id.count, rows.size() + " vehículos disponibles");
     cards(R.id.list, rows);
+  }
+
+  private static boolean matchesType(String selected, String vehicleType) {
+    if (selected.equalsIgnoreCase(vehicleType)) return true;
+    if (selected.equalsIgnoreCase("Deportivo"))
+      return vehicleType.equalsIgnoreCase("Coupé")
+          || vehicleType.equalsIgnoreCase("Musculoso");
+    if (selected.equalsIgnoreCase("Sedán")
+        || selected.equalsIgnoreCase("Sedan")
+        || selected.equalsIgnoreCase("Coupe"))
+      return vehicleType.equalsIgnoreCase("Coupé");
+    return false;
   }
 
   @Override

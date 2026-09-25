@@ -1,13 +1,37 @@
 package com.deluxedesign.app.ui.auth;
 
+import android.content.Intent;
 import android.view.*;
+import com.deluxedesign.app.BuildConfig;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.viewbinding.ViewBinding;
 import com.deluxedesign.app.R;
 import com.deluxedesign.app.databinding.FragmentLoginBinding;
 import com.deluxedesign.app.ui.BaseFragment;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
 
 public class LoginFragment extends BaseFragment {
   private FragmentLoginBinding binding;
+  private GoogleSignInClient googleClient;
+
+  private final ActivityResultLauncher<Intent> googleLauncher =
+      registerForActivityResult(
+          new ActivityResultContracts.StartActivityForResult(),
+          result -> {
+            try {
+              GoogleSignInAccount account =
+                  GoogleSignIn.getSignedInAccountFromIntent(result.getData())
+                      .getResult(ApiException.class);
+              vm.repositories.auth().signInWithGoogle(account.getIdToken(), vm.task(u -> signedIn()));
+            } catch (ApiException e) {
+              vm.error.setValue(getString(R.string.login_google_error));
+            }
+          });
 
   @Override
   protected ViewBinding bind(LayoutInflater inflater, ViewGroup parent) {
@@ -43,6 +67,25 @@ public class LoginFragment extends BaseFragment {
             "¿No tienes cuenta? <font color='#FF383C'><b>Regístrate</b></font>",
             android.text.Html.FROM_HTML_MODE_COMPACT));
     binding.demoInfo.setVisibility(vm.repositories.cloud() ? View.GONE : View.VISIBLE);
+
+    boolean cloud = vm.repositories.cloud();
+    int clientId =
+        getResources()
+            .getIdentifier("default_web_client_id", "string", requireContext().getPackageName());
+    String fallback = BuildConfig.GOOGLE_WEB_CLIENT_ID;
+    boolean hasClient = clientId != 0 || (fallback != null && !fallback.isEmpty());
+    binding.googleSignIn.setVisibility(cloud && hasClient ? View.VISIBLE : View.GONE);
+    if (cloud && hasClient) {
+      String token = clientId != 0 ? getString(clientId) : fallback;
+      GoogleSignInOptions options =
+          new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+              .requestEmail()
+              .requestIdToken(token)
+              .build();
+      googleClient = GoogleSignIn.getClient(requireContext(), options);
+      binding.googleSignIn.setOnClickListener(
+          v -> googleLauncher.launch(googleClient.getSignInIntent()));
+    }
   }
 
   private void signedIn() {

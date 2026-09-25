@@ -93,6 +93,10 @@ public abstract class BaseFragment extends Fragment {
     if (isAdded() && getView() != null) NavHostFragment.findNavController(this).navigate(id);
   }
 
+  protected void go(int id, Bundle args) {
+    if (isAdded() && getView() != null) NavHostFragment.findNavController(this).navigate(id, args);
+  }
+
   protected void toast(String message) {
     if (isAdded()) Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show();
   }

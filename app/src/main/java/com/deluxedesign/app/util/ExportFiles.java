@@ -6,6 +6,7 @@ import android.graphics.pdf.PdfDocument;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.view.View;
 import android.widget.ImageView;
 import androidx.core.content.FileProvider;
 import com.deluxedesign.app.domain.model.*;
@@ -170,6 +171,18 @@ public final class ExportFiles {
     image.getDrawable().setBounds(0, 0, 1200, 800);
     image.getDrawable().draw(canvas);
     image.getDrawable().setBounds(old);
+    return saveBitmap(c, bitmap, name);
+  }
+
+  public static Uri saveImage(Context c, View view, String name) throws IOException {
+    int width = Math.max(360, view.getWidth());
+    int height = Math.max(240, view.getHeight());
+    Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+    view.draw(new Canvas(bitmap));
+    return saveBitmap(c, bitmap, name);
+  }
+
+  private static Uri saveBitmap(Context c, Bitmap bitmap, String name) throws IOException {
     ContentValues values = new ContentValues();
     values.put(MediaStore.Images.Media.DISPLAY_NAME, name + ".png");
     values.put(MediaStore.Images.Media.MIME_TYPE, "image/png");

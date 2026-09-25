@@ -35,35 +35,67 @@ public class FirebaseRepositoryProvider
     auth = FirebaseAuth.getInstance();
     db = FirebaseFirestore.getInstance();
     storage = FirebaseStorage.getInstance();
+    try {
+      db.setFirestoreSettings(
+          new FirebaseFirestoreSettings.Builder().setPersistenceEnabled(true).build());
+    } catch (Exception ignored) {
+    }
     auth.addAuthStateListener(
         a -> {
           FirebaseUser current = a.getCurrentUser();
           if (current == null) {
             session.setValue(null);
             ready.setValue(true);
-          } else
-            db.collection("users")
-                .document(current.getUid())
-                .get()
-                .addOnSuccessListener(
-                    d -> {
-                      User u = d.toObject(User.class);
-                      if (u == null) {
-                        u = new User();
-                        u.id = current.getUid();
-                        u.email = current.getEmail() == null ? "" : current.getEmail();
-                        u.name =
-                            current.getDisplayName() == null ? "Cliente" : current.getDisplayName();
-                      }
-                      session.setValue(u);
-                      ready.setValue(true);
-                    })
-                .addOnFailureListener(
-                    e -> {
-                      issue.setValue(error(e));
-                      ready.setValue(true);
-                    });
+            return;
+          }
+          syncUser(current);
         });
+  }
+
+  private User userFrom(FirebaseUser current) {
+    User u = new User();
+    u.id = current.getUid();
+    u.email = current.getEmail() == null ? "" : current.getEmail();
+    u.name = current.getDisplayName() == null ? "Cliente" : current.getDisplayName();
+    u.avatar = current.getPhotoUrl() == null ? "" : current.getPhotoUrl().toString();
+    return u;
+  }
+
+  /** Best-effort sync of the user document. Never blocks the session / login flow. */
+  private void syncUser(FirebaseUser current) {
+    db.collection("users")
+        .document(current.getUid())
+        .get()
+        .addOnSuccessListener(
+            d -> {
+              User u = d.toObject(User.class);
+              if (u == null) {
+                u = userFrom(current);
+                session.setValue(u);
+                putQuietly("users", u.id, u);
+              } else {
+                if ((u.avatar == null || u.avatar.isEmpty()) && current.getPhotoUrl() != null) {
+                  u.avatar = current.getPhotoUrl().toString();
+                  putQuietly("users", u.id, u);
+                }
+                session.setValue(u);
+              }
+              ready.setValue(true);
+            })
+        .addOnFailureListener(
+            e -> {
+              User u = userFrom(current);
+              session.setValue(u);
+              putQuietly("users", u.id, u);
+              ready.setValue(true);
+            });
+  }
+
+  private <T> void putQuietly(String collection, String id, T value) {
+    db.collection(collection)
+        .document(id)
+        .set(value)
+        .addOnFailureListener(e -> {});
   }
 
   private String uid() {
@@ -120,9 +152,14 @@ public class FirebaseRepositoryProvider
   private <T> LiveData<List<T>> query(Query query, Class<T> type) {
     return new LiveData<List<T>>(new ArrayList<>()) {
       ListenerRegistration registration;
+      FirebaseAuth.AuthStateListener authListener;
 
-      @Override
-      protected void onActive() {
+      void attach(boolean signedIn) {
+        if (registration != null) {
+          registration.remove();
+          registration = null;
+        }
+        if (!signedIn) return;
         registration =
             query.addSnapshotListener(
                 (snap, e) -> {
@@ -132,11 +169,19 @@ public class FirebaseRepositoryProvider
       }
 
       @Override
+      protected void onActive() {
+        authListener = a -> attach(a.getCurrentUser() != null);
+        auth.addAuthStateListener(authListener);
+        attach(auth.getCurrentUser() != null);
+      }
+
+      @Override
       protected void onInactive() {
         if (registration != null) {
           registration.remove();
           registration = null;
         }
+        if (authListener != null) auth.removeAuthStateListener(authListener);
       }
     };
   }
@@ -152,23 +197,38 @@ public class FirebaseRepositoryProvider
   public void signIn(String email, String password, Result<User> result) {
     auth.signInWithEmailAndPassword(Validators.normalizeEmail(email), password)
         .addOnSuccessListener(
-            r ->
-                db.collection("users")
-                    .document(uid())
-                    .get()
-                    .addOnSuccessListener(
-                        d -> {
-                          User u = d.toObject(User.class);
-                          if (u == null) {
-                            u = new User();
-                            u.id = uid();
-                            u.email = email;
-                            u.name = "Cliente";
-                          }
-                          session.setValue(u);
-                          result.success(u);
-                        })
-                    .addOnFailureListener(e -> result.error(error(e))))
+            r -> {
+              FirebaseUser current = auth.getCurrentUser();
+              if (current == null) {
+                result.error("No se pudo iniciar sesión.");
+                return;
+              }
+              User local = userFrom(current);
+              session.setValue(local);
+              result.success(local);
+              syncUser(current);
+            })
+        .addOnFailureListener(e -> result.error(error(e)));
+  }
+
+  public void signInWithGoogle(String idToken, Result<User> result) {
+    if (idToken == null || idToken.isEmpty()) {
+      result.error("No se pudo obtener el token de Google.");
+      return;
+    }
+    auth.signInWithCredential(GoogleAuthProvider.getCredential(idToken, null))
+        .addOnSuccessListener(
+            r -> {
+              FirebaseUser current = auth.getCurrentUser();
+              if (current == null) {
+                result.error("No se pudo iniciar sesión con Google.");
+                return;
+              }
+              User local = userFrom(current);
+              session.setValue(local);
+              result.success(local);
+              syncUser(current);
+            })
         .addOnFailureListener(e -> result.error(error(e)));
   }
 
@@ -295,6 +355,10 @@ public class FirebaseRepositoryProvider
     return query(db.collection("presets"), CustomizationPreset.class);
   }
 
+  public LiveData<List<CustomizationOption>> options() {
+    return query(db.collection("options"), CustomizationOption.class);
+  }
+
   public LiveData<List<Favorite>> favorites(String userId) {
     return query(db.collection("favorites").whereEqualTo("userId", userId), Favorite.class);
   }
@@ -305,20 +369,23 @@ public class FirebaseRepositoryProvider
       return;
     }
     DocumentReference ref = db.collection("favorites").document(userId + "_" + vehicleId);
-    db.runTransaction(
-            tx -> {
-              DocumentSnapshot snap = tx.get(ref);
-              if (snap.exists()) tx.delete(ref);
-              else {
+    ref.get()
+        .addOnSuccessListener(
+            snap -> {
+              if (snap.exists()) {
+                ref.delete()
+                    .addOnSuccessListener(v -> result.success(null))
+                    .addOnFailureListener(e -> result.error(error(e)));
+              } else {
                 Favorite f = new Favorite();
                 f.id = ref.getId();
                 f.userId = userId;
                 f.vehicleId = vehicleId;
-                tx.set(ref, f);
+                ref.set(f)
+                    .addOnSuccessListener(v -> result.success(null))
+                    .addOnFailureListener(e -> result.error(error(e)));
               }
-              return (Void) null;
             })
-        .addOnSuccessListener(v -> result.success(null))
         .addOnFailureListener(e -> result.error(error(e)));
   }
 

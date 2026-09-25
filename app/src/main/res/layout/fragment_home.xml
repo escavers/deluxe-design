@@ -30,7 +30,7 @@
             android:visibility="gone" />
 
         <!-- User Avatar with Red Border Ring -->
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/avatar"
             android:layout_width="44dp"
             android:layout_height="44dp"
@@ -38,7 +38,8 @@
             android:background="@drawable/bg_avatar_ring"
             android:padding="2dp"
             android:scaleType="centerCrop"
-            android:contentDescription="Foto de perfil" />
+            app:shapeAppearanceOverlay="@style/ShapeAppearance.Deluxe.Circle"
+            android:contentDescription="@string/contentdesc_avatar" />
 
         <!-- Welcome Text -->
         <LinearLayout
@@ -75,7 +76,7 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_notification_bell"
             android:scaleType="centerInside"
-            android:contentDescription="Notificaciones" />
+            android:contentDescription="@string/contentdesc_notifications" />
     </LinearLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -330,7 +331,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:nestedScrollingEnabled="false"
-                android:visibility="gone"
                 tools:listitem="@layout/item_card" />
 
         </LinearLayout>

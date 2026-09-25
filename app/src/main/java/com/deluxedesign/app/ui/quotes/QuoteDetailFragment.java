@@ -6,7 +6,6 @@ import androidx.viewbinding.ViewBinding;
 import com.deluxedesign.app.R;
 import com.deluxedesign.app.databinding.FragmentQuoteDetailBinding;
 import com.deluxedesign.app.databinding.ItemQuoteCostBinding;
-import com.deluxedesign.app.domain.model.CustomizationPreset;
 import com.deluxedesign.app.domain.model.Project;
 import com.deluxedesign.app.domain.model.Quote;
 import com.deluxedesign.app.domain.model.QuoteItem;
@@ -52,7 +51,6 @@ public class QuoteDetailFragment extends BaseFragment {
 
     Project project = vm.project(quote.projectId);
     Vehicle vehicle = project == null ? null : vm.vehicle(project.vehicleId);
-    CustomizationPreset style = project == null ? null : vm.preset(project.presetId);
 
     binding.vehicleName.setText(
         (vehicle == null ? "COTIZACIÓN DELUXE" : vehicle.name).toUpperCase(new Locale("es")));
@@ -67,7 +65,7 @@ public class QuoteDetailFragment extends BaseFragment {
         QuoteItem item = items[index];
         ItemQuoteCostBinding row =
             ItemQuoteCostBinding.inflate(getLayoutInflater(), binding.costRows, false);
-        row.costLabel.setText(costLabel(index, item.label, style));
+        row.costLabel.setText(item.label);
         row.costAmount.setText(Formatters.money(item.amountCents));
         binding.costRows.addView(row.getRoot());
       }
@@ -80,17 +78,6 @@ public class QuoteDetailFragment extends BaseFragment {
     if (status != null && status.toLowerCase(new Locale("es")).contains("revisión"))
       return R.drawable.bg_badge_en_revision;
     return R.drawable.bg_badge_pendiente;
-  }
-
-  private static String costLabel(
-      int index, String fallback, CustomizationPreset customization) {
-    if (customization == null) return fallback;
-    if (index == 0)
-      return "Pintura Completa (" + customization.paint + " " + customization.finish + ")";
-    if (index == 1) return "Vinilado " + customization.vinyl;
-    if (index == 2) return "Llantas " + customization.wheels;
-    if (index == 3) return "Mano de Obra Certificada";
-    return fallback;
   }
 
   @Override

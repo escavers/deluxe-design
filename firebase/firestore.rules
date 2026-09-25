@@ -18,7 +18,7 @@ service cloud.firestore {
    allow create: if incomingOwner() && request.resource.data.status == 'Pendiente' && get(/databases/$(database)/documents/projects/$(request.resource.data.projectId)).data.userId == request.auth.uid;
    allow update, delete: if false;
   }
-  match /favorites/{id} { allow read, delete: if owner(); allow create: if incomingOwner(); allow update: if owner() && incomingOwner(); }
+  match /favorites/{id} { allow read: if signedIn(); allow delete: if owner(); allow create: if incomingOwner(); allow update: if owner() && incomingOwner(); }
   match /notifications/{id} { allow read: if owner(); allow update: if owner() && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['read']); allow create, delete: if false; }
  }
 }

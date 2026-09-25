@@ -33,7 +33,9 @@ public class DemoRepositoryProvider
   public DemoRepositoryProvider(Context context) {
     preferences = context.getSharedPreferences("session", Context.MODE_PRIVATE);
     DeluxeDatabase database =
-        Room.databaseBuilder(context, DeluxeDatabase.class, "deluxe.db").build();
+        Room.databaseBuilder(context, DeluxeDatabase.class, "deluxe.db")
+            .addMigrations(DeluxeDatabase.MIGRATION_1_2)
+            .build();
     dao = database.dao();
     executor.execute(
         () -> {
@@ -183,6 +185,10 @@ public class DemoRepositoryProvider
     resetCode = "";
   }
 
+  public void signInWithGoogle(String idToken, Result<User> result) {
+    result.error("El acceso con Google está disponible con el proveedor Firebase.");
+  }
+
   public void updateProfile(String name, String phone, String avatar, Result<User> result) {
     run(
         () -> {
@@ -265,6 +271,10 @@ public class DemoRepositoryProvider
 
   public LiveData<List<Favorite>> favorites(String userId) {
     return dao.favorites(userId);
+  }
+
+  public LiveData<List<CustomizationOption>> options() {
+    return dao.options();
   }
 
   public void toggleFavorite(String userId, String vehicleId, Result<Void> result) {

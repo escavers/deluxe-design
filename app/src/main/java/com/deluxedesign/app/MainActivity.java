@@ -46,23 +46,33 @@ public class MainActivity extends AppCompatActivity {
           syncing = true;
           binding.bottomNav.getMenu().findItem(section(d.getId())).setChecked(true);
           syncing = false;
+          bounceNavIcon(section(d.getId()));
           vm.error.setValue("");
         });
     binding.bottomNav.setOnItemSelectedListener(
         item -> {
           if (syncing) return true;
+          binding.bottomNav.performHapticFeedback(
+              android.view.HapticFeedbackConstants.KEYBOARD_TAP,
+              android.view.HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
           if (nav.getCurrentDestination() != null
-              && nav.getCurrentDestination().getId() != item.getItemId())
+              && nav.getCurrentDestination().getId() != item.getItemId()) {
             leaveEditor(
                 () ->
                     nav.navigate(
                         item.getItemId(),
                         null,
                         new NavOptions.Builder()
+                            .setEnterAnim(R.anim.nav_fade_in)
+                            .setExitAnim(R.anim.nav_fade_out)
+                            .setPopEnterAnim(R.anim.nav_fade_in)
+                            .setPopExitAnim(R.anim.nav_fade_out)
                             .setPopUpTo(R.id.home, false)
                             .setLaunchSingleTop(true)
                             .build()),
                 true);
+            return false;
+          }
           return false;
         });
     getOnBackPressedDispatcher()
@@ -127,6 +137,21 @@ public class MainActivity extends AppCompatActivity {
                   : "Sin conexión · modo local disponible");
           binding.networkStatus.setVisibility(offline ? View.VISIBLE : View.GONE);
         });
+  }
+
+  private void bounceNavIcon(int itemId) {
+    View item = binding.bottomNav.findViewById(itemId);
+    if (item == null) return;
+    android.widget.ImageView icon = item.findViewById(com.google.android.material.R.id.icon);
+    if (icon == null) return;
+    icon.animate()
+        .scaleX(1.18f)
+        .scaleY(1.18f)
+        .setDuration(90)
+        .withEndAction(
+            () ->
+                icon.animate().scaleX(1f).scaleY(1f).setDuration(170).start())
+        .start();
   }
 
   private void leaveEditor(Runnable action, boolean changingTab) {

@@ -52,6 +52,15 @@ public interface DeluxeDao {
   @Query("SELECT * FROM favorites WHERE userId = :userId")
   LiveData<List<Favorite>> favorites(String userId);
 
+  @Insert(onConflict = OnConflictStrategy.REPLACE)
+  void put(CustomizationOption value);
+
+  @Query("SELECT * FROM options")
+  LiveData<List<CustomizationOption>> options();
+
+  @Query("SELECT COUNT(*) FROM options")
+  int optionCount();
+
   @Query("SELECT * FROM users WHERE email = :email LIMIT 1")
   User userByEmail(String email);
 

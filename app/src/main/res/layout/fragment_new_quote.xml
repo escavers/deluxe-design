@@ -109,7 +109,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        tools:src="@drawable/vehicle_bmw_reference" />
+                        tools:src="@drawable/ci_bmw_front34" />
 
                     <TextView
                         android:id="@+id/projectName"

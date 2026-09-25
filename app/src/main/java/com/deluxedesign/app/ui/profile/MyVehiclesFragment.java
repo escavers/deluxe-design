@@ -33,7 +33,12 @@ public class MyVehiclesFragment extends BaseFragment {
   }
 
   protected void render() {
-    List<Vehicle> vehicles = AppViewModel.list(vm.vehicles);
+    List<Vehicle> vehicles = new java.util.ArrayList<>();
+    for (com.deluxedesign.app.domain.model.Favorite f :
+        AppViewModel.list(vm.favorites)) {
+      Vehicle v = vm.vehicle(f.vehicleId);
+      if (v != null) vehicles.add(v);
+    }
     binding.list.setAdapter(
         new VehicleAdapter(
             vehicles,
@@ -56,9 +61,9 @@ public class MyVehiclesFragment extends BaseFragment {
 
   @DrawableRes
   private static int vehicleImage(Vehicle vehicle) {
-    if ("bmw".equals(vehicle.id)) return R.drawable.vehicle_bmw_reference;
-    if ("mustang".equals(vehicle.id)) return R.drawable.vehicle_mustang_reference;
-    return R.drawable.vehicle_porsche_reference;
+    if ("bmw".equals(vehicle.id)) return R.drawable.ci_bmw_front34;
+    if ("mustang".equals(vehicle.id)) return R.drawable.ci_mustang_front34;
+    return R.drawable.ci_porsche_front34;
   }
 
   private static final class VehicleAdapter

@@ -42,6 +42,8 @@ public class NewQuoteFragment extends BaseFragment {
         || binding.projectSelect.getAdapter() == null) {
       projectSignature = signature.toString();
       options = new ArrayList<>(current);
+      if (vm.value("project", "").isEmpty() && !options.isEmpty())
+        vm.set("project", options.get(0).id);
       List<String> names = new ArrayList<>();
       for (Project project : options) names.add(project.name);
       if (names.isEmpty()) names.add("Primero guarda un proyecto");
@@ -76,15 +78,19 @@ public class NewQuoteFragment extends BaseFragment {
     Vehicle vehicle = vm.vehicle(project.vehicleId);
     binding.projectName.setText(vehicle == null ? project.name : vehicle.name);
     binding.projectImage.setImageResource(vehicleImage(project.vehicleId));
-    CustomizationPreset style = vm.preset(project.presetId);
-    binding.total.setText(style == null ? "" : Formatters.money(style.priceCents));
+    Long price = project.priceCents;
+    if (price == null) {
+      com.deluxedesign.app.domain.model.CustomizationPreset config = vm.configurationFor(project);
+      if (config != null) price = config.priceCents;
+    }
+    binding.total.setText(price == null ? "" : Formatters.money(price));
   }
 
   @DrawableRes
   private static int vehicleImage(String vehicleId) {
-    if ("bmw".equals(vehicleId)) return R.drawable.vehicle_bmw_reference;
-    if ("mustang".equals(vehicleId)) return R.drawable.vehicle_mustang_reference;
-    return R.drawable.vehicle_porsche_reference;
+    if ("bmw".equals(vehicleId)) return R.drawable.ci_bmw_front34;
+    if ("mustang".equals(vehicleId)) return R.drawable.ci_mustang_front34;
+    return R.drawable.ci_porsche_front34;
   }
 
   @Override

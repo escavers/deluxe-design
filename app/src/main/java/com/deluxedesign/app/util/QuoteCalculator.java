@@ -1,17 +1,49 @@
 package com.deluxedesign.app.util;
 
+import com.deluxedesign.app.domain.model.CustomizationOption;
 import com.deluxedesign.app.domain.model.QuoteItem;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public final class QuoteCalculator {
-  public static List<QuoteItem> items(long price) {
+  public static String categoryLabel(String category) {
+    if ("paint".equals(category)) return "Pintura";
+    if ("finish".equals(category)) return "Acabado";
+    if ("vinyl".equals(category)) return "Vinilos";
+    if ("wheels".equals(category)) return "Llantas";
+    if ("bodykit".equals(category)) return "Body kit";
+    if ("lights".equals(category)) return "Faros";
+    if ("accessories".equals(category)) return "Accesorios";
+    if ("interior".equals(category)) return "Interiores";
+    return "Personalización";
+  }
+
+  /**
+   * Desglosa una cotización: base del vehículo + cada opción elegida (delta) + mano de obra. Si
+   * options es null se usa el desglose porcentual histórico.
+   */
+  public static List<QuoteItem> items(long baseCents, List<CustomizationOption> options) {
     List<QuoteItem> result = new ArrayList<>();
-    long paint = price * 40 / 100, vinyl = price * 20 / 100, wheels = price * 25 / 100;
-    result.add(new QuoteItem("Pintura y acabado", paint));
-    result.add(new QuoteItem("Vinilos y accesorios", vinyl));
-    result.add(new QuoteItem("Llantas y body kit", wheels));
-    result.add(new QuoteItem("Mano de obra", price - paint - vinyl - wheels));
+    if (options == null) {
+      long paint = baseCents * 40 / 100, vinyl = baseCents * 20 / 100, wheels = baseCents * 25 / 100;
+      result.add(new QuoteItem("Pintura y acabado", paint));
+      result.add(new QuoteItem("Vinilos y accesorios", vinyl));
+      result.add(new QuoteItem("Llantas y body kit", wheels));
+      result.add(new QuoteItem("Mano de obra", baseCents - paint - vinyl - wheels));
+      return result;
+    }
+    long extras = 0;
+    result.add(new QuoteItem("Base del vehículo", baseCents));
+    for (CustomizationOption option : options) {
+      if (option == null || option.priceDeltaCents == null || option.priceDeltaCents <= 0) continue;
+      result.add(
+          new QuoteItem(
+              OptionsLabel.sentence(option), option.priceDeltaCents));
+      extras += option.priceDeltaCents;
+    }
+    long labor = Math.round((baseCents + extras) * 0.08);
+    result.add(new QuoteItem("Mano de obra", labor));
     return result;
   }
 
@@ -22,5 +54,12 @@ public final class QuoteCalculator {
       sum = Math.addExact(sum, item.amountCents);
     }
     return sum;
+  }
+
+  private static final class OptionsLabel {
+    static String sentence(CustomizationOption option) {
+      String cat = categoryLabel(option.category);
+      return (cat + ": " + option.label).toLowerCase(Locale.ROOT);
+    }
   }
 }

@@ -29,6 +29,7 @@ public class HomeFragment extends BaseFragment {
     click(R.id.branches, () -> go(R.id.branches));
     click(R.id.notifications, () -> go(R.id.notifications));
     click(R.id.viewAllProjects, () -> go(R.id.projects));
+    click(R.id.avatar, () -> go(R.id.profile));
     String[] photos = {
       "inspiration_audi",
       "inspiration_bmw",
@@ -78,15 +79,18 @@ public class HomeFragment extends BaseFragment {
   protected void render() {
     String name = (vm.user() == null || vm.user().name == null || vm.user().name.isEmpty()) ? "Samuel Jimenez" : vm.user().name;
     text(R.id.greeting, name);
+    android.widget.ImageView avatar = root.findViewById(R.id.avatar);
+    String av = vm.user() == null ? "" : vm.user().avatar;
+    if (av != null && av.startsWith("http")) com.deluxedesign.app.util.RemoteImage.load(avatar, av);
+    else avatar.setImageResource(R.drawable.brand_logo);
     java.util.List<com.deluxedesign.app.ui.common.CardAdapter.Card> rows =
         new java.util.ArrayList<>();
     for (com.deluxedesign.app.domain.model.Project p : AppViewModel.list(vm.projects)) {
-      com.deluxedesign.app.domain.model.CustomizationPreset preset = vm.preset(p.presetId);
       rows.add(
           new com.deluxedesign.app.ui.common.CardAdapter.Card(
               p.name,
               p.status + " · " + p.progress + " %",
-              preset == null ? "" : preset.front,
+              "ci_" + p.vehicleId + "_front34",
               "Ver proyecto ›",
               p.progress,
               () -> {

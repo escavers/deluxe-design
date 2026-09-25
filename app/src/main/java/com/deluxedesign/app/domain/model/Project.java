@@ -15,6 +15,8 @@ public class Project {
   public int progress;
   public long createdAt;
   public String estimatedDelivery = "";
+  public String optionsJson = "[]";
+  public Long priceCents = 0L;
 
   public Project() {}
 }

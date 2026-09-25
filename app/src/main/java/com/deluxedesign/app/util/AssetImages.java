@@ -13,26 +13,6 @@ public final class AssetImages {
   public static void show(ImageView view, String resource) {
     int id =
         view.getResources().getIdentifier(resource, "drawable", view.getContext().getPackageName());
-    if (id == 0 && resource.startsWith("vehicle_")) {
-      String vehicle = resource.split("_")[1];
-      int reference =
-          view.getResources()
-              .getIdentifier(
-                  "vehicle_" + vehicle + "_reference",
-                  "drawable",
-                  view.getContext().getPackageName());
-      if (reference != 0) {
-        view.setImageDrawable(
-            new ReferenceImage(
-                androidx.appcompat.content.res.AppCompatResources.getDrawable(
-                    view.getContext(), reference)));
-        view.setContentDescription(
-            "Fotografía de referencia de "
-                + vehicle
-                + ". El color, equipamiento y ángulo seleccionados aún no tienen imagen final.");
-        return;
-      }
-    }
     if (id != 0) view.setImageResource(id);
     else view.setImageDrawable(new PendingImage(resource));
     view.setContentDescription(resource.replace('_', ' ') + (id == 0 ? " · imagen pendiente" : ""));
@@ -41,60 +21,6 @@ public final class AssetImages {
   public static boolean available(android.content.Context context, String resource) {
     return context.getResources().getIdentifier(resource, "drawable", context.getPackageName())
         != 0;
-  }
-
-  private static final class ReferenceImage extends Drawable {
-    private final Drawable photo;
-    private final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-
-    ReferenceImage(Drawable photo) {
-      this.photo = photo;
-    }
-
-    @Override
-    public void draw(@NonNull Canvas canvas) {
-      Rect bounds = getBounds();
-      paint.setColor(0xff090b10);
-      canvas.drawRect(bounds, paint);
-      float scale =
-          Math.min(
-              bounds.width() / (float) photo.getIntrinsicWidth(),
-              bounds.height() / (float) photo.getIntrinsicHeight());
-      int w = Math.round(photo.getIntrinsicWidth() * scale),
-          h = Math.round(photo.getIntrinsicHeight() * scale);
-      int left = bounds.left + (bounds.width() - w) / 2,
-          top = bounds.top + (bounds.height() - h) / 2;
-      photo.setBounds(left, top, left + w, top + h);
-      photo.draw(canvas);
-      float font = Math.max(9f, bounds.width() * .031f);
-      paint.setColor(0xdd030712);
-      canvas.drawRect(bounds.left, bounds.bottom - font * 3.3f, bounds.right, bounds.bottom, paint);
-      paint.setColor(Color.WHITE);
-      paint.setTextSize(font);
-      paint.setTextAlign(Paint.Align.CENTER);
-      canvas.drawText(
-          "FOTO DE REFERENCIA", bounds.exactCenterX(), bounds.bottom - font * 1.8f, paint);
-      canvas.drawText(
-          "Estilo y vista finales pendientes",
-          bounds.exactCenterX(),
-          bounds.bottom - font * .5f,
-          paint);
-    }
-
-    @Override
-    public void setAlpha(int alpha) {
-      photo.setAlpha(alpha);
-    }
-
-    @Override
-    public void setColorFilter(ColorFilter filter) {
-      photo.setColorFilter(filter);
-    }
-
-    @Override
-    public int getOpacity() {
-      return PixelFormat.OPAQUE;
-    }
   }
 
   private static class PendingImage extends Drawable {

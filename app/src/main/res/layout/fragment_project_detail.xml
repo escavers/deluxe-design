@@ -93,9 +93,9 @@
                     android:id="@+id/hero"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:scaleType="fitCenter"
                     android:contentDescription="@string/confirmation_hero_contentdescription"
-                    android:scaleType="centerCrop"
-                    tools:src="@drawable/vehicle_porsche_reference" />
+                    tools:ignore="ContentDescription" />
 
                 <TextView
                     android:id="@+id/status"

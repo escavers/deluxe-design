@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Visor 3D</title>
+  <style>
+    html, body { margin: 0; height: 100%; background: #0c0e14; overflow: hidden; }
+    #stage { position: absolute; inset: 0; }
+    #stage model-viewer { width: 100%; height: 100%; }
+    #hint {
+      position: absolute; left: 0; right: 0; bottom: 10px;
+      text-align: center; color: rgba(255,255,255,.85);
+      font-size: 13px; font-family: Roboto, sans-serif; pointer-events: none;
+      background: rgba(0,0,0,.35); padding: 6px; letter-spacing: .2px;
+    }
+  </style>
+  <script type="module" src="./model-viewer.min.js"></script>
+</head>
+<body>
+  <div id="stage">
+    <model-viewer
+      id="mv"
+      camera-controls
+      touch-action="pan-y"
+      shadow-intensity="1"
+      shadow-softness=".6"
+      exposure="1"
+      tone-mapping="aces"
+      poster-color="#0c0e14"></model-viewer>
+  </div>
+  <div id="hint">Arrastra para girar · pellizca para acercar</div>
+  <script>
+    (function () {
+      var q = new URLSearchParams(location.search);
+      var mv = document.getElementById('mv');
+
+      var VIEWS = {
+        front34: '27deg 82deg 108%',
+        side: '90deg 80deg 108%',
+        rear: '180deg 82deg 108%',
+        top: '0deg 18deg 120%'
+      };
+      var BACK = {
+        graphite: 'radial-gradient(120% 120% at 50% 30%, #232a36, #0b0d13)',
+        sky: 'radial-gradient(120% 120% at 50% 25%, #9fc4e8, #2a3c56)',
+        mint: 'radial-gradient(120% 120% at 50% 30%, #9fd8c8, #12332c)',
+        black: 'radial-gradient(120% 120% at 50% 30%, #14161c, #05060a)'
+      };
+
+      function say(t) {
+        document.title = t;
+        document.getElementById('hint').textContent = t;
+        console.warn('Deluxe3D ' + t);
+      }
+
+      function applyBack(k) {
+        document.getElementById('stage').style.background = BACK[k] || BACK.graphite;
+      }
+
+      window.setPreset = function (kind, value) {
+        if (kind === 'view' && VIEWS[value]) mv.cameraOrbit = VIEWS[value];
+        else if (kind === 'backdrop') applyBack(value);
+        else if (kind === 'rotate') mv.autoRotate = value === 'true';
+      };
+
+      window.onerror = function (msg, src, line, col, err) {
+        say('onerror: ' + msg + ' (' + line + ')');
+        return false;
+      };
+
+      var model = q.get('model') || 'vehicle_porsche.glb';
+      if (q.get('backdrop')) applyBack(q.get('backdrop'));
+
+      if (window.customElements && customElements.get('model-viewer')) {
+        initViewer();
+      } else if (window.customElements && customElements.whenDefined) {
+        customElements.whenDefined('model-viewer').then(initViewer, function (e) {
+          say('no se definio model-viewer: ' + e);
+        });
+      }
+
+      function initViewer() {
+        mv.addEventListener('load', function () {
+          mv.cameraOrbit = VIEWS[q.get('view')] || VIEWS.front34;
+          say('3D OK');
+        });
+        mv.addEventListener('error', function (e) {
+          var t = 'error: ' + ((e.detail && e.detail.type) || e.type || 'desconocido');
+          say(t);
+          console.info('detail', JSON.stringify(e.detail), 'type', e.type);
+        });
+        mv.setAttribute('src', model);
+        mv.autoRotate = false;
+      }
+    })();
+  </script>
+</body>
+</html>

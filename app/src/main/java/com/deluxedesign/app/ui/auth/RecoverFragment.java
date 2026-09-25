@@ -21,11 +21,21 @@ public class RecoverFragment extends BaseFragment {
     click(
         R.id.send,
         () -> {
-          vm.set("resetEmail", input(R.id.email));
+          String email = input(R.id.email);
+          String confirm = input(R.id.confirmEmail);
+          if (!com.deluxedesign.app.util.Validators.email(email)) {
+            vm.error.setValue("Ingresa un correo válido.");
+            return;
+          }
+          if (!email.equalsIgnoreCase(confirm)) {
+            vm.error.setValue("El correo no coincide con su confirmación.");
+            return;
+          }
+          vm.set("resetEmail", email);
           vm.repositories
               .auth()
               .requestPasswordReset(
-                  input(R.id.email),
+                  email,
                   vm.task(
                       code -> {
                         if (!isAdded() || binding == null) return;
@@ -34,6 +44,7 @@ public class RecoverFragment extends BaseFragment {
                               R.id.result,
                               "Revisa tu correo. El enlace permite cambiar tu contraseña.");
                         } else {
+                          if (code != null && !code.isEmpty()) vm.set("resetCode", code);
                           text(
                               R.id.result,
                               "DEMOSTRACIÓN LOCAL · no se ha enviado un correo.\nCódigo de prueba: "

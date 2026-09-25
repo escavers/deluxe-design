@@ -103,7 +103,7 @@
                     android:padding="3dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/brand_logo"
-                    app:shapeAppearanceOverlay="@style/ShapeAppearance.MaterialComponents.LargeComponent" />
+                    app:shapeAppearanceOverlay="@style/ShapeAppearance.Deluxe.Circle" />
 
                 <ImageView
                     android:layout_width="30dp"

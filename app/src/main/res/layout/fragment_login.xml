@@ -165,6 +165,36 @@
                 android:letterSpacing="0.03"
                 android:layout_marginBottom="14dp" />
 
+            <!-- Google Sign In -->
+            <LinearLayout
+                android:id="@+id/googleSignIn"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@drawable/bg_google_button"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingHorizontal="16dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:contentDescription="@string/login_google_text"
+                android:layout_marginBottom="14dp">
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:src="@drawable/ic_google"
+                    android:importantForAccessibility="no" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="@string/login_google_text"
+                    android:textColor="#1F2937"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
             <!-- Forgot Password Link -->
             <TextView
                 android:id="@+id/recover"

@@ -73,11 +73,11 @@
                 android:id="@+id/hero"
                 android:layout_width="match_parent"
                 android:layout_height="220dp"
-                android:src="@drawable/placeholder_vehicle"
                 android:background="@drawable/bg_card"
                 android:scaleType="fitCenter"
+                android:layout_marginBottom="12dp"
                 android:contentDescription="@string/confirmation_hero_contentdescription"
-                android:layout_marginBottom="12dp" />
+                tools:ignore="ContentDescription" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

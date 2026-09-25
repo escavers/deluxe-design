@@ -8,6 +8,8 @@ public interface AuthRepository {
 
   void signIn(String email, String password, Result<User> result);
 
+  void signInWithGoogle(String idToken, Result<User> result);
+
   void register(String name, String email, String phone, String password, Result<User> result);
 
   void signOut();

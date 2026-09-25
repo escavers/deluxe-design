@@ -56,6 +56,16 @@
         android:label="PERSONALIZAR"
         tools:layout="@layout/fragment_customizer" />
     <fragment
+        android:id="@+id/vehicle_3d"
+        android:name="com.deluxedesign.app.ui.customizer.Vehicle3dFragment"
+        android:label="VISOR 3D"
+        tools:layout="@layout/fragment_vehicle_3d">
+        <argument
+            android:name="vehicleId"
+            app:argType="string"
+            android:defaultValue="porsche" />
+    </fragment>
+    <fragment
         android:id="@+id/confirmation"
         android:name="com.deluxedesign.app.ui.customizer.ConfirmationFragment"
         android:label="CONFIRMAR CAMBIOS"

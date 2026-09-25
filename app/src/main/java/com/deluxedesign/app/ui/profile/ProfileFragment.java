@@ -87,43 +87,11 @@ public class ProfileFragment extends BaseFragment {
         .show();
   }
 
-  private void edit() {
-    if (vm.user() == null) return;
-    android.widget.LinearLayout form = new android.widget.LinearLayout(requireContext());
-    form.setOrientation(android.widget.LinearLayout.VERTICAL);
-    int pad = (int) (24 * getResources().getDisplayMetrics().density);
-    form.setPadding(pad, 0, pad, 0);
-    android.widget.EditText name = new android.widget.EditText(requireContext());
-    name.setHint("Nombre");
-    name.setText(vm.user().name);
-    form.addView(name);
-    android.widget.EditText phone = new android.widget.EditText(requireContext());
-    phone.setHint("Teléfono");
-    phone.setInputType(android.text.InputType.TYPE_CLASS_PHONE);
-    phone.setText(vm.user().phone);
-    form.addView(phone);
-    new MaterialAlertDialogBuilder(requireContext())
-        .setTitle("Editar perfil")
-        .setView(form)
-        .setNegativeButton("Cancelar", null)
-        .setPositiveButton(
-            "Guardar",
-            (d, w) ->
-                vm.repositories
-                    .auth()
-                    .updateProfile(
-                        name.getText().toString(),
-                        phone.getText().toString(),
-                        vm.user().avatar,
-                        vm.task(u -> toast("Perfil guardado."))))
-        .show();
-  }
-
   @Override
   protected void render() {
-    String userName = "Samuel Jimenez";
-    if (vm.user() != null && vm.user().name != null && !vm.user().name.trim().isEmpty() && !vm.user().name.equals("Cliente Demo")) {
-      userName = vm.user().name;
+    String userName = "Cliente";
+    if (vm.user() != null && vm.user().name != null && !vm.user().name.trim().isEmpty()) {
+      userName = vm.user().name.trim();
     }
     binding.name.setText(userName);
 
@@ -131,9 +99,9 @@ public class ProfileFragment extends BaseFragment {
     int quotesCount = AppViewModel.list(vm.quotes).size();
     int projectsCount = AppViewModel.list(vm.projects).size();
 
-    binding.statVehiclesCount.setText(String.valueOf(vehiclesCount > 0 ? vehiclesCount : 2));
-    binding.statQuotesCount.setText(String.valueOf(quotesCount > 0 ? quotesCount : 8));
-    binding.statProjectsCount.setText(String.valueOf(projectsCount > 0 ? projectsCount : 3));
+    binding.statVehiclesCount.setText(String.valueOf(vehiclesCount));
+    binding.statQuotesCount.setText(String.valueOf(quotesCount));
+    binding.statProjectsCount.setText(String.valueOf(projectsCount));
 
     if (vm.user() != null && vm.user().avatar != null && !vm.user().avatar.isEmpty()) {
       if (vm.user().avatar.startsWith("http")) {

@@ -65,15 +65,19 @@
                 android:accessibilityLiveRegion="polite"
                 android:visibility="gone"
                 tools:text="Mensaje de validación" />
-            <ImageView
-                android:id="@+id/hero"
+            <FrameLayout
+                android:id="@+id/heroFrame"
                 android:layout_width="match_parent"
                 android:layout_height="220dp"
-                android:src="@drawable/placeholder_vehicle"
                 android:background="@drawable/bg_card"
-                android:scaleType="fitCenter"
-                android:contentDescription="@string/confirmation_hero_contentdescription"
-                android:layout_marginBottom="12dp" />
+                android:layout_marginBottom="12dp">
+                <ImageView
+                    android:id="@+id/hero"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitCenter"
+                    android:contentDescription="@string/confirmation_hero_contentdescription" />
+            </FrameLayout>
             <TextView
                 android:id="@+id/section"
                 style="@style/Title"
@@ -92,6 +96,10 @@
                 android:hint="@string/confirmation_projectname_hint"
                 android:inputType="text"
                 android:autofillHints="name" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/edit"
+                style="@style/Secondary"
+                android:text="@string/confirmation_edit_text" />
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/confirm"
                 style="@style/Primary"

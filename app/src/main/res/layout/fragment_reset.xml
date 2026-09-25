@@ -49,9 +49,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:paddingHorizontal="@dimen/space_md"
-            android:paddingBottom="@dimen/space_lg"
-            android:orientation="vertical">
+            android:paddingBottom="@dimen/space_lg">
+            <TextView
+                android:id="@+id/intro"
+                style="@style/Label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                android:text="@string/change_password_new_label" />
             <ProgressBar
                 android:id="@+id/loading"
                 android:layout_width="32dp"
@@ -65,30 +72,39 @@
                 android:accessibilityLiveRegion="polite"
                 android:visibility="gone"
                 tools:text="Mensaje de validación" />
-            <EditText
-                android:id="@+id/email"
-                style="@style/Field"
-                android:hint="@string/login_email_hint"
-                android:inputType="textEmailAddress"
-                android:autofillHints="emailAddress" />
-            <EditText
-                android:id="@+id/token"
-                style="@style/Field"
-                android:hint="@string/reset_token_hint"
-                android:inputType="text"
-                android:autofillHints="name" />
+            <TextView
+                style="@style/Label"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="4dp"
+                android:text="@string/change_password_new_example" />
             <EditText
                 android:id="@+id/password"
                 style="@style/Field"
-                android:hint="@string/change_password_password_hint"
+                android:hint="@string/change_password_new_example"
                 android:inputType="textPassword"
-                android:autofillHints="password" />
+                android:autofillHints="newPassword" />
+            <TextView
+                style="@style/Label"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="4dp"
+                android:text="@string/change_password_confirmation_label" />
             <EditText
                 android:id="@+id/confirmation"
                 style="@style/Field"
-                android:hint="@string/change_password_confirmation_hint"
+                android:hint="@string/change_password_confirmation_label"
                 android:inputType="textPassword"
-                android:autofillHints="password" />
+                android:autofillHints="newPassword" />
+            <TextView
+                style="@style/Label"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="4dp"
+                android:text="@string/change_password_confirmation_example" />
+            <EditText
+                android:id="@+id/repeat"
+                style="@style/Field"
+                android:hint="@string/change_password_confirmation_example"
+                android:inputType="textPassword"
+                android:autofillHints="newPassword" />
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/save"
                 style="@style/Primary"
@@ -96,9 +112,4 @@
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <Switch
-        android:id="@+id/switch1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Switch" />
 </androidx.constraintlayout.widget.ConstraintLayout>

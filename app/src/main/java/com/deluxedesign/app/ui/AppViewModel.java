@@ -4,10 +4,13 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.*;
 import com.deluxedesign.app.DeluxeApplication;
+import com.deluxedesign.app.data.OptionsCatalog;
+import com.deluxedesign.app.data.local.SeedData;
 import com.deluxedesign.app.domain.model.*;
 import com.deluxedesign.app.repository.*;
 import com.deluxedesign.app.util.QuoteCalculator;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import java.util.*;
 
 /** Shared workflow state survives recreation; repositories own durable data. */
@@ -17,6 +20,7 @@ public class AppViewModel extends AndroidViewModel {
   public final LiveData<User> session;
   public final LiveData<List<Vehicle>> vehicles;
   public final LiveData<List<CustomizationPreset>> presets;
+  public final LiveData<List<CustomizationOption>> options;
   public final LiveData<List<Project>> projects;
   public final LiveData<List<Quote>> quotes;
   public final LiveData<List<Favorite>> favorites;
@@ -33,6 +37,7 @@ public class AppViewModel extends AndroidViewModel {
     session = repositories.auth().session();
     vehicles = repositories.vehicleRepository().vehicles();
     presets = repositories.vehicleRepository().presets();
+    options = repositories.vehicleRepository().options();
     branches = repositories.branchRepository().branches();
     projects =
         Transformations.switchMap(
@@ -77,9 +82,7 @@ public class AppViewModel extends AndroidViewModel {
   }
 
   public CustomizationPreset preset() {
-    String id = value("preset", value("vehicle", "porsche") + "_racing_red");
-    for (CustomizationPreset p : list(presets)) if (p.id.equals(id)) return p;
-    return null;
+    return configuration();
   }
 
   public CustomizationPreset preset(String id) {
@@ -116,10 +119,11 @@ public class AppViewModel extends AndroidViewModel {
 
   public void selectVehicle(String id) {
     state.set("vehicle", id);
-    state.set("preset", id + "_racing_red");
-    state.set("originalPreset", id + "_racing_red");
-    state.set("editing", "");
     state.set("angle", "front");
+    state.set("editing", "");
+    Map<String, String> defaults = OptionsCatalog.templateOptions(OptionsCatalog.TEMPLATE_RACING);
+    for (String category : OptionsCatalog.CATEGORIES) state.set("c_" + category, defaults.get(category));
+    state.set("origSnapshot", snapshot());
     clearHistory();
     touch();
   }
@@ -128,9 +132,14 @@ public class AppViewModel extends AndroidViewModel {
     state.set("project", p.id);
     state.set("editing", p.id);
     state.set("vehicle", p.vehicleId);
-    state.set("preset", p.presetId);
-    state.set("originalPreset", p.presetId);
     state.set("angle", "front");
+    List<String> ids = parseOptions(p.optionsJson);
+    if (ids.isEmpty() && OptionsCatalog.isTemplate(p.presetId))
+      ids = new ArrayList<>(OptionsCatalog.templateOptions(p.presetId).values());
+    for (int i = 0; i < OptionsCatalog.CATEGORIES.length && i < ids.size(); i++)
+      if (OptionsCatalog.option(ids.get(i)) != null)
+        state.set("c_" + OptionsCatalog.CATEGORIES[i], ids.get(i));
+    state.set("origSnapshot", snapshot());
     clearHistory();
     touch();
   }
@@ -145,13 +154,153 @@ public class AppViewModel extends AndroidViewModel {
     return list == null ? new ArrayList<>() : new ArrayList<>(list);
   }
 
-  public void selectPreset(String id) {
-    if (id.equals(value("preset", ""))) return;
+  public Map<String, String> selections() {
+    Map<String, String> map = new LinkedHashMap<>();
+    Map<String, String> fallback = OptionsCatalog.templateOptions(OptionsCatalog.TEMPLATE_RACING);
+    for (String category : OptionsCatalog.CATEGORIES) {
+      String id = value("c_" + category, "");
+      if (OptionsCatalog.option(id) == null) id = fallback.get(category);
+      map.put(category, id);
+    }
+    return map;
+  }
+
+  public List<String> optionIds() {
+    return new ArrayList<>(selections().values());
+  }
+
+  private String snapshot() {
+    return new Gson().toJson(optionIds());
+  }
+
+  private void applySnapshot(String snapshot) {
+    try {
+      List<String> ids =
+          new Gson()
+              .fromJson(snapshot, new TypeToken<List<String>>() {}.getType());
+      if (ids == null) return;
+      for (int i = 0; i < OptionsCatalog.CATEGORIES.length && i < ids.size(); i++)
+        if (OptionsCatalog.option(ids.get(i)) != null)
+          state.set("c_" + OptionsCatalog.CATEGORIES[i], ids.get(i));
+    } catch (Exception ignored) {
+    }
+    touch();
+  }
+
+  public CustomizationOption option(String category) {
+    return OptionsCatalog.option(selections().get(category));
+  }
+
+  public List<CustomizationOption> configurationOptions() {
+    List<CustomizationOption> list = new ArrayList<>();
+    for (String category : OptionsCatalog.CATEGORIES) list.add(option(category));
+    return list;
+  }
+
+  public String templateOfCurrent() {
+    return OptionsCatalog.templateFor(selections());
+  }
+
+  public long basePrice() {
+    return basePrice(value("vehicle", "porsche"));
+  }
+
+  public long basePrice(String vehicleId) {
+    Vehicle v = vehicle(vehicleId);
+    if (v != null && v.basePriceCents != null) return v.basePriceCents;
+    Vehicle s = SeedData.vehicle(vehicleId);
+    return s == null || s.basePriceCents == null ? 0 : s.basePriceCents;
+  }
+
+  public long configurationPrice() {
+    long total = basePrice();
+    for (CustomizationOption o : configurationOptions())
+      if (o.priceDeltaCents != null) total += o.priceDeltaCents;
+    return total;
+  }
+
+  public String templateName() {
+    String template = templateOfCurrent();
+    return OptionsCatalog.isTemplate(template) ? OptionsCatalog.templateName(template) : "Personalizado";
+  }
+
+  public CustomizationPreset configuration() {
+    return buildConfiguration(value("vehicle", "porsche"), optionIds());
+  }
+
+  public CustomizationPreset configurationFor(Project p) {
+    if (p == null) return null;
+    return buildConfiguration(p.vehicleId, parseOptions(p.optionsJson));
+  }
+
+  private CustomizationPreset buildConfiguration(String vehicleId, List<String> ids) {
+    long base = basePrice(vehicleId);
+    CustomizationPreset p = new CustomizationPreset();
+    Map<String, String> map = new LinkedHashMap<>();
+    for (int i = 0; i < OptionsCatalog.CATEGORIES.length && i < ids.size(); i++)
+      map.put(OptionsCatalog.CATEGORIES[i], ids.get(i));
+    for (String category : OptionsCatalog.CATEGORIES) {
+      String id = map.get(category);
+      if (OptionsCatalog.option(id) == null)
+        id = OptionsCatalog.templateOptions(OptionsCatalog.TEMPLATE_RACING).get(category);
+      map.put(category, id);
+    }
+    String template = OptionsCatalog.templateFor(map);
+    p.id = vehicleId + "_" + template;
+    p.vehicleId = vehicleId;
+    p.name = OptionsCatalog.isTemplate(template) ? OptionsCatalog.templateName(template) : "Personalizado";
+    p.paint = OptionsCatalog.option(map.get("paint")).label;
+    p.finish = OptionsCatalog.option(map.get("finish")).label;
+    p.vinyl = OptionsCatalog.option(map.get("vinyl")).label;
+    p.wheels = OptionsCatalog.option(map.get("wheels")).label;
+    p.bodyKit = OptionsCatalog.option(map.get("bodykit")).label;
+    p.lights = OptionsCatalog.option(map.get("lights")).label;
+    p.accessories = OptionsCatalog.option(map.get("accessories")).label;
+    p.interior = OptionsCatalog.option(map.get("interior")).label;
+    p.priceCents = base;
+    for (String category : OptionsCatalog.CATEGORIES) {
+      CustomizationOption o = OptionsCatalog.option(map.get(category));
+      if (o.priceDeltaCents != null) p.priceCents += o.priceDeltaCents;
+    }
+    List<CustomizationOption> opts = new ArrayList<>();
+    for (String category : OptionsCatalog.CATEGORIES) {
+      CustomizationOption o = OptionsCatalog.option(map.get(category));
+      if (o != null) opts.add(o);
+    }
+    p.options = opts;
+    p.front = "ci_" + vehicleId + "_front34";
+    p.side = "ci_" + vehicleId + "_side";
+    p.rear = "ci_" + vehicleId + "_rear";
+    return p;
+  }
+
+  public void selectOption(String category, String optionId) {
+    if (optionId.equals(selections().get(category))) return;
     ArrayList<String> undo = history("undo");
-    undo.add(value("preset", ""));
+    undo.add(snapshot());
     state.set("undo", undo);
     state.set("redo", new ArrayList<String>());
-    set("preset", id);
+    state.set("c_" + category, optionId);
+    touch();
+  }
+
+  public void selectTemplate(String templateId) {
+    ArrayList<String> undo = history("undo");
+    undo.add(snapshot());
+    state.set("undo", undo);
+    state.set("redo", new ArrayList<String>());
+    Map<String, String> optionSet = OptionsCatalog.templateOptions(templateId);
+    for (String category : OptionsCatalog.CATEGORIES)
+      state.set("c_" + category, optionSet.get(category));
+    touch();
+  }
+
+  public boolean canUndo() {
+    return !history("undo").isEmpty();
+  }
+
+  public boolean canRedo() {
+    return !history("redo").isEmpty();
   }
 
   public void undo() {
@@ -166,29 +315,31 @@ public class AppViewModel extends AndroidViewModel {
     ArrayList<String> a = history(from);
     if (a.isEmpty()) return;
     ArrayList<String> b = history(to);
-    b.add(value("preset", ""));
-    state.set("preset", a.remove(a.size() - 1));
-    state.set(from, a);
+    b.add(snapshot());
     state.set(to, b);
-    touch();
-  }
-
-  public boolean canUndo() {
-    return !history("undo").isEmpty();
-  }
-
-  public boolean canRedo() {
-    return !history("redo").isEmpty();
+    applySnapshot(a.remove(a.size() - 1));
+    state.set(from, a);
   }
 
   public boolean dirty() {
-    return !value("preset", "").equals(value("originalPreset", ""));
+    String original = value("origSnapshot", snapshot());
+    return !original.equals(snapshot());
   }
 
   public void discard() {
-    state.set("preset", value("originalPreset", value("vehicle", "porsche") + "_racing_red"));
+    applySnapshot(value("origSnapshot", snapshot()));
     clearHistory();
-    touch();
+  }
+
+  private List<String> parseOptions(String json) {
+    if (json == null || json.isEmpty()) return Collections.emptyList();
+    try {
+      List<String> ids =
+          new Gson().fromJson(json, new TypeToken<List<String>>() {}.getType());
+      return ids == null ? Collections.emptyList() : ids;
+    } catch (Exception e) {
+      return Collections.emptyList();
+    }
   }
 
   public boolean favorite(String vehicle) {
@@ -214,7 +365,9 @@ public class AppViewModel extends AndroidViewModel {
   }
 
   public void saveProject(String name, java.util.function.Consumer<Project> done) {
-    if (user() == null || preset() == null) {
+    CustomizationPreset config = configuration();
+    User current = user();
+    if (current == null || config == null) {
       error.setValue("Selecciona un vehículo y un estilo.");
       return;
     }
@@ -225,10 +378,14 @@ public class AppViewModel extends AndroidViewModel {
     Project p = new Project();
     Project old = project();
     p.id = value("editing", "");
-    p.userId = user().id;
-    p.vehicleId = preset().vehicleId;
-    p.presetId = preset().id;
+    p.userId = current.id;
+    p.vehicleId = config.vehicleId;
+    p.presetId = config.id;
     p.name = name.trim();
+    p.status = "Borrador";
+    p.progress = 0;
+    p.optionsJson = new Gson().toJson(optionIds());
+    p.priceCents = configurationPrice();
     if (old != null && old.id.equals(p.id)) {
       p.status = old.status;
       p.progress = old.progress;
@@ -243,7 +400,8 @@ public class AppViewModel extends AndroidViewModel {
                 saved -> {
                   state.set("project", saved.id);
                   state.set("editing", saved.id);
-                  state.set("originalPreset", saved.presetId);
+                  state.set("origSnapshot", snapshot());
+                  clearHistory();
                   touch();
                   done.accept(saved);
                 }));
@@ -259,14 +417,17 @@ public class AppViewModel extends AndroidViewModel {
       error.setValue("Escribe el nombre del cliente.");
       return;
     }
-    CustomizationPreset style = preset(p.presetId);
-    if (style == null) return;
+    CustomizationPreset config = configurationFor(p);
+    List<CustomizationOption> optionList = config == null ? null : config.options;
+    List<QuoteItem> items = QuoteCalculator.items(basePrice(p.vehicleId), optionList);
     Quote q = new Quote();
+    q.userId = user().id;
     q.projectId = p.id;
     q.customerName = customer.trim();
     q.notes = notes.trim();
-    q.itemsJson = new Gson().toJson(QuoteCalculator.items(style.priceCents));
-    q.totalCents = QuoteCalculator.total(QuoteCalculator.items(style.priceCents));
+    q.status = "Pendiente";
+    q.itemsJson = new Gson().toJson(items);
+    q.totalCents = QuoteCalculator.total(items);
     repositories
         .quotes()
         .saveQuote(

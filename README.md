@@ -75,7 +75,7 @@ La actividad contiene el NavHostFragment. Cada pantalla tiene un Fragment Java y
 
 - Portada, acceso, registro, recuperación, restablecimiento y cambio de contraseña.
 - Inicio con proyectos recientes.
-- Catálogo con búsqueda por texto y filtros de marca, año y categoría.
+- Catálogo con búsqueda por texto y filtros de marca (Porsche, BMW, Ford), año y categoría. La categoría "Deportivos" cubre deportivos, cupés y muscle cars.
 - Ficha del vehículo con especificaciones, tres ángulos y favoritos.
 - Editor 2D con selección de estilo completo, categorías, deshacer y rehacer.
 - Resumen, nombre y guardado del proyecto.
@@ -99,12 +99,14 @@ Los importes son ficticios, expresados en USD. Se almacenan como centavos entero
 
 La demo permanece como proveedor predeterminado incluso si se copia una configuración Firebase.
 
-1. Crea o utiliza un proyecto Firebase y registra la aplicación `com.deluxedesign.app`.
-2. Coloca su configuración en `app/google-services.json`.
-3. Habilita Email/Password en Authentication, Firestore y Storage.
-4. Configura las reglas proporcionadas en `firebase/`. No se despliegan automáticamente.
-5. Carga vehículos, presets y sucursales con los campos descritos en `firebase/DATA.md`.
+1. Crea o utiliza un proyecto Firebase y registra la aplicación `com.deluxedesign.app` (necesitarás el SHA-1 del keystore para Google Sign-In).
+2. Coloca su configuración en `app/google-services.json` (nunca se versiona).
+3. Habilita Email/Password **y Google** en Authentication, Firestore y Storage.
+4. Publica las reglas proporcionadas en `firebase/`. No se despliegan automáticamente.
+5. Importa el catálogo inicial con el script `node firebase/seed/import.js <PROJECT_ID>` (usa `firebase/seed/*.json` y conserva los IDs que la app espera).
 6. Compila explícitamente con `.\gradlew.bat assembleDebug -Pfirebase=true`.
+
+Guía completa paso a paso: `firebase/SETUP.md`. Contrato de datos y reglas: `firebase/DATA.md`.
 
 La compilación falla con un mensaje claro si solicitas Firebase sin su archivo. Auth, consultas Firestore, proyectos, cotizaciones, favoritos, perfil y subida del avatar tienen implementación Java. Los datos locales no se migran automáticamente. Las imágenes del catálogo y presets siguen siendo recursos empaquetados; las carpetas remotas se reservan para una futura distribución de imágenes. Las notificaciones remotas se leen de Firestore; no se incorpora FCM ni un panel para enviarlas.
 

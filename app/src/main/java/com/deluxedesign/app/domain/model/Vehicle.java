@@ -17,6 +17,7 @@ public class Vehicle {
   public String traction = "";
   public String weight = "";
   public String image = "";
+  public Long basePriceCents = 0L;
 
   public Vehicle() {}
 }

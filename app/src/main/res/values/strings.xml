@@ -1,158 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string
-        name="app_name">DELUXE DESIGN</string>
-    <string
-        name="back">Volver</string>
-    <string
-        name="home">Inicio</string>
-    <string
-        name="catalog">Catálogo</string>
-    <string
-        name="projects">Proyectos</string>
-    <string
-        name="quotes">Cotizaciones</string>
-    <string
-        name="profile">Perfil</string>
-    <string
-        name="pending_image">Imagen pendiente</string>
-    <string
-        name="branches_back_text">‹</string>
-    <string
-        name="branches_screentitle_text">SUCURSALES</string>
-    <string
-        name="branches_hint_text">Ubicaciones de demostración. Confirma la dirección antes de visitar.</string>
-    <string
-        name="branches_empty_text">Todavía no hay elementos para mostrar.</string>
+    <string name="app_name">DELUXE DESIGN</string>
+    <string name="back">Volver</string>
+    <string name="home">Inicio</string>
+    <string name="catalog">Catálogo</string>
+    <string name="projects">Proyectos</string>
+    <string name="quotes">Cotizaciones</string>
+    <string name="profile">Perfil</string>
+    <string name="pending_image">Imagen pendiente</string>
+    <string name="branches_back_text">‹</string>
+    <string name="branches_screentitle_text">SUCURSALES</string>
+    <string name="branches_hint_text">Ubicaciones de demostración. Confirma la dirección antes de visitar.</string>
+    <string name="branches_empty_text">Todavía no hay elementos para mostrar.</string>
     <string name="branches_map_description">Mapa de sucursales Deluxe en La Paz</string>
     <string name="branches_view_map">Ver en mapa &gt;</string>
-    <string
-        name="catalog_screentitle_text">CATÁLOGO</string>
-    <string
-        name="catalog_search_hint">Buscar marca, modelo o año</string>
-    <string
-        name="catalog_count_text">3 vehículos disponibles</string>
-    <string
-        name="change_password_screentitle_text">ACTUALIZAR CONTRASEÑA</string>
-    <string
-        name="change_password_current_hint">Contraseña actual</string>
-    <string
-        name="change_password_password_hint">Nueva contraseña</string>
-    <string
-        name="change_password_confirmation_hint">Repite la nueva contraseña</string>
-    <string
-        name="change_password_save_text">Actualizar</string>
+    <string name="catalog_screentitle_text">CATÁLOGO</string>
+    <string name="catalog_search_hint">Buscar marca, modelo o año</string>
+    <string name="catalog_count_text">3 vehículos disponibles</string>
+    <string name="change_password_screentitle_text">ACTUALIZAR CONTRASEÑA</string>
+    <string name="change_password_current_hint">Contraseña actual</string>
+    <string name="change_password_password_hint">Nueva contraseña</string>
+    <string name="change_password_confirmation_hint">Repite la nueva contraseña</string>
+    <string name="change_password_save_text">Actualizar</string>
     <string name="change_password_new_label">Ingrese su nueva contraseña</string>
     <string name="change_password_new_example">Nueva Contraseña</string>
     <string name="change_password_confirmation_label">Confirmar contraseña</string>
     <string name="change_password_confirmation_example">Repita su contraseña</string>
-    <string
-        name="confirmation_screentitle_text">CONFIRMAR CAMBIOS</string>
-    <string
-        name="confirmation_hero_contentdescription">Vista del vehículo seleccionado</string>
-    <string
-        name="confirmation_section_text">Cambios a aplicar</string>
-    <string
-        name="confirmation_summary_text">Pintura, vinilos, llantas y acabado coordinados.</string>
-    <string
-        name="confirmation_price_text">Estimado: $ 18,900</string>
-    <string
-        name="confirmation_projectname_hint">Nombre del proyecto</string>
-    <string
-        name="confirmation_confirm_text">Confirmar y guardar</string>
-    <string
-        name="customizer_screentitle_text">PERSONALIZAR</string>
-    <string
-        name="customizer_vehiclename_text">Porsche GT3 RS</string>
-    <string
-        name="customizer_front_text">Frontal</string>
-    <string
-        name="customizer_side_text">Lateral</string>
-    <string
-        name="customizer_rear_text">Trasera</string>
-    <string
-        name="customizer_undo_text">↶ Deshacer</string>
-    <string
-        name="customizer_redo_text">Rehacer ↷</string>
-    <string
-        name="customizer_presetlabel_text">ESTILO COMPLETO</string>
-    <string
-        name="customizer_presethint_text">Cada estilo actualiza el conjunto completo de modificaciones.</string>
-    <string
-        name="customizer_paint_text">Pintura</string>
-    <string
-        name="customizer_vinyl_text">Vinilos</string>
-    <string
-        name="customizer_wheels_text">Llantas</string>
-    <string
-        name="customizer_bodykit_text">Body kit</string>
-    <string
-        name="customizer_lights_text">Faros</string>
-    <string
-        name="customizer_accessories_text">Accesorios</string>
-    <string
-        name="customizer_interior_text">Interiores</string>
-    <string
-        name="customizer_summary_text">Pintura: Rojo Racing · Metálico\nVinilos: Franjas Racing\nLlantas: Deportivas 19 pulgadas</string>
-    <string
-        name="customizer_save_text">Guardar y revisar   ›</string>
-    <string
-        name="home_screentitle_text">Inicio</string>
-    <string
-        name="home_greeting_text">Bienvenido, Cliente Demo</string>
-    <string
-        name="home_headline_text">IDEAS QUE\nCOBRAN VIDA</string>
-    <string
-        name="home_newproject_text">＋  Nuevo proyecto</string>
-    <string
-        name="home_vehicles_text">Mis vehículos</string>
-    <string
-        name="home_designs_text">Mis diseños</string>
-    <string
-        name="home_notifications_text">Notificaciones</string>
-    <string
-        name="home_section_text">Proyectos recientes</string>
-    <string
-        name="login_screentitle_text">Bienvenido</string>
-    <string
-        name="login_brand_text">DELUXE DESIGN</string>
-    <string
-        name="login_email_hint">Correo</string>
-    <string
-        name="login_password_hint">Contraseña</string>
-    <string
-        name="login_showpassword_text">Mostrar contraseña</string>
-    <string
-        name="login_login_text">Ingresar</string>
-    <string
-        name="login_recover_text">¿Olvidaste tu contraseña?</string>
-    <string
-        name="login_register_text">Crear una cuenta</string>
-    <string
-        name="login_demoinfo_text">Demo: demo@deluxedesign.app\nContraseña: Demo1234</string>
-    <string
-        name="my_vehicles_hint_text">Tus vehículos favoritos en un solo lugar.</string>
-    <string
-        name="my_vehicles_catalog_text">＋  Ver catálogo</string>
+    <string name="confirmation_screentitle_text">CONFIRMAR CAMBIOS</string>
+    <string name="confirmation_hero_contentdescription">Vista del vehículo seleccionado</string>
+    <string name="confirmation_section_text">Cambios a aplicar</string>
+    <string name="confirmation_summary_text">Pintura, vinilos, llantas y acabado coordinados.</string>
+    <string name="confirmation_price_text">Estimado: $ 18,900</string>
+    <string name="confirmation_projectname_hint">Nombre del proyecto</string>
+    <string name="confirmation_confirm_text">Confirmar y guardar</string>
+    <string name="confirmation_edit_text">↶ Editar cambios</string>
+    <string name="customizer_screentitle_text">PERSONALIZAR</string>
+    <string name="customizer_vehiclename_text">Porsche GT3 RS</string>
+    <string name="customizer_front_text">Frontal</string>
+    <string name="customizer_side_text">Lateral</string>
+    <string name="customizer_rear_text">Trasera</string>
+    <string name="customizer_undo_text">↶</string>
+    <string name="customizer_redo_text">↷</string>
+    <string name="customizer_preview_text">3D</string>
+    <string name="customizer_photo_text">Foto</string>
+    <string name="customizer_view3d_text">Ver 3D</string>
+    <string name="customizer_expand3d_text">Pantalla completa</string>
+    <string name="vehicle3d_angle_text">Ángulo</string>
+    <string name="vehicle3d_front_text">Frontal</string>
+    <string name="vehicle3d_side_text">Perfil</string>
+    <string name="vehicle3d_rear_text">Trasera</string>
+    <string name="vehicle3d_top_text">Planta</string>
+    <string name="vehicle3d_stage_text">Fondo</string>
+    <string name="vehicle3d_graphite_text">Grafito</string>
+    <string name="vehicle3d_sky_text">Cielo</string>
+    <string name="vehicle3d_mint_text">Menta</string>
+    <string name="vehicle3d_black_text">Negro</string>
+    <string name="vehicle3d_rotate_text">Girar</string>
+    <string name="customizer_templates_text">PLANTILLAS</string>
+    <string name="customizer_configuration_text">CONFIGURACIÓN</string>
+    <string name="customizer_total_text">Desglose del precio</string>
+    <string name="customizer_total_label_text">Total estimado</string>
+    <string name="customizer_reset_text">↺ Restablecer plantilla</string>
+    <string name="customizer_save_text">Guardar y revisar   ›</string>
+    <string name="home_screentitle_text">Inicio</string>
+    <string name="home_greeting_text">Bienvenido, Cliente Demo</string>
+    <string name="home_headline_text">IDEAS QUE\nCOBRAN VIDA</string>
+    <string name="home_newproject_text">＋  Nuevo proyecto</string>
+    <string name="home_vehicles_text">Mis vehículos</string>
+    <string name="home_designs_text">Mis diseños</string>
+    <string name="home_notifications_text">Notificaciones</string>
+    <string name="home_section_text">Proyectos recientes</string>
+    <string name="login_screentitle_text">Bienvenido</string>
+    <string name="login_brand_text">DELUXE DESIGN</string>
+    <string name="login_email_hint">Correo</string>
+    <string name="login_password_hint">Contraseña</string>
+    <string name="login_showpassword_text">Mostrar contraseña</string>
+    <string name="login_login_text">Ingresar</string>
+    <string name="login_recover_text">¿Olvidaste tu contraseña?</string>
+    <string name="login_register_text">Crear una cuenta</string>
+    <string name="login_google_text">Continuar con Google</string>
+    <string name="login_google_error">No se pudo completar el acceso con Google.</string>
+    <string name="login_demoinfo_text">Demo: demo@deluxedesign.app\nContraseña: Demo1234</string>
+    <string name="my_vehicles_hint_text">Tus vehículos favoritos en un solo lugar.</string>
+    <string name="my_vehicles_catalog_text">＋  Ver catálogo</string>
     <string name="my_vehicles_catalog_reference">＋  VER CATÁLOGO</string>
     <string name="my_vehicles_image_description">Fotografía del vehículo</string>
     <string name="my_vehicles_favorite_description">Vehículo favorito</string>
-    <string
-        name="new_quote_screentitle_text">NUEVA COTIZACIÓN</string>
-    <string
-        name="new_quote_section_text">Proyecto asociado</string>
-    <string
-        name="new_quote_customer_hint">Nombre del cliente</string>
-    <string
-        name="new_quote_notes_hint">Notas / detalles especiales</string>
-    <string
-        name="new_quote_summary_text">Resumen estimado</string>
-    <string
-        name="new_quote_total_text">Total $ 18,900</string>
-    <string
-        name="new_quote_academic_text">Importes referenciales de demostración en USD.</string>
-    <string
-        name="new_quote_generate_text">GENERAR COTIZACIÓN</string>
+    <string name="new_quote_screentitle_text">NUEVA COTIZACIÓN</string>
+    <string name="new_quote_section_text">Proyecto asociado</string>
+    <string name="new_quote_customer_hint">Nombre del cliente</string>
+    <string name="new_quote_notes_hint">Notas / detalles especiales</string>
+    <string name="new_quote_summary_text">Resumen estimado</string>
+    <string name="new_quote_total_text">Total $ 18,900</string>
+    <string name="new_quote_academic_text">Importes referenciales de demostración en USD.</string>
+    <string name="new_quote_generate_text">GENERAR COTIZACIÓN</string>
     <string name="new_quote_customer_label">Nombre del cliente</string>
     <string name="new_quote_customer_example">Ej. Samuel Jimenez</string>
     <string name="new_quote_notes_label">Notas / Detalles especiales</string>
@@ -160,134 +101,82 @@
     <string name="new_quote_kit_label">Kit de personalización</string>
     <string name="new_quote_warranty_label">Garantía Deluxe</string>
     <string name="new_quote_warranty_value">Gratis</string>
-    <string
-        name="notifications_hint_text">Toca una notificación para marcarla como leída.</string>
+    <string name="notifications_hint_text">Toca una notificación para marcarla como leída.</string>
     <string name="notification_icon_description">Tipo de notificación</string>
-    <string
-        name="profile_screentitle_text">PERFIL</string>
-    <string
-        name="profile_avatar_contentdescription">Foto de perfil</string>
-    <string
-        name="profile_name_text">Cliente Demo</string>
-    <string
-        name="profile_email_text">demo@deluxedesign.app</string>
-    <string
-        name="profile_counters_text">3 vehículos · 3 proyectos</string>
-    <string
-        name="profile_edit_text">Editar perfil</string>
-    <string
-        name="profile_photo_text">Cambiar fotografía</string>
-    <string
-        name="profile_vehicles_text">Mis vehículos y favoritos</string>
-    <string
-        name="profile_projects_text">Mis proyectos</string>
-    <string
-        name="profile_quotes_text">Mis cotizaciones</string>
-    <string
-        name="profile_password_text">Cambiar contraseña</string>
-    <string
-        name="profile_logout_text">Cerrar sesión</string>
-    <string
-        name="profile_support_text">SOPORTE\nLunes a sábado · 09:00–18:00\nContactos pendientes de confirmación</string>
+    <string name="profile_screentitle_text">PERFIL</string>
+    <string name="profile_avatar_contentdescription">Foto de perfil</string>
+    <string name="profile_name_text">Cliente Demo</string>
+    <string name="profile_email_text">demo@deluxedesign.app</string>
+    <string name="profile_counters_text">3 vehículos · 3 proyectos</string>
+    <string name="profile_edit_text">Editar perfil</string>
+    <string name="profile_photo_text">Cambiar fotografía</string>
+    <string name="profile_vehicles_text">Mis vehículos y favoritos</string>
+    <string name="profile_projects_text">Mis proyectos</string>
+    <string name="profile_quotes_text">Mis cotizaciones</string>
+    <string name="profile_password_text">Cambiar contraseña</string>
+    <string name="profile_logout_text">Cerrar sesión</string>
+    <string name="profile_support_text">SOPORTE\nLunes a sábado · 09:00–18:00\nContactos pendientes de confirmación</string>
     <string name="edit_profile_title">EDITAR PERFIL</string>
     <string name="edit_profile_name_label">Nombre completo</string>
     <string name="edit_profile_email_label">Email</string>
     <string name="edit_profile_phone_label">Teléfono</string>
     <string name="edit_profile_address_label">Dirección de entrega</string>
     <string name="edit_profile_save">GUARDAR CAMBIOS</string>
-    <string
-        name="project_detail_screentitle_text">DETALLE DEL PROYECTO</string>
-    <string
-        name="project_detail_projectname_text">Porsche GT3 RS · Urban Dark</string>
-    <string
-        name="project_detail_status_text"
-        formatted="false">Activo · 45 %</string>
-    <string
-        name="project_detail_date_text">Creado hoy</string>
-    <string
-        name="project_detail_summary_text">Cambios aplicados</string>
-    <string
-        name="project_detail_edit_text">EDITAR PROYECTO</string>
+    <string name="project_detail_screentitle_text">DETALLE DEL PROYECTO</string>
+    <string name="project_detail_projectname_text">Porsche GT3 RS · Urban Dark</string>
+    <string name="project_detail_status_text" formatted="false">Activo · 45 %</string>
+    <string name="project_detail_date_text">Creado hoy</string>
+    <string name="project_detail_summary_text">Cambios aplicados</string>
+    <string name="project_detail_edit_text">EDITAR PROYECTO</string>
     <string name="project_detail_reference_title">PROYECTO DETALLE</string>
     <string name="project_detail_changes_title">Cambios aplicados</string>
-    <string
-        name="project_ready_screentitle_text">PROYECTO LISTO</string>
-    <string
-        name="project_ready_projectname_text">GT3 RS · Racing Red</string>
-    <string
-        name="project_ready_saved_text">Guardado en Mis proyectos</string>
-    <string
-        name="project_ready_save_text">Ver en Mis proyectos</string>
-    <string
-        name="project_ready_gallery_text">Ver galería</string>
-    <string
-        name="project_ready_export_text">Exportar imagen</string>
-    <string
-        name="project_ready_share_text">Compartir</string>
-    <string
-        name="project_ready_home_text">Volver al inicio</string>
-    <string
-        name="projects_screentitle_text">PROYECTOS</string>
-    <string
-        name="projects_newproject_text">＋ Nuevo proyecto</string>
-    <string
-        name="quote_detail_screentitle_text">COTIZACIÓN</string>
-    <string
-        name="quote_detail_quotename_text">COT-101</string>
-    <string
-        name="quote_detail_status_text">Pendiente</string>
-    <string
-        name="quote_detail_items_text">Pintura y acabado\nVinilos y accesorios\nLlantas y body kit\nMano de obra</string>
-    <string
-        name="quote_detail_notes_text">Notas del proyecto</string>
-    <string
-        name="quote_detail_academic_text">Presupuesto de demostración · importes referenciales en USD.</string>
-    <string
-        name="quote_detail_share_text">COMPARTIR COTIZACIÓN</string>
-    <string
-        name="quote_detail_download_text">DESCARGAR PDF</string>
+    <string name="project_ready_screentitle_text">PROYECTO LISTO</string>
+    <string name="project_ready_projectname_text">GT3 RS · Racing Red</string>
+    <string name="project_ready_saved_text">Guardado en Mis proyectos</string>
+    <string name="project_ready_save_text">Ver en Mis proyectos</string>
+    <string name="project_ready_gallery_text">Ver galería</string>
+    <string name="project_ready_export_text">Exportar imagen</string>
+    <string name="project_ready_share_text">Compartir</string>
+    <string name="project_ready_home_text">Volver al inicio</string>
+    <string name="projects_screentitle_text">PROYECTOS</string>
+    <string name="projects_newproject_text">＋ Nuevo proyecto</string>
+    <string name="quote_detail_screentitle_text">COTIZACIÓN</string>
+    <string name="quote_detail_quotename_text">COT-101</string>
+    <string name="quote_detail_status_text">Pendiente</string>
+    <string name="quote_detail_items_text">Pintura y acabado\nVinilos y accesorios\nLlantas y body kit\nMano de obra</string>
+    <string name="quote_detail_notes_text">Notas del proyecto</string>
+    <string name="quote_detail_academic_text">Presupuesto de demostración · importes referenciales en USD.</string>
+    <string name="quote_detail_share_text">COMPARTIR COTIZACIÓN</string>
+    <string name="quote_detail_download_text">DESCARGAR PDF</string>
     <string name="quote_detail_cost_title">Detalle de costos</string>
     <string name="quote_detail_total_label">Total</string>
-    <string
-        name="quotes_screentitle_text">COTIZACIONES</string>
-    <string
-        name="quotes_counters_text">Pendientes 2    Aprobadas 1</string>
-    <string
-        name="quotes_create_text">＋  Nueva cotización</string>
-    <string
-        name="recover_screentitle_text">RECUPERAR CONTRASEÑA</string>
-    <string
-        name="recover_intro_text">Ingresa el correo de tu cuenta. En modo demo recibirás un código local de prueba; en Firebase recibirás un correo de recuperación.</string>
-    <string
-        name="recover_email_hint">Correo registrado</string>
-    <string
-        name="recover_send_text">Solicitar recuperación</string>
-    <string
-        name="recover_reset_text">Ingresar código de recuperación</string>
+    <string name="quotes_screentitle_text">COTIZACIONES</string>
+    <string name="quotes_counters_text">Pendientes 2    Aprobadas 1</string>
+    <string name="quotes_metric_review">En revisión</string>
+    <string name="quotes_create_text">＋  Nueva cotización</string>
+    <string name="recover_screentitle_text">RECUPERAR CONTRASEÑA</string>
+    <string name="recover_intro_text">Ingresa el correo de tu cuenta. En modo demo recibirás un código local de prueba; en Firebase recibirás un correo de recuperación.</string>
+    <string name="recover_email_hint">Correo registrado</string>
+    <string name="recover_send_text">Solicitar recuperación</string>
+    <string name="recover_reset_text">Ingresar código de recuperación</string>
     <string name="recover_title_first_line">RECUPERAR</string>
     <string name="recover_title_second_line">CONTRASEÑA</string>
     <string name="recover_reference_intro">Ingresa tu email registrado y te enviaremos un enlace seguro para restablecer tu contraseña.</string>
     <string name="recover_email_label">Email</string>
     <string name="recover_reference_email_hint">tu-email@gmail.com</string>
-    <string name="recover_reference_send">Confirmar Email</string>
+    <string name="recover_confirm_email_label">Confirmar Email</string>
+    <string name="recover_confirm_email_hint">Repite tu correo</string>
+    <string name="recover_reference_send">Enviar</string>
     <string name="recover_remembered">¿Recordaste tu contraseña? </string>
     <string name="recover_back_to_login">Volver al login</string>
-    <string
-        name="register_screentitle_text">REGÍSTRATE</string>
-    <string
-        name="register_intro_text">Crea tu cuenta Deluxe Design</string>
-    <string
-        name="register_name_hint">Nombre completo</string>
-    <string
-        name="register_phone_hint">Teléfono</string>
-    <string
-        name="register_password_hint">Contraseña (mínimo 8 caracteres)</string>
-    <string
-        name="register_confirmation_hint">Confirmar contraseña</string>
-    <string
-        name="register_create_text">Crear cuenta</string>
-    <string
-        name="register_login_text">Ya tengo una cuenta</string>
+    <string name="register_screentitle_text">REGÍSTRATE</string>
+    <string name="register_intro_text">Crea tu cuenta Deluxe Design</string>
+    <string name="register_name_hint">Nombre completo</string>
+    <string name="register_phone_hint">Teléfono</string>
+    <string name="register_password_hint">Contraseña (mínimo 8 caracteres)</string>
+    <string name="register_confirmation_hint">Confirmar contraseña</string>
+    <string name="register_create_text">Crear cuenta</string>
+    <string name="register_login_text">Ya tengo una cuenta</string>
     <string name="register_name_label">Nombre completo</string>
     <string name="register_email_label">Email</string>
     <string name="register_phone_label">Teléfono</string>
@@ -299,34 +188,26 @@
     <string name="register_password_example">••••••••</string>
     <string name="register_already_account">¿Ya tienes cuenta? </string>
     <string name="register_login_link">Inicia sesión</string>
-    <string
-        name="reset_screentitle_text">RESTABLECER CONTRASEÑA</string>
-    <string
-        name="reset_token_hint">Código de recuperación</string>
-    <string
-        name="reset_save_text">Guardar contraseña</string>
-    <string
-        name="vehicle_detail_screentitle_text">Detalle del vehículo</string>
-    <string
-        name="vehicle_detail_vehiclemeta_text">Deportivo | Porsche</string>
-    <string
-        name="vehicle_detail_favorite_text">♡  Añadir a mis vehículos</string>
-    <string
-        name="vehicle_detail_section_text">Especificaciones</string>
-    <string
-        name="vehicle_detail_specifications_text">Motor: 4.0 litros atmosférico\nTransmisión: Automática\nPotencia: 518 hp\nTracción: Trasera\nPeso: 1450 kg</string>
-    <string
-        name="vehicle_detail_customize_text">PERSONALIZAR   ›</string>
-    <string
-        name="welcome_brand_text">DELUXE\nDESIGN</string>
-    <string
-        name="welcome_brandcaption_text">PERSONALIZACIÓN VISUAL DE VEHÍCULOS</string>
-    <string
-        name="welcome_slogan_text">TU VEHÍCULO\nTU ESTILO\nSIN LÍMITES</string>
-    <string
-        name="welcome_start_text">COMIENZA A SOÑAR   ›</string>
-    <string
-        name="inspiration_title">Inspiración Deluxe</string>
-    <string
-        name="inspiration_caption">Galería de referencias visuales. El personalizador está disponible para Porsche, BMW M4 y Mustang.</string>
+    <string name="reset_screentitle_text">ACTUALIZAR CONTRASEÑA</string>
+    <string name="reset_save_text">ACTUALIZAR</string>
+    <string name="vehicle_detail_screentitle_text">Detalle del vehículo</string>
+    <string name="vehicle_detail_vehiclemeta_text">Deportivo | Porsche</string>
+    <string name="vehicle_detail_favorite_text">♡  Añadir a mis vehículos</string>
+    <string name="vehicle_detail_section_text">Especificaciones</string>
+    <string name="vehicle_detail_specifications_text">Motor: 4.0 litros atmosférico\nTransmisión: Automática\nPotencia: 518 hp\nTracción: Trasera\nPeso: 1450 kg</string>
+    <string name="vehicle_detail_customize_text">PERSONALIZAR   ›</string>
+    <string name="welcome_brand_text">DELUXE\nDESIGN</string>
+    <string name="welcome_brandcaption_text">PERSONALIZACIÓN VISUAL DE VEHÍCULOS</string>
+    <string name="welcome_slogan_text">TU VEHÍCULO\nTU ESTILO\nSIN LÍMITES</string>
+    <string name="welcome_start_text">COMIENZA A SOÑAR   ›</string>
+    <string name="inspiration_title">Inspiración Deluxe</string>
+    <string name="inspiration_caption">Galería de referencias visuales. El personalizador está disponible para Porsche, BMW M4 y Mustang.</string>
+    <string name="catalog_chip_all">Todos</string>
+    <string name="catalog_chip_sports">Deportivos</string>
+    <string name="catalog_chip_suv">SUV</string>
+    <string name="catalog_chip_sedan">Sedan</string>
+    <string name="catalog_chip_pickup">PickUp</string>
+    <string name="catalog_results_text">Resultados</string>
+    <string name="contentdesc_notifications">Notificaciones</string>
+    <string name="contentdesc_avatar">Foto de perfil</string>
 </resources>

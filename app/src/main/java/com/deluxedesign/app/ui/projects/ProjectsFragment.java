@@ -68,39 +68,6 @@ public class ProjectsFragment extends BaseFragment {
       filtered.add(p);
     }
 
-    // If active filter is selected and list is empty in demo, display demo sample projects
-    if (filtered.isEmpty() && filter.equals("Activos") && source.isEmpty()) {
-      Project p1 = new Project();
-      p1.id = "demo_bmw";
-      p1.name = "(nombre del proyecto)";
-      p1.vehicleId = "bmw";
-      p1.presetId = "bmw_racing_red";
-      p1.status = "En proceso";
-      p1.progress = 45;
-      p1.estimatedDelivery = "02 Abr 2027";
-      filtered.add(p1);
-
-      Project p2 = new Project();
-      p2.id = "demo_tacoma";
-      p2.name = "(nombre del proyecto)";
-      p2.vehicleId = "mustang";
-      p2.presetId = "mustang_urban_dark";
-      p2.status = "Casi listo";
-      p2.progress = 92;
-      p2.estimatedDelivery = "16 Sep 2027";
-      filtered.add(p2);
-
-      Project p3 = new Project();
-      p3.id = "demo_r8";
-      p3.name = "(nombre del proyecto)";
-      p3.vehicleId = "porsche";
-      p3.presetId = "porsche_street_blue";
-      p3.status = "En proceso";
-      p3.progress = 16;
-      p3.estimatedDelivery = "26 Ene 2028";
-      filtered.add(p3);
-    }
-
     binding.empty.setVisibility(filtered.isEmpty() ? View.VISIBLE : View.GONE);
     binding.list.setAdapter(new ProjectAdapter(filtered));
   }
@@ -125,10 +92,6 @@ public class ProjectsFragment extends BaseFragment {
 
       Vehicle v = vm.vehicle(p.vehicleId);
       String vehicleTitle = v != null ? v.name : (p.name.contains("·") ? p.name.split("·")[0].trim() : "Vehículo Deluxe");
-      if (p.id.equals("demo_bmw")) vehicleTitle = "BMW M4 Competition";
-      if (p.id.equals("demo_tacoma")) vehicleTitle = "Toyota Tacoma";
-      if (p.id.equals("demo_r8")) vehicleTitle = "Audi R8";
-      if (p.id.equals("demo_golf")) vehicleTitle = "Golf GTI";
 
       b.projectTitle.setText(vehicleTitle);
       b.projectName.setText(p.name.isEmpty() ? "(nombre del proyecto)" : p.name);
@@ -152,10 +115,10 @@ public class ProjectsFragment extends BaseFragment {
       }
 
       CustomizationPreset preset = vm.preset(p.presetId);
-      String img = preset != null ? preset.front : (v != null ? "vehicle_" + v.id + "_reference" : "");
-      if (p.id.equals("demo_tacoma")) img = "inspiration_pickup";
-      if (p.id.equals("demo_r8")) img = "inspiration_audi";
-      if (p.id.equals("demo_bmw")) img = "vehicle_bmw_reference";
+      String img =
+          preset != null && preset.image("front") != null && !preset.image("front").isEmpty()
+              ? preset.image("front")
+              : (v != null ? "ci_" + v.id + "_front34" : "");
 
       if (!img.isEmpty()) {
         AssetImages.show(b.thumbnail, img);

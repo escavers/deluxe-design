@@ -1,0 +1,29 @@
+{
+  "central": {
+    "id": "central",
+    "name": "Deluxe Central - La Paz",
+    "address": "Av. Arce 2412, La Paz",
+    "hours": "Lun–Sáb · 09:00–18:00",
+    "phone": "2 244 5566",
+    "latitude": -16.513,
+    "longitude": -68.124
+  },
+  "san_miguel": {
+    "id": "san_miguel",
+    "name": "Deluxe San Miguel",
+    "address": "Calle Montenegro, Zona Sur",
+    "hours": "Lun–Sáb · 09:00–18:00",
+    "phone": "2 277 0810",
+    "latitude": -16.542,
+    "longitude": -68.08
+  },
+  "santa_cruz": {
+    "id": "santa_cruz",
+    "name": "Deluxe Santa Cruz",
+    "address": "Av. San Martín, Equipetrol",
+    "hours": "Lun–Sáb · 09:00–18:00",
+    "phone": "3 342 8899",
+    "latitude": -17.765,
+    "longitude": -63.197
+  }
+}

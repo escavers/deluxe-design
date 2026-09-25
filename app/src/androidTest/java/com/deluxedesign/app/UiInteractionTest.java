@@ -78,9 +78,9 @@ public class UiInteractionTest {
       onView(withId(R.id.favorite)).perform(scrollTo(), click());
       waitUntil(() -> vm.favorite("bmw") != previous);
       onView(withId(R.id.customize)).perform(scrollTo(), click());
-      onView(withId(R.id.paint)).perform(scrollTo(), click());
-      onView(withText("Urban Dark")).perform(click());
-      assertEquals("bmw_urban_dark", vm.value("preset", ""));
+      onView(withId(R.id.preview)).check(matches(isDisplayed()));
+      onView(withText("Urban Dark")).perform(scrollTo(), click());
+      assertEquals("urban_dark", vm.templateOfCurrent());
       pressBack();
       onView(withText("¿Salir sin guardar?")).check(matches(isDisplayed()));
       onView(withText("Seguir editando")).perform(click());
