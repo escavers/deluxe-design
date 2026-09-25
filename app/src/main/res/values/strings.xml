@@ -24,6 +24,8 @@
         name="branches_hint_text">Ubicaciones de demostración. Confirma la dirección antes de visitar.</string>
     <string
         name="branches_empty_text">Todavía no hay elementos para mostrar.</string>
+    <string name="branches_map_description">Mapa de sucursales Deluxe en La Paz</string>
+    <string name="branches_view_map">Ver en mapa &gt;</string>
     <string
         name="catalog_screentitle_text">CATÁLOGO</string>
     <string
@@ -40,6 +42,10 @@
         name="change_password_confirmation_hint">Repite la nueva contraseña</string>
     <string
         name="change_password_save_text">Actualizar</string>
+    <string name="change_password_new_label">Ingrese su nueva contraseña</string>
+    <string name="change_password_new_example">Nueva Contraseña</string>
+    <string name="change_password_confirmation_label">Confirmar contraseña</string>
+    <string name="change_password_confirmation_example">Repita su contraseña</string>
     <string
         name="confirmation_screentitle_text">CONFIRMAR CAMBIOS</string>
     <string
@@ -128,6 +134,9 @@
         name="my_vehicles_hint_text">Tus vehículos favoritos en un solo lugar.</string>
     <string
         name="my_vehicles_catalog_text">＋  Ver catálogo</string>
+    <string name="my_vehicles_catalog_reference">＋  VER CATÁLOGO</string>
+    <string name="my_vehicles_image_description">Fotografía del vehículo</string>
+    <string name="my_vehicles_favorite_description">Vehículo favorito</string>
     <string
         name="new_quote_screentitle_text">NUEVA COTIZACIÓN</string>
     <string
@@ -144,8 +153,16 @@
         name="new_quote_academic_text">Importes referenciales de demostración en USD.</string>
     <string
         name="new_quote_generate_text">GENERAR COTIZACIÓN</string>
+    <string name="new_quote_customer_label">Nombre del cliente</string>
+    <string name="new_quote_customer_example">Ej. Samuel Jimenez</string>
+    <string name="new_quote_notes_label">Notas / Detalles especiales</string>
+    <string name="new_quote_notes_example">Añade especificaciones adicionales de entrega...</string>
+    <string name="new_quote_kit_label">Kit de personalización</string>
+    <string name="new_quote_warranty_label">Garantía Deluxe</string>
+    <string name="new_quote_warranty_value">Gratis</string>
     <string
         name="notifications_hint_text">Toca una notificación para marcarla como leída.</string>
+    <string name="notification_icon_description">Tipo de notificación</string>
     <string
         name="profile_screentitle_text">PERFIL</string>
     <string
@@ -172,6 +189,12 @@
         name="profile_logout_text">Cerrar sesión</string>
     <string
         name="profile_support_text">SOPORTE\nLunes a sábado · 09:00–18:00\nContactos pendientes de confirmación</string>
+    <string name="edit_profile_title">EDITAR PERFIL</string>
+    <string name="edit_profile_name_label">Nombre completo</string>
+    <string name="edit_profile_email_label">Email</string>
+    <string name="edit_profile_phone_label">Teléfono</string>
+    <string name="edit_profile_address_label">Dirección de entrega</string>
+    <string name="edit_profile_save">GUARDAR CAMBIOS</string>
     <string
         name="project_detail_screentitle_text">DETALLE DEL PROYECTO</string>
     <string
@@ -185,6 +208,8 @@
         name="project_detail_summary_text">Cambios aplicados</string>
     <string
         name="project_detail_edit_text">EDITAR PROYECTO</string>
+    <string name="project_detail_reference_title">PROYECTO DETALLE</string>
+    <string name="project_detail_changes_title">Cambios aplicados</string>
     <string
         name="project_ready_screentitle_text">PROYECTO LISTO</string>
     <string
@@ -221,6 +246,8 @@
         name="quote_detail_share_text">COMPARTIR COTIZACIÓN</string>
     <string
         name="quote_detail_download_text">DESCARGAR PDF</string>
+    <string name="quote_detail_cost_title">Detalle de costos</string>
+    <string name="quote_detail_total_label">Total</string>
     <string
         name="quotes_screentitle_text">COTIZACIONES</string>
     <string
@@ -237,6 +264,14 @@
         name="recover_send_text">Solicitar recuperación</string>
     <string
         name="recover_reset_text">Ingresar código de recuperación</string>
+    <string name="recover_title_first_line">RECUPERAR</string>
+    <string name="recover_title_second_line">CONTRASEÑA</string>
+    <string name="recover_reference_intro">Ingresa tu email registrado y te enviaremos un enlace seguro para restablecer tu contraseña.</string>
+    <string name="recover_email_label">Email</string>
+    <string name="recover_reference_email_hint">tu-email@gmail.com</string>
+    <string name="recover_reference_send">Confirmar Email</string>
+    <string name="recover_remembered">¿Recordaste tu contraseña? </string>
+    <string name="recover_back_to_login">Volver al login</string>
     <string
         name="register_screentitle_text">REGÍSTRATE</string>
     <string
@@ -253,6 +288,17 @@
         name="register_create_text">Crear cuenta</string>
     <string
         name="register_login_text">Ya tengo una cuenta</string>
+    <string name="register_name_label">Nombre completo</string>
+    <string name="register_email_label">Email</string>
+    <string name="register_phone_label">Teléfono</string>
+    <string name="register_password_label">Contraseña</string>
+    <string name="register_confirmation_label">Confirmar contraseña</string>
+    <string name="register_name_example">Ej. Samuel Jimenez</string>
+    <string name="register_email_example">samuela1602@gmail.com</string>
+    <string name="register_phone_example">+591 73596502</string>
+    <string name="register_password_example">••••••••</string>
+    <string name="register_already_account">¿Ya tienes cuenta? </string>
+    <string name="register_login_link">Inicia sesión</string>
     <string
         name="reset_screentitle_text">RESTABLECER CONTRASEÑA</string>
     <string

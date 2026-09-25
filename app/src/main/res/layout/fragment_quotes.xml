@@ -7,36 +7,43 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_screen"
     tools:context="com.deluxedesign.app.ui.quotes.QuotesFragment">
+
+    <!-- Top Header Bar -->
     <LinearLayout
         android:id="@+id/header"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:paddingEnd="16dp"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="8dp"
         android:orientation="horizontal"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
-        <androidx.appcompat.widget.AppCompatButton
+
+        <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/back"
-            android:layout_width="48dp"
-            android:layout_height="56dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:text="@string/branches_back_text"
-            android:textSize="32sp"
-            android:textColor="@color/white"
+            android:src="@drawable/ic_arrow_back_circle"
+            android:scaleType="fitCenter"
             android:contentDescription="@string/back" />
+
         <TextView
             android:id="@+id/screenTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/quotes_screentitle_text"
+            android:layout_marginStart="14dp"
+            android:text="Cotizaciones"
             android:textColor="@color/white"
-            android:textSize="18sp"
+            android:textSize="28sp"
             android:textStyle="bold"
             android:fontFamily="sans-serif-medium" />
     </LinearLayout>
+
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scroll"
         android:layout_width="0dp"
@@ -46,18 +53,21 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingHorizontal="@dimen/space_md"
-            android:paddingBottom="@dimen/space_lg"
+            android:paddingHorizontal="20dp"
+            android:paddingBottom="84dp"
             android:orientation="vertical">
+
             <ProgressBar
                 android:id="@+id/loading"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_gravity="center"
                 android:visibility="gone" />
+
             <TextView
                 android:id="@+id/error"
                 style="@style/Body"
@@ -65,31 +75,233 @@
                 android:accessibilityLiveRegion="polite"
                 android:visibility="gone"
                 tools:text="Mensaje de validación" />
+
+            <!-- Hidden Views for Compatibility -->
             <TextView
                 android:id="@+id/counters"
-                style="@style/Body"
-                android:text="@string/quotes_counters_text" />
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/create"
-                style="@style/Primary"
-                android:text="@string/quotes_create_text" />
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone" />
+
             <Spinner
                 android:id="@+id/statusFilter"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone" />
+
+            <!-- Metrics Summary Card (Red Bordered Container) -->
+            <LinearLayout
+                android:id="@+id/metricsCard"
                 android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:background="@drawable/bg_field"
-                android:padding="8dp"
-                android:layout_marginBottom="12dp" />
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_quote_summary_card"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingVertical="14dp"
+                android:paddingHorizontal="8dp"
+                android:layout_marginTop="12dp">
+
+                <!-- Metric 1: Pendientes Red -->
+                <LinearLayout
+                    android:id="@+id/metricColPending"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="4dp">
+
+                    <ImageView
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:src="@drawable/ic_quote_metric_doc"
+                        android:importantForAccessibility="no" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/metricCountPending"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="5"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Pendientes"
+                            android:textColor="#9CA3AF"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Divider 1 -->
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="38dp"
+                    android:background="#4B2028" />
+
+                <!-- Metric 2: Aprobadas Green -->
+                <LinearLayout
+                    android:id="@+id/metricColApproved"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="6dp">
+
+                    <ImageView
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:src="@drawable/ic_quote_metric_approved"
+                        android:importantForAccessibility="no" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/metricCountApproved"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="15"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Aprobadas"
+                            android:textColor="#9CA3AF"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Divider 2 -->
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="38dp"
+                    android:background="#4B2028" />
+
+                <!-- Metric 3: En Revision / Pendientes Orange -->
+                <LinearLayout
+                    android:id="@+id/metricColReview"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="4dp">
+
+                    <ImageView
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:src="@drawable/ic_quote_metric_clock"
+                        android:importantForAccessibility="no" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/metricCountReview"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="3"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Pendientes"
+                            android:textColor="#9CA3AF"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Big Red Action Button: Nueva cotizacion -->
+            <LinearLayout
+                android:id="@+id/create"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_btn_nueva_cotizacion"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingVertical="14dp"
+                android:paddingHorizontal="18dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="24dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:src="@drawable/ic_plus_large"
+                    android:importantForAccessibility="no" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="14dp"
+                    android:text="Nueva cotizacion"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-medium" />
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:src="@drawable/ic_chevron_right_white"
+                    android:importantForAccessibility="no" />
+            </LinearLayout>
+
+            <!-- Section Title: Ultimas cotizaciones -->
+            <TextView
+                android:id="@+id/sectionTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ultimas cotizaciones"
+                android:textColor="#E5E7EB"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-medium"
+                android:layout_marginBottom="14dp" />
+
+            <!-- Quotes RecyclerView -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:listitem="@layout/item_card"
-                tools:itemCount="3" />
+                android:nestedScrollingEnabled="false"
+                tools:listitem="@layout/item_quote"
+                tools:itemCount="4" />
+
             <TextView
                 android:id="@+id/empty"
                 style="@style/Label"
-                android:text="@string/branches_empty_text" />
+                android:gravity="center"
+                android:text="No tienes cotizaciones registradas."
+                android:visibility="gone" />
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

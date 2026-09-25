@@ -7,103 +7,262 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_screen"
     tools:context="com.deluxedesign.app.ui.quotes.NewQuoteFragment">
+
     <LinearLayout
         android:id="@+id/header"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="64dp"
         android:gravity="center_vertical"
-        android:paddingEnd="16dp"
         android:orientation="horizontal"
-        app:layout_constraintTop_toTopOf="parent"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-        <androidx.appcompat.widget.AppCompatButton
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/back"
-            android:layout_width="48dp"
-            android:layout_height="56dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:text="@string/branches_back_text"
-            android:textSize="32sp"
-            android:textColor="@color/white"
-            android:contentDescription="@string/back" />
+            android:contentDescription="@string/back"
+            android:padding="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_arrow_back_circle" />
+
         <TextView
             android:id="@+id/screenTitle"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_marginStart="6dp"
+            android:fontFamily="@font/inter"
+            android:letterSpacing="0.02"
             android:text="@string/new_quote_screentitle_text"
             android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:fontFamily="sans-serif-medium" />
+            android:textSize="22sp"
+            android:textStyle="bold" />
     </LinearLayout>
+
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scroll"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fillViewport="true"
-        app:layout_constraintTop_toBottomOf="@id/header"
+        android:overScrollMode="never"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/header">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingHorizontal="@dimen/space_md"
-            android:paddingBottom="@dimen/space_lg"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingStart="18dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="18dp"
+            android:paddingBottom="24dp">
+
             <ProgressBar
                 android:id="@+id/loading"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_gravity="center"
                 android:visibility="gone" />
+
             <TextView
                 android:id="@+id/error"
-                style="@style/Body"
-                android:textColor="@color/red"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:accessibilityLiveRegion="polite"
+                android:fontFamily="@font/inter"
+                android:textColor="#FF5964"
+                android:textSize="12sp"
                 android:visibility="gone"
                 tools:text="Mensaje de validación" />
+
             <TextView
                 android:id="@+id/section"
-                style="@style/Label"
+                style="@style/NewQuoteLabel"
                 android:text="@string/new_quote_section_text" />
-            <Spinner
-                android:id="@+id/projectSelect"
+
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:background="@drawable/bg_field"
-                android:padding="8dp"
-                android:layout_marginBottom="12dp" />
+                android:layout_height="56dp"
+                android:layout_marginBottom="14dp"
+                android:background="@drawable/bg_my_vehicle_card">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/projectImage"
+                        android:layout_width="52dp"
+                        android:layout_height="38dp"
+                        android:layout_marginStart="10dp"
+                        android:background="@drawable/bg_my_vehicle_thumbnail"
+                        android:clipToOutline="true"
+                        android:contentDescription="@string/my_vehicles_image_description"
+                        android:scaleType="centerCrop"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:src="@drawable/vehicle_bmw_reference" />
+
+                    <TextView
+                        android:id="@+id/projectName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginEnd="8dp"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/inter"
+                        android:maxLines="1"
+                        android:textColor="@color/white"
+                        android:textSize="13sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/projectChevron"
+                        app:layout_constraintStart_toEndOf="@id/projectImage"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="BMW M4 Competition" />
+
+                    <TextView
+                        android:id="@+id/projectChevron"
+                        android:layout_width="42dp"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/inter"
+                        android:gravity="center"
+                        android:text="›"
+                        android:textColor="@color/white"
+                        android:textSize="30sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <Spinner
+                    android:id="@+id/projectSelect"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:alpha="0.01"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/new_quote_section_text" />
+            </FrameLayout>
+
+            <TextView
+                style="@style/NewQuoteLabel"
+                android:text="@string/new_quote_customer_label" />
+
             <EditText
                 android:id="@+id/customer"
-                style="@style/Field"
-                android:hint="@string/new_quote_customer_hint"
-                android:inputType="text"
-                android:autofillHints="name" />
+                style="@style/NewQuoteField"
+                android:autofillHints="name"
+                android:hint="@string/new_quote_customer_example"
+                android:inputType="textPersonName|textCapWords" />
+
+            <TextView
+                style="@style/NewQuoteLabel"
+                android:text="@string/new_quote_notes_label" />
+
             <EditText
                 android:id="@+id/notes"
-                style="@style/Field"
-                android:hint="@string/new_quote_notes_hint"
-                android:inputType="textMultiLine"
-                android:autofillHints="name" />
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginBottom="18dp"
+                android:background="@drawable/bg_register_field"
+                android:fontFamily="@font/inter"
+                android:gravity="center_vertical"
+                android:hint="@string/new_quote_notes_example"
+                android:inputType="textCapSentences"
+                android:maxLines="1"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:textColor="@color/white"
+                android:textColorHint="#7F828C"
+                android:textCursorDrawable="@null"
+                android:textSize="12sp" />
+
             <TextView
                 android:id="@+id/summary"
-                style="@style/Body"
+                style="@style/NewQuoteLabel"
+                android:layout_marginBottom="8dp"
                 android:text="@string/new_quote_summary_text" />
-            <TextView
-                android:id="@+id/total"
-                style="@style/Title"
-                android:text="@string/new_quote_total_text" />
-            <TextView
-                android:id="@+id/academic"
-                style="@style/Label"
-                android:text="@string/new_quote_academic_text" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:layout_marginBottom="28dp"
+                android:background="@drawable/bg_quote_detail_cost_card"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="28dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/inter"
+                        android:text="@string/new_quote_kit_label"
+                        android:textColor="#C2C5CD"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/total"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        tools:text="$ 18,900" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="28dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/inter"
+                        android:text="@string/new_quote_warranty_label"
+                        android:textColor="#C2C5CD"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/warranty"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter"
+                        android:text="@string/new_quote_warranty_value"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </LinearLayout>
+
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/generate"
-                style="@style/Primary"
-                android:text="@string/new_quote_generate_text" />
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/bg_register_button"
+                android:backgroundTint="@null"
+                android:elevation="8dp"
+                android:fontFamily="@font/inter"
+                android:text="@string/new_quote_generate_text"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

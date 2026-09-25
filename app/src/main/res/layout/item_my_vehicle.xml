@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="82dp"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/bg_my_vehicle_card"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground">
+
+    <ImageView
+        android:id="@+id/vehicleImage"
+        android:layout_width="96dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/bg_my_vehicle_thumbnail"
+        android:clipToOutline="true"
+        android:contentDescription="@string/my_vehicles_image_description"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/vehicle_porsche_reference" />
+
+    <TextView
+        android:id="@+id/vehicleName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/inter"
+        android:maxLines="1"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/vehicleMeta"
+        app:layout_constraintEnd_toStartOf="@id/favoriteIcon"
+        app:layout_constraintStart_toEndOf="@id/vehicleImage"
+        app:layout_constraintTop_toTopOf="@id/vehicleImage"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="Porsche GT3 RS" />
+
+    <TextView
+        android:id="@+id/vehicleMeta"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/inter"
+        android:maxLines="1"
+        android:textColor="#B0B3BC"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="@id/vehicleImage"
+        app:layout_constraintEnd_toStartOf="@id/favoriteIcon"
+        app:layout_constraintStart_toEndOf="@id/vehicleImage"
+        app:layout_constraintTop_toBottomOf="@id/vehicleName"
+        tools:text="Deportivo | Porsche" />
+
+    <ImageView
+        android:id="@+id/favoriteIcon"
+        android:layout_width="38dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="4dp"
+        android:contentDescription="@string/my_vehicles_favorite_description"
+        android:padding="10dp"
+        android:src="@drawable/ic_heart_solid_red"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -38,6 +38,10 @@ public class LoginFragment extends BaseFragment {
         });
     click(R.id.register, () -> go(R.id.register));
     click(R.id.recover, () -> go(R.id.recover));
+    binding.register.setText(
+        android.text.Html.fromHtml(
+            "¿No tienes cuenta? <font color='#FF383C'><b>Regístrate</b></font>",
+            android.text.Html.FROM_HTML_MODE_COMPACT));
     binding.demoInfo.setVisibility(vm.repositories.cloud() ? View.GONE : View.VISIBLE);
   }
 

@@ -17,6 +17,7 @@ public class RecoverFragment extends BaseFragment {
 
   protected void configure() {
     binding.reset.setVisibility(View.GONE);
+    click(R.id.login, () -> go(R.id.login));
     click(
         R.id.send,
         () -> {

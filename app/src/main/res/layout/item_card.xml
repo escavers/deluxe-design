@@ -6,54 +6,78 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="12dp"
-    android:background="@drawable/bg_card"
-    android:padding="14dp"
+    android:background="@drawable/bg_action_card"
+    android:padding="12dp"
     android:orientation="vertical"
-    android:minHeight="80dp"
     android:clickable="true"
     android:focusable="true"
     android:foreground="?attr/selectableItemBackground">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
+
+        <!-- Vehicle Image Thumbnail inside clean white rounded card -->
         <ImageView
             android:id="@+id/thumbnail"
-            android:layout_width="108dp"
-            android:layout_height="80dp"
-            android:layout_marginEnd="12dp"
+            android:layout_width="120dp"
+            android:layout_height="78dp"
+            android:layout_marginEnd="14dp"
+            android:background="@drawable/bg_thumbnail"
+            android:padding="4dp"
             android:src="@drawable/placeholder_vehicle"
             android:scaleType="fitCenter"
             android:importantForAccessibility="no" />
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical">
+
             <TextView
                 android:id="@+id/cardTitle"
-                style="@style/Body"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="15sp"
                 android:textStyle="bold"
-                android:layout_marginBottom="6dp"
-                tools:text="Porsche GT3 RS" />
+                android:fontFamily="sans-serif-medium"
+                android:layout_marginBottom="2dp"
+                tools:text="Ford Mustang GT 2024" />
+
             <TextView
                 android:id="@+id/cardDetail"
-                style="@style/Label"
-                tools:text="Deportivo | Porsche · 2024" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#9CA3AF"
+                android:textSize="13sp"
+                android:layout_marginBottom="8dp"
+                tools:text="Deportivo" />
+
             <TextView
                 android:id="@+id/badge"
-                style="@style/Label"
-                android:textColor="@color/red"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_badge_red"
+                android:paddingHorizontal="14dp"
+                android:paddingVertical="5dp"
+                android:textColor="@color/white"
+                android:textSize="12sp"
                 android:textStyle="bold"
-                tools:text="Ver detalles ›" />
+                tools:text="Ver Detalles" />
         </LinearLayout>
     </LinearLayout>
+
     <ProgressBar
         android:id="@+id/progress"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
-        android:layout_height="6dp"
+        android:layout_height="4dp"
         android:progress="45"
         android:progressTint="@color/red"
+        android:visibility="gone"
         android:layout_marginTop="8dp" />
 </LinearLayout>

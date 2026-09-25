@@ -1,10 +1,22 @@
 package com.deluxedesign.app.ui.quotes;
 
-import android.view.*;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
 import androidx.viewbinding.ViewBinding;
 import com.deluxedesign.app.R;
 import com.deluxedesign.app.databinding.FragmentQuoteDetailBinding;
+import com.deluxedesign.app.databinding.ItemQuoteCostBinding;
+import com.deluxedesign.app.domain.model.CustomizationPreset;
+import com.deluxedesign.app.domain.model.Project;
+import com.deluxedesign.app.domain.model.Quote;
+import com.deluxedesign.app.domain.model.QuoteItem;
+import com.deluxedesign.app.domain.model.Vehicle;
 import com.deluxedesign.app.ui.BaseFragment;
+import com.deluxedesign.app.util.ExportFiles;
+import com.deluxedesign.app.util.Formatters;
+import com.google.gson.Gson;
+import java.io.File;
+import java.util.Locale;
 
 public class QuoteDetailFragment extends BaseFragment {
   private FragmentQuoteDetailBinding binding;
@@ -23,35 +35,62 @@ public class QuoteDetailFragment extends BaseFragment {
   private void export(boolean share) {
     if (vm.quote() == null) return;
     try {
-      java.io.File file = com.deluxedesign.app.util.ExportFiles.pdf(requireContext(), vm.quote());
-      if (share) com.deluxedesign.app.util.ExportFiles.sharePdf(requireContext(), file);
+      File file = ExportFiles.pdf(requireContext(), vm.quote());
+      if (share) ExportFiles.sharePdf(requireContext(), file);
       else {
-        com.deluxedesign.app.util.ExportFiles.savePdf(requireContext(), file);
+        ExportFiles.savePdf(requireContext(), file);
         toast("PDF guardado en Descargas/DeluxeDesign.");
       }
-    } catch (Exception e) {
-      vm.error.setValue("No se pudo generar el PDF: " + e.getMessage());
+    } catch (Exception exception) {
+      vm.error.setValue("No se pudo generar el PDF: " + exception.getMessage());
     }
   }
 
   protected void render() {
-    com.deluxedesign.app.domain.model.Quote q = vm.quote();
-    if (q == null) return;
-    text(R.id.quoteName, q.id);
-    text(R.id.status, q.status + " · " + com.deluxedesign.app.util.Formatters.date(q.createdAt));
-    text(R.id.customer, q.customerName);
-    StringBuilder body = new StringBuilder();
-    com.deluxedesign.app.domain.model.QuoteItem[] items =
-        new com.google.gson.Gson()
-            .fromJson(q.itemsJson, com.deluxedesign.app.domain.model.QuoteItem[].class);
-    for (com.deluxedesign.app.domain.model.QuoteItem i : items)
-      body.append(i.label)
-          .append("\n")
-          .append(com.deluxedesign.app.util.Formatters.money(i.amountCents))
-          .append("\n\n");
-    text(R.id.items, body.toString());
-    text(R.id.total, "Total " + com.deluxedesign.app.util.Formatters.money(q.totalCents));
-    text(R.id.notes, q.notes);
+    Quote quote = vm.quote();
+    if (quote == null) return;
+
+    Project project = vm.project(quote.projectId);
+    Vehicle vehicle = project == null ? null : vm.vehicle(project.vehicleId);
+    CustomizationPreset style = project == null ? null : vm.preset(project.presetId);
+
+    binding.vehicleName.setText(
+        (vehicle == null ? "COTIZACIÓN DELUXE" : vehicle.name).toUpperCase(new Locale("es")));
+    binding.quoteName.setText(quote.id.startsWith("#") ? quote.id : "#" + quote.id);
+    binding.status.setText(quote.status);
+    binding.status.setBackgroundResource(statusBackground(quote.status));
+
+    QuoteItem[] items = new Gson().fromJson(quote.itemsJson, QuoteItem[].class);
+    binding.costRows.removeAllViews();
+    if (items != null) {
+      for (int index = 0; index < items.length; index++) {
+        QuoteItem item = items[index];
+        ItemQuoteCostBinding row =
+            ItemQuoteCostBinding.inflate(getLayoutInflater(), binding.costRows, false);
+        row.costLabel.setText(costLabel(index, item.label, style));
+        row.costAmount.setText(Formatters.money(item.amountCents));
+        binding.costRows.addView(row.getRoot());
+      }
+    }
+    binding.total.setText(Formatters.money(quote.totalCents));
+  }
+
+  private static int statusBackground(String status) {
+    if ("Aprobada".equalsIgnoreCase(status)) return R.drawable.bg_badge_aprobada;
+    if (status != null && status.toLowerCase(new Locale("es")).contains("revisión"))
+      return R.drawable.bg_badge_en_revision;
+    return R.drawable.bg_badge_pendiente;
+  }
+
+  private static String costLabel(
+      int index, String fallback, CustomizationPreset customization) {
+    if (customization == null) return fallback;
+    if (index == 0)
+      return "Pintura Completa (" + customization.paint + " " + customization.finish + ")";
+    if (index == 1) return "Vinilado " + customization.vinyl;
+    if (index == 2) return "Llantas " + customization.wheels;
+    if (index == 3) return "Mano de Obra Certificada";
+    return fallback;
   }
 
   @Override

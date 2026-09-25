@@ -41,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
             .getNavController();
     nav.addOnDestinationChangedListener(
         (controller, d, args) -> {
-          boolean auth = isAuth(d.getId());
-          binding.bottomNav.setVisibility(auth ? View.GONE : View.VISIBLE);
+          boolean hideNavigation = isAuth(d.getId()) || d.getId() == R.id.change_password;
+          binding.bottomNav.setVisibility(hideNavigation ? View.GONE : View.VISIBLE);
           syncing = true;
           binding.bottomNav.getMenu().findItem(section(d.getId())).setChecked(true);
           syncing = false;
@@ -162,7 +162,10 @@ public class MainActivity extends AppCompatActivity {
     if (id == R.id.projects || id == R.id.project_detail || id == R.id.project_ready)
       return R.id.projects;
     if (id == R.id.quotes || id == R.id.quote_detail || id == R.id.new_quote) return R.id.quotes;
-    if (id == R.id.profile || id == R.id.my_vehicles || id == R.id.change_password)
+    if (id == R.id.profile
+        || id == R.id.edit_profile
+        || id == R.id.my_vehicles
+        || id == R.id.change_password)
       return R.id.profile;
     return R.id.home;
   }

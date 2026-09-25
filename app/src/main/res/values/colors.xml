@@ -26,4 +26,6 @@
         name="green">#59CE8F</color>
     <color
         name="blue">#3399FF</color>
+    <color
+        name="cyan">#00C2FF</color>
 </resources>

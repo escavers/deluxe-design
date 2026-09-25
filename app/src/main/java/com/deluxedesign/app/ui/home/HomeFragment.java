@@ -28,7 +28,7 @@ public class HomeFragment extends BaseFragment {
     click(R.id.designs, () -> go(R.id.projects));
     click(R.id.branches, () -> go(R.id.branches));
     click(R.id.notifications, () -> go(R.id.notifications));
-    com.deluxedesign.app.util.AssetImages.show(binding.hero, "home_background");
+    click(R.id.viewAllProjects, () -> go(R.id.projects));
     String[] photos = {
       "inspiration_audi",
       "inspiration_bmw",
@@ -76,7 +76,8 @@ public class HomeFragment extends BaseFragment {
   }
 
   protected void render() {
-    text(R.id.greeting, "Bienvenido, " + (vm.user() == null ? "" : vm.user().name));
+    String name = (vm.user() == null || vm.user().name == null || vm.user().name.isEmpty()) ? "Samuel Jimenez" : vm.user().name;
+    text(R.id.greeting, name);
     java.util.List<com.deluxedesign.app.ui.common.CardAdapter.Card> rows =
         new java.util.ArrayList<>();
     for (com.deluxedesign.app.domain.model.Project p : AppViewModel.list(vm.projects)) {

@@ -96,6 +96,11 @@
         android:label="PERFIL"
         tools:layout="@layout/fragment_profile" />
     <fragment
+        android:id="@+id/edit_profile"
+        android:name="com.deluxedesign.app.ui.profile.EditProfileFragment"
+        android:label="EDITAR PERFIL"
+        tools:layout="@layout/fragment_edit_profile" />
+    <fragment
         android:id="@+id/my_vehicles"
         android:name="com.deluxedesign.app.ui.profile.MyVehiclesFragment"
         android:label="MIS VEHÍCULOS"

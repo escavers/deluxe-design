@@ -5,88 +5,193 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_screen"
+    android:background="@drawable/bg_recover_screen"
     tools:context="com.deluxedesign.app.ui.auth.RecoverFragment">
-    <LinearLayout
-        android:id="@+id/header"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:paddingEnd="16dp"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toTopOf="parent"
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/back"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="18dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/back"
+        android:padding="4dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_arrow_back_circle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/back"
-            android:layout_width="48dp"
-            android:layout_height="56dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:text="@string/branches_back_text"
-            android:textSize="32sp"
-            android:textColor="@color/white"
-            android:contentDescription="@string/back" />
-        <TextView
-            android:id="@+id/screenTitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/recover_screentitle_text"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:fontFamily="sans-serif-medium" />
-    </LinearLayout>
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scroll"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fillViewport="true"
-        app:layout_constraintTop_toBottomOf="@id/header"
+        android:overScrollMode="never"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingHorizontal="@dimen/space_md"
-            android:paddingBottom="@dimen/space_lg"
-            android:orientation="vertical">
-            <ProgressBar
-                android:id="@+id/loading"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_gravity="center"
-                android:visibility="gone" />
+            android:orientation="vertical"
+            android:paddingStart="32dp"
+            android:paddingTop="80dp"
+            android:paddingEnd="32dp"
+            android:paddingBottom="28dp">
+
             <TextView
-                android:id="@+id/error"
-                style="@style/Body"
-                android:textColor="@color/red"
-                android:accessibilityLiveRegion="polite"
-                android:visibility="gone"
-                tools:text="Mensaje de validación" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter"
+                android:letterSpacing="0.02"
+                android:text="@string/recover_title_first_line"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/screenTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter"
+                android:letterSpacing="0.02"
+                android:text="@string/recover_title_second_line"
+                android:textColor="#FF3842"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/intro"
-                style="@style/Body"
-                android:text="@string/recover_intro_text" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="28dp"
+                android:fontFamily="@font/inter"
+                android:lineSpacingExtra="4dp"
+                android:text="@string/recover_reference_intro"
+                android:textColor="#E0E2E7"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/error"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:accessibilityLiveRegion="polite"
+                android:fontFamily="@font/inter"
+                android:textColor="#FF5964"
+                android:textSize="12sp"
+                android:visibility="gone"
+                tools:text="Mensaje de validación"
+                tools:visibility="gone" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="7dp"
+                android:fontFamily="@font/inter"
+                android:text="@string/recover_email_label"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
             <EditText
                 android:id="@+id/email"
-                style="@style/Field"
-                android:hint="@string/recover_email_hint"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginBottom="24dp"
+                android:autofillHints="emailAddress"
+                android:background="@drawable/bg_register_field"
+                android:fontFamily="@font/inter"
+                android:hint="@string/recover_reference_email_hint"
                 android:inputType="textEmailAddress"
-                android:autofillHints="emailAddress" />
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textColorHint="#7F828C"
+                android:textCursorDrawable="@null"
+                android:textSize="13sp" />
+
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/send"
-                style="@style/Primary"
-                android:text="@string/recover_send_text" />
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_register_button"
+                android:backgroundTint="@null"
+                android:elevation="8dp"
+                android:fontFamily="@font/inter"
+                android:text="@string/recover_reference_send"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/result"
-                style="@style/Body"
-                android:text="" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:fontFamily="@font/inter"
+                android:gravity="center"
+                android:lineSpacingExtra="3dp"
+                android:textColor="#E0E2E7"
+                android:textSize="12sp" />
+
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/reset"
-                style="@style/Secondary"
-                android:text="@string/recover_reset_text" />
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_register_field"
+                android:backgroundTint="@null"
+                android:fontFamily="@font/inter"
+                android:text="@string/recover_reset_text"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter"
+                    android:text="@string/recover_remembered"
+                    android:textColor="#E0E2E7"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:fontFamily="@font/inter"
+                    android:gravity="center"
+                    android:text="@string/recover_back_to_login"
+                    android:textColor="#FF343E"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -92,6 +92,11 @@ public class AppViewModel extends AndroidViewModel {
     return null;
   }
 
+  public Project project(String id) {
+    for (Project p : list(projects)) if (p.id.equals(id)) return p;
+    return null;
+  }
+
   public Quote quote() {
     for (Quote q : list(quotes)) if (q.id.equals(value("quote", ""))) return q;
     return null;

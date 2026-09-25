@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    android:background="@drawable/bg_action_card"
+    android:padding="10dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground">
+
+    <!-- Car Thumbnail Preview -->
+    <ImageView
+        android:id="@+id/thumbnail"
+        android:layout_width="106dp"
+        android:layout_height="72dp"
+        android:layout_marginEnd="10dp"
+        android:background="#151720"
+        android:padding="2dp"
+        android:src="@drawable/placeholder_vehicle"
+        android:scaleType="fitCenter"
+        android:importantForAccessibility="no" />
+
+    <!-- Details Column -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/vehicleTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-medium"
+            tools:text="BMW Serie 3" />
+
+        <TextView
+            android:id="@+id/projectName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#9CA3AF"
+            android:textSize="10sp"
+            android:layout_marginBottom="5dp"
+            tools:text="(nombre del proyecto)" />
+
+        <!-- Service Info Row -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_marginBottom="3dp">
+
+            <ImageView
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:src="@drawable/ic_info_circle_small"
+                android:importantForAccessibility="no" />
+
+            <TextView
+                android:id="@+id/serviceName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:textColor="#D1D5DB"
+                android:textSize="10sp"
+                tools:text="Vinilado completo" />
+        </LinearLayout>
+
+        <!-- Date Info Row -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:src="@drawable/ic_calendar_small"
+                android:importantForAccessibility="no" />
+
+            <TextView
+                android:id="@+id/quoteDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:textColor="#D1D5DB"
+                android:textSize="10sp"
+                tools:text="02 Abr 2025" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Vertical Divider -->
+    <View
+        android:layout_width="1dp"
+        android:layout_height="56dp"
+        android:background="#374151"
+        android:layout_marginHorizontal="8dp" />
+
+    <!-- Price and Status Badge Column -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:minWidth="76dp">
+
+        <TextView
+            android:id="@+id/quotePrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            tools:text="$ 25,500" />
+
+        <TextView
+            android:id="@+id/priceLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#9CA3AF"
+            android:textSize="9sp"
+            android:layout_marginBottom="4dp"
+            android:text="Precio total" />
+
+        <TextView
+            android:id="@+id/statusBadge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_badge_en_revision"
+            android:paddingHorizontal="7dp"
+            android:paddingVertical="2dp"
+            android:textColor="#38BDF8"
+            android:textSize="9sp"
+            android:textStyle="bold"
+            tools:text="En revision" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -7,100 +7,229 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_screen"
     tools:context="com.deluxedesign.app.ui.quotes.QuoteDetailFragment">
+
     <LinearLayout
         android:id="@+id/header"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="64dp"
         android:gravity="center_vertical"
-        android:paddingEnd="16dp"
         android:orientation="horizontal"
-        app:layout_constraintTop_toTopOf="parent"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-        <androidx.appcompat.widget.AppCompatButton
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/back"
-            android:layout_width="48dp"
-            android:layout_height="56dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:text="@string/branches_back_text"
-            android:textSize="32sp"
-            android:textColor="@color/white"
-            android:contentDescription="@string/back" />
+            android:contentDescription="@string/back"
+            android:padding="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_arrow_back_circle" />
+
         <TextView
             android:id="@+id/screenTitle"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_marginStart="6dp"
+            android:fontFamily="@font/inter"
+            android:letterSpacing="0.025"
             android:text="@string/quote_detail_screentitle_text"
             android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:fontFamily="sans-serif-medium" />
+            android:textSize="22sp"
+            android:textStyle="bold" />
     </LinearLayout>
+
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scroll"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fillViewport="true"
-        app:layout_constraintTop_toBottomOf="@id/header"
+        android:overScrollMode="never"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/header">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingHorizontal="@dimen/space_md"
-            android:paddingBottom="@dimen/space_lg"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingStart="20dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="22dp">
+
             <ProgressBar
                 android:id="@+id/loading"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_gravity="center"
                 android:visibility="gone" />
+
             <TextView
                 android:id="@+id/error"
-                style="@style/Body"
-                android:textColor="@color/red"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:accessibilityLiveRegion="polite"
+                android:fontFamily="@font/inter"
+                android:textColor="#FF5964"
+                android:textSize="12sp"
                 android:visibility="gone"
                 tools:text="Mensaje de validación" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_quote_detail_header">
+
+                <TextView
+                    android:id="@+id/vehicleName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginEnd="12dp"
+                    android:fontFamily="@font/inter"
+                    android:maxLines="1"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@id/quoteName"
+                    app:layout_constraintEnd_toStartOf="@id/status"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_chainStyle="packed"
+                    tools:text="BMW SERIE 3" />
+
+                <TextView
+                    android:id="@+id/quoteName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="12dp"
+                    android:fontFamily="@font/inter"
+                    android:maxLines="1"
+                    android:textColor="#FF343E"
+                    android:textSize="11sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/status"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/vehicleName"
+                    tools:text="#COT-2025-042" />
+
+                <TextView
+                    android:id="@+id/status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="26dp"
+                    android:layout_marginEnd="14dp"
+                    android:background="@drawable/bg_badge_aprobada"
+                    android:fontFamily="@font/inter"
+                    android:gravity="center"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:textColor="@color/white"
+                    android:textSize="10sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Aprobada" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
             <TextView
-                android:id="@+id/quoteName"
-                style="@style/Title"
-                android:text="@string/quote_detail_quotename_text" />
-            <TextView
-                android:id="@+id/status"
-                style="@style/Label"
-                android:text="@string/quote_detail_status_text" />
-            <TextView
-                android:id="@+id/customer"
-                style="@style/Body"
-                android:text="@string/profile_name_text" />
-            <TextView
-                android:id="@+id/items"
-                style="@style/Body"
-                android:text="@string/quote_detail_items_text" />
-            <TextView
-                android:id="@+id/total"
-                style="@style/Title"
-                android:text="@string/new_quote_total_text" />
-            <TextView
-                android:id="@+id/notes"
-                style="@style/Label"
-                android:text="@string/quote_detail_notes_text" />
-            <TextView
-                android:id="@+id/academic"
-                style="@style/Label"
-                android:text="@string/quote_detail_academic_text" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/inter"
+                android:text="@string/quote_detail_cost_title"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="26dp"
+                android:background="@drawable/bg_quote_detail_cost_card"
+                android:orientation="vertical"
+                android:paddingStart="14dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="14dp"
+                android:paddingBottom="8dp">
+
+                <LinearLayout
+                    android:id="@+id/costRows"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="#2F727782" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/inter"
+                        android:text="@string/quote_detail_total_label"
+                        android:textColor="@color/white"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/total"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter"
+                        android:textColor="#FF303A"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:text="$ 25,500" />
+                </LinearLayout>
+            </LinearLayout>
+
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/share"
-                style="@style/Primary"
-                android:text="@string/quote_detail_share_text" />
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bg_register_button"
+                android:backgroundTint="@null"
+                android:elevation="8dp"
+                android:fontFamily="@font/inter"
+                android:text="@string/quote_detail_share_text"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/download"
-                style="@style/Secondary"
-                android:text="@string/quote_detail_download_text" />
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_quote_download_button"
+                android:backgroundTint="@null"
+                android:fontFamily="@font/inter"
+                android:text="@string/quote_detail_download_text"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
