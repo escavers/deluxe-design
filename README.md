@@ -4,12 +4,30 @@
 
 Aplicación nativa de demostración académica para personalización automotriz. Java 11, Android Views XML, minSdk/targetSdk/compileSdk 31. APK de instalación directa.
 
+## Clonar el repositorio
+
+El trabajo actual está en la rama **`main2`**. La rama `main` es una versión anterior y **no debe usarse**.
+
+```bash
+git clone https://github.com/escavers/deluxe-design.git
+cd deluxe-design
+git checkout main2
+```
+
+Si `git branch` muestra `main` después del `clone`, todavía no has hecho el `checkout`. Sin ese paso la compilación falla porque falta `app/google-services.json`.
+
+Alternativa en una sola línea:
+
+```bash
+git clone --branch main2 https://github.com/escavers/deluxe-design.git
+```
+
 ## Requisitos
 
 - **JDK 11** (el JDK 25 que trae Android Studio reciente no sirve para Gradle 7.3.3).
 - **Android SDK Platform 31** y **Build Tools 30.0.3**.
 - `app/google-services.json`, que ya viene en el repositorio.
-- Acceso a la consola de Firebase para **registrar tu SHA-1 de depuración** (obligatorio para el acceso con Google).
+- Acceso a la consola de Firebase para **registrar tu SHA-1 de depuración** (obligatorio para el acceso con Google; ver "Acceso con Google").
 
 No necesitas archivo de credenciales ni clave privada de firma: la compilación usa la firma de depuración que genera Android Studio.
 
@@ -56,6 +74,8 @@ El APK entregado utiliza una firma de depuración de esta compilación. Android 
 ## Acceso con Google (paso obligatorio)
 
 El botón «Continuar con Google» solo aparece si la consola de Firebase conoce tu SHA-1. Sin él, el acceso por correo funciona igual.
+
+`app/google-services.json` llega con un único certificado registrado, que es el de la máquina que lo generó. El keystore de depuración se crea por equipo, así que **el tuyo es distinto y hay que añadirlo**. Si te saltas este paso, la app abre y permite registrarse por correo, pero el botón de Google simplemente no aparecerá.
 
 1. Obtén tu SHA-1 de depuración:
 
