@@ -1,9 +1,5 @@
-.gradle/
-.idea/
-local.properties
-**/build/
-*.iml
-app/google-services.json
-firebase/local.env
-*.jks
 
+
+
+#Exclude everything
+*
