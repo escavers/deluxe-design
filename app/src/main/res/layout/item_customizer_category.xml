@@ -30,17 +30,14 @@
             android:id="@+id/label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/muted"
-            android:textSize="11sp"
-            android:fontFamily="sans-serif-medium" />
+            style="@style/AtenuadoMedio" />
 
         <TextView
             android:id="@+id/value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+            style="@style/EtiquetaAccion" />
+
     </LinearLayout>
 
     <TextView
@@ -54,7 +51,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="›"
+        android:text="â€º"
         android:textColor="@color/muted"
         android:textSize="22sp" />
 </LinearLayout>

@@ -3,31 +3,21 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/bg_screen"
-    tools:context="com.deluxedesign.app.ui.quotes.QuoteDetailFragment">
-
+    style="@style/ContenedorPantalla"
+    tools:context="com.deluxedesign.app.ui.quotes.QuoteDetailFragment"
+>
     <LinearLayout
         android:id="@+id/header"
         android:layout_width="0dp"
-        android:layout_height="64dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
+        style="@style/CabeceraCompacta"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/back"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
+            style="@style/BotonAtrasConRelleno"
             android:contentDescription="@string/back"
-            android:padding="5dp"
-            android:scaleType="fitCenter"
             android:src="@drawable/ic_arrow_back_circle" />
 
         <TextView
@@ -35,12 +25,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
-            android:fontFamily="@font/inter"
-            android:letterSpacing="0.025"
             android:text="@string/quote_detail_screentitle_text"
-            android:textColor="@color/white"
-            android:textSize="22sp"
-            android:textStyle="bold" />
+            style="@style/TituloPantallaInter" />
+
     </LinearLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -76,9 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:accessibilityLiveRegion="polite"
-                android:fontFamily="@font/inter"
-                android:textColor="#FF5964"
-                android:textSize="12sp"
+                style="@style/TextoError"
                 android:visibility="gone"
                 tools:text="Mensaje de validación" />
 
@@ -145,11 +130,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:fontFamily="@font/inter"
                 android:text="@string/quote_detail_cost_title"
-                android:textColor="@color/white"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                style="@style/TituloTarjetaInter" />
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -185,11 +168,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:fontFamily="@font/inter"
                         android:text="@string/quote_detail_total_label"
-                        android:textColor="@color/white"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
+                        style="@style/EtiquetaPastilla" />
+
 
                     <TextView
                         android:id="@+id/total"

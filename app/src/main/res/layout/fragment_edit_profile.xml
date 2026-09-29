@@ -3,31 +3,21 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/bg_screen"
-    tools:context="com.deluxedesign.app.ui.profile.EditProfileFragment">
-
+    style="@style/ContenedorPantalla"
+    tools:context="com.deluxedesign.app.ui.profile.EditProfileFragment"
+>
     <LinearLayout
         android:id="@+id/header"
         android:layout_width="0dp"
-        android:layout_height="64dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
+        style="@style/CabeceraCompacta"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/back"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
+            style="@style/BotonAtrasConRelleno"
             android:contentDescription="@string/back"
-            android:padding="5dp"
-            android:scaleType="fitCenter"
             android:src="@drawable/ic_arrow_back_circle" />
 
         <TextView
@@ -35,12 +25,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
-            android:fontFamily="@font/inter"
-            android:letterSpacing="0.025"
             android:text="@string/edit_profile_title"
-            android:textColor="@color/white"
-            android:textSize="22sp"
-            android:textStyle="bold" />
+            style="@style/TituloPantallaInter" />
+
     </LinearLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -77,10 +64,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:accessibilityLiveRegion="polite"
-                android:fontFamily="@font/inter"
                 android:gravity="center"
-                android:textColor="#FF5964"
-                android:textSize="12sp"
+                style="@style/TextoError"
                 android:visibility="gone"
                 tools:text="Mensaje de validación" />
 
@@ -103,7 +88,7 @@
                     android:padding="3dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/brand_logo"
-                    app:shapeAppearanceOverlay="@style/ShapeAppearance.Deluxe.Circle" />
+                    app:shapeAppearanceOverlay="@style/FormaVisual.Circulo" />
 
                 <ImageView
                     android:layout_width="30dp"
@@ -114,23 +99,23 @@
             </FrameLayout>
 
             <TextView
-                style="@style/EditProfileLabel"
+                style="@style/EtiquetaEditarPerfil"
                 android:text="@string/edit_profile_name_label" />
 
             <EditText
                 android:id="@+id/nameInput"
-                style="@style/EditProfileField"
+                style="@style/CampoEditarPerfil"
                 android:autofillHints="name"
                 android:inputType="textPersonName|textCapWords"
                 tools:text="Samuel Jimenez" />
 
             <TextView
-                style="@style/EditProfileLabel"
+                style="@style/EtiquetaEditarPerfil"
                 android:text="@string/edit_profile_email_label" />
 
             <EditText
                 android:id="@+id/emailInput"
-                style="@style/EditProfileField"
+                style="@style/CampoEditarPerfil"
                 android:autofillHints="emailAddress"
                 android:clickable="false"
                 android:focusable="false"
@@ -138,23 +123,23 @@
                 tools:text="samuela1602@gmail.com" />
 
             <TextView
-                style="@style/EditProfileLabel"
+                style="@style/EtiquetaEditarPerfil"
                 android:text="@string/edit_profile_phone_label" />
 
             <EditText
                 android:id="@+id/phoneInput"
-                style="@style/EditProfileField"
+                style="@style/CampoEditarPerfil"
                 android:autofillHints="phone"
                 android:inputType="phone"
                 tools:text="+591 73596502" />
 
             <TextView
-                style="@style/EditProfileLabel"
+                style="@style/EtiquetaEditarPerfil"
                 android:text="@string/edit_profile_address_label" />
 
             <EditText
                 android:id="@+id/addressInput"
-                style="@style/EditProfileField"
+                style="@style/CampoEditarPerfil"
                 android:autofillHints="postalAddress"
                 android:inputType="textPostalAddress|textCapWords"
                 tools:text="Av. Los Sauces #23, La Paz, Bolivia" />

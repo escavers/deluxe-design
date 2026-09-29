@@ -3,32 +3,22 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/bg_screen"
-    tools:context="com.deluxedesign.app.ui.profile.ProfileFragment">
-
-    <!-- Top Header Bar -->
+    style="@style/ContenedorPantalla"
+    tools:context="com.deluxedesign.app.ui.profile.ProfileFragment"
+>
+    <!--Barra superior-->
     <LinearLayout
         android:id="@+id/header"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:paddingHorizontal="20dp"
-        android:paddingTop="20dp"
-        android:paddingBottom="8dp"
-        android:orientation="horizontal"
+        style="@style/Cabecera"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/back"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
+            style="@style/BotonAtras"
             android:src="@drawable/ic_arrow_back_circle"
-            android:scaleType="fitCenter"
             android:contentDescription="@string/back" />
 
         <TextView
@@ -38,10 +28,8 @@
             android:layout_weight="1"
             android:layout_marginStart="14dp"
             android:text="Perfil"
-            android:textColor="@color/white"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            android:fontFamily="sans-serif-medium" />
+            style="@style/TituloPantallaGrande" />
+
     </LinearLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -70,12 +58,11 @@
 
             <TextView
                 android:id="@+id/error"
-                style="@style/Body"
+                style="@style/Cuerpo"
                 android:textColor="@color/red"
                 android:accessibilityLiveRegion="polite"
                 android:visibility="gone"
                 tools:text="Mensaje de validación" />
-
 
             <TextView
                 android:id="@+id/email"
@@ -143,7 +130,7 @@
                 android:layout_height="0dp"
                 android:visibility="gone" />
 
-            <!-- banner de usuario -->
+            <!--Banner de usuario-->
             <LinearLayout
                 android:id="@+id/userBanner"
                 android:layout_width="match_parent"
@@ -155,7 +142,7 @@
                 android:layout_marginTop="12dp"
                 android:layout_marginBottom="16dp">
 
-                <!-- Avatar con icono de camara  -->
+                <!--Avatar con icono de cámara-->
                 <FrameLayout
                     android:id="@+id/avatarContainer"
                     android:layout_width="80dp"
@@ -172,7 +159,7 @@
                         android:scaleType="centerCrop"
                         android:background="@drawable/bg_avatar_ring"
                         android:padding="2dp"
-                        app:shapeAppearanceOverlay="@style/ShapeAppearance.Deluxe.Circle"
+                        app:shapeAppearanceOverlay="@style/FormaVisual.Circulo"
                         android:contentDescription="@string/profile_avatar_contentdescription" />
 
                     <ImageView
@@ -184,7 +171,7 @@
                         android:importantForAccessibility="no" />
                 </FrameLayout>
 
-                <!-- nombre de usuario -->
+                <!--Nombre de usuario-->
                 <TextView
                     android:id="@+id/name"
                     android:layout_width="0dp"
@@ -199,7 +186,7 @@
                     tools:text="Samuel Jimenez" />
             </LinearLayout>
 
-            <!-- 3 metricas de usuario  -->
+            <!--3 métricas de usuario-->
             <LinearLayout
                 android:id="@+id/statsRow"
                 android:layout_width="match_parent"
@@ -208,7 +195,7 @@
                 android:orientation="horizontal"
                 android:layout_marginBottom="18dp">
 
-                <!-- Stat 1: Mis vehículos -->
+                <!-- Estadística 1: Mis vehículos -->
                 <LinearLayout
                     android:id="@+id/statCardVehicles"
                     android:layout_width="0dp"
@@ -247,20 +234,18 @@
                             android:layout_height="wrap_content"
                             android:text=""
                             tools:text="0"
-                            android:textColor="@color/white"
-                            android:textSize="15sp"
-                            android:textStyle="bold" />
+                            style="@style/EtiquetaAccion" />
+
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Mis vehículos"
-                            android:textColor="#9CA3AF"
-                            android:textSize="9.5sp" />
+                            style="@style/MetaDiminuta" />
                     </LinearLayout>
                 </LinearLayout>
 
-                <!-- Stat 2: Cotizaciones -->
+                <!--Estadística 2: Cotizaciones-->
                 <LinearLayout
                     android:id="@+id/statCardQuotes"
                     android:layout_width="0dp"
@@ -299,20 +284,18 @@
                             android:layout_height="wrap_content"
                             android:text=""
                             tools:text="0"
-                            android:textColor="@color/white"
-                            android:textSize="15sp"
-                            android:textStyle="bold" />
+                            style="@style/EtiquetaAccion" />
+
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Cotizaciones"
-                            android:textColor="#9CA3AF"
-                            android:textSize="9.5sp" />
+                            style="@style/MetaDiminuta" />
                     </LinearLayout>
                 </LinearLayout>
 
-                <!-- Stat 3: Proyectos -->
+                <!--Estadística 3: Proyectos-->
                 <LinearLayout
                     android:id="@+id/statCardProjects"
                     android:layout_width="0dp"
@@ -350,22 +333,20 @@
                             android:layout_height="wrap_content"
                             android:text=""
                             tools:text="0"
-                            android:textColor="@color/white"
-                            android:textSize="15sp"
-                            android:textStyle="bold" />
+                            style="@style/EtiquetaAccion" />
+
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Proyectos"
-                            android:textColor="#9CA3AF"
-                            android:textSize="9.5sp" />
+                            style="@style/MetaDiminuta" />
                     </LinearLayout>
                 </LinearLayout>
 
             </LinearLayout>
 
-            <!-- Profile Menu Card Container -->
+            <!--Contenedor de la tarjeta de menú del perfil-->
             <LinearLayout
                 android:id="@+id/menuCard"
                 android:layout_width="match_parent"
@@ -375,7 +356,7 @@
                 android:paddingVertical="4dp"
                 android:layout_marginBottom="18dp">
 
-                <!-- Option 1: Editar perfil -->
+                <!--Opción 1: Editar perfil-->
                 <LinearLayout
                     android:id="@+id/rowEditProfile"
                     android:layout_width="match_parent"
@@ -400,9 +381,8 @@
                         android:layout_weight="1"
                         android:layout_marginStart="14dp"
                         android:text="Editar perfil"
-                        android:textColor="@color/white"
-                        android:textSize="14.5sp"
-                        android:fontFamily="sans-serif-medium" />
+                        style="@style/TituloTarjetaMedio" />
+
 
                     <ImageView
                         android:layout_width="16dp"
@@ -417,7 +397,7 @@
                     android:background="#264B1824"
                     android:layout_marginHorizontal="16dp" />
 
-                <!-- Option 2: Mis vehículos -->
+                <!-- Opción 2: Mis vehículos -->
                 <LinearLayout
                     android:id="@+id/rowMyVehicles"
                     android:layout_width="match_parent"
@@ -442,9 +422,8 @@
                         android:layout_weight="1"
                         android:layout_marginStart="14dp"
                         android:text="Mis vehiculos"
-                        android:textColor="@color/white"
-                        android:textSize="14.5sp"
-                        android:fontFamily="sans-serif-medium" />
+                        style="@style/TituloTarjetaMedio" />
+
 
                     <ImageView
                         android:layout_width="16dp"
@@ -459,7 +438,7 @@
                     android:background="#264B1824"
                     android:layout_marginHorizontal="16dp" />
 
-                <!-- Option 3: Mis cotizaciones -->
+                <!--Opción 3: Mis cotizaciones-->
                 <LinearLayout
                     android:id="@+id/rowMyQuotes"
                     android:layout_width="match_parent"
@@ -484,9 +463,8 @@
                         android:layout_weight="1"
                         android:layout_marginStart="14dp"
                         android:text="Mis cotizaciones"
-                        android:textColor="@color/white"
-                        android:textSize="14.5sp"
-                        android:fontFamily="sans-serif-medium" />
+                        style="@style/TituloTarjetaMedio" />
+
 
                     <ImageView
                         android:layout_width="16dp"
@@ -501,7 +479,7 @@
                     android:background="#264B1824"
                     android:layout_marginHorizontal="16dp" />
 
-                <!-- Option 4: Mis proyectos -->
+                <!--Opción 4: Mis proyectos-->
                 <LinearLayout
                     android:id="@+id/rowMyProjects"
                     android:layout_width="match_parent"
@@ -526,9 +504,8 @@
                         android:layout_weight="1"
                         android:layout_marginStart="14dp"
                         android:text="Mis proyectos"
-                        android:textColor="@color/white"
-                        android:textSize="14.5sp"
-                        android:fontFamily="sans-serif-medium" />
+                        style="@style/TituloTarjetaMedio" />
+
 
                     <ImageView
                         android:layout_width="16dp"
@@ -543,7 +520,7 @@
                     android:background="#264B1824"
                     android:layout_marginHorizontal="16dp" />
 
-                <!-- Option 5: Favoritos -->
+                <!--Opción 5: Favoritos-->
                 <LinearLayout
                     android:id="@+id/rowFavorites"
                     android:layout_width="match_parent"
@@ -568,9 +545,8 @@
                         android:layout_weight="1"
                         android:layout_marginStart="14dp"
                         android:text="Favoritos"
-                        android:textColor="@color/white"
-                        android:textSize="14.5sp"
-                        android:fontFamily="sans-serif-medium" />
+                        style="@style/TituloTarjetaMedio" />
+
 
                     <ImageView
                         android:layout_width="16dp"
@@ -585,7 +561,7 @@
                     android:background="#264B1824"
                     android:layout_marginHorizontal="16dp" />
 
-                <!-- Option 6: Notificaciones -->
+                <!--Opción 6: Notificaciones-->
                 <LinearLayout
                     android:id="@+id/rowNotifications"
                     android:layout_width="match_parent"
@@ -610,9 +586,8 @@
                         android:layout_weight="1"
                         android:layout_marginStart="14dp"
                         android:text="Notificaciones"
-                        android:textColor="@color/white"
-                        android:textSize="14.5sp"
-                        android:fontFamily="sans-serif-medium" />
+                        style="@style/TituloTarjetaMedio" />
+
 
                     <ImageView
                         android:layout_width="16dp"
@@ -627,7 +602,7 @@
                     android:background="#264B1824"
                     android:layout_marginHorizontal="16dp" />
 
-                <!-- Option 7: Cerrar sesion -->
+                <!--Opción 7: Cerrar sesión-->
                 <LinearLayout
                     android:id="@+id/rowLogout"
                     android:layout_width="match_parent"
@@ -652,9 +627,8 @@
                         android:layout_weight="1"
                         android:layout_marginStart="14dp"
                         android:text="Cerrar sesion"
-                        android:textColor="@color/white"
-                        android:textSize="14.5sp"
-                        android:fontFamily="sans-serif-medium" />
+                        style="@style/TituloTarjetaMedio" />
+
 
                     <ImageView
                         android:layout_width="16dp"
@@ -665,7 +639,7 @@
 
             </LinearLayout>
 
-            <!-- Bottom Support & Contact Card -->
+            <!--Tarjeta inferior de soporte y contacto-->
             <LinearLayout
                 android:id="@+id/supportCard"
                 android:layout_width="match_parent"
@@ -690,14 +664,14 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <!-- Contact Details Column -->
+                    <!--Columna de datos de contacto-->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="vertical">
 
-                        <!-- Phone -->
+                        <!--Teléfono-->
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -727,7 +701,7 @@
                                 android:textSize="12sp" />
                         </LinearLayout>
 
-                        <!-- Email -->
+                        <!--Correo-->
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -757,7 +731,7 @@
                                 android:textSize="11.5sp" />
                         </LinearLayout>
 
-                        <!-- Schedule / Hours -->
+                        <!--Horario-->
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -788,14 +762,14 @@
 
                     </LinearLayout>
 
-                    <!-- Divider -->
+                    <!--Separador-->
                     <View
                         android:layout_width="1dp"
                         android:layout_height="80dp"
                         android:background="#2D3748"
                         android:layout_marginHorizontal="10dp" />
 
-                    <!-- Brand Logo & Motto Slogan -->
+                    <!--Logotipo de marca y lema-->
                     <LinearLayout
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"

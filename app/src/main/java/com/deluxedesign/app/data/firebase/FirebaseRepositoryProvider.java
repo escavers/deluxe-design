@@ -13,7 +13,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import java.util.*;
 
 /**
- * Optional cloud implementation. Enable explicitly with -Pfirebase=true after configuring rules.
+ * Implementación opcional en la nube. Se activa explícitamente con -Pfirebase=true después de
+ * configurar las reglas de seguridad.
  */
 public class FirebaseRepositoryProvider
     implements RepositoryProvider,

@@ -19,7 +19,7 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <!-- Vehicle Image Thumbnail filling the box edge to edge -->
+        <!--Miniatura del vehículo que ocupa toda la caja-->
         <ImageView
             android:id="@+id/thumbnail"
             android:layout_width="120dp"
@@ -39,10 +39,7 @@
                 android:id="@+id/cardTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                android:fontFamily="sans-serif-medium"
+                style="@style/EtiquetaAccionMedia"
                 android:layout_marginBottom="2dp"
                 tools:text="Ford Mustang GT 2024" />
 
@@ -50,8 +47,7 @@
                 android:id="@+id/cardDetail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#9CA3AF"
-                android:textSize="13sp"
+                style="@style/TextoAyuda"
                 android:layout_marginBottom="8dp"
                 tools:text="Deportivo" />
 

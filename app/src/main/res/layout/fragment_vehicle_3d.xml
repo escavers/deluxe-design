@@ -3,18 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/bg_screen"
-    tools:context="com.deluxedesign.app.ui.customizer.Vehicle3dFragment">
-
+    style="@style/ContenedorPantalla"
+    tools:context="com.deluxedesign.app.ui.customizer.Vehicle3dFragment"
+>
     <LinearLayout
         android:id="@+id/header"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingEnd="12dp"
+        style="@style/Cabecera"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -34,11 +29,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:fontFamily="sans-serif-medium"
             android:text="@string/customizer_view3d_text"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            style="@style/TituloPrincipal" />
+
     </LinearLayout>
 
     <WebView
@@ -75,35 +68,33 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
-                    android:fontFamily="sans-serif-medium"
                     android:text="@string/vehicle3d_angle_text"
-                    android:textColor="@color/white"
-                    android:textSize="13sp" />
+                    style="@style/TituloSeccion" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/viewFront"
-                    style="@style/Secondary"
+                    style="@style/Secundario"
                     android:layout_width="wrap_content"
                     android:layout_height="36dp"
                     android:text="@string/vehicle3d_front_text" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/viewSide"
-                    style="@style/Secondary"
+                    style="@style/Secundario"
                     android:layout_width="wrap_content"
                     android:layout_height="36dp"
                     android:text="@string/vehicle3d_side_text" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/viewRear"
-                    style="@style/Secondary"
+                    style="@style/Secundario"
                     android:layout_width="wrap_content"
                     android:layout_height="36dp"
                     android:text="@string/vehicle3d_rear_text" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/viewTop"
-                    style="@style/Secondary"
+                    style="@style/Secundario"
                     android:layout_width="wrap_content"
                     android:layout_height="36dp"
                     android:text="@string/vehicle3d_top_text" />
@@ -126,42 +117,40 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
-                    android:fontFamily="sans-serif-medium"
                     android:text="@string/vehicle3d_stage_text"
-                    android:textColor="@color/white"
-                    android:textSize="13sp" />
+                    style="@style/TituloSeccion" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/backGraphite"
-                    style="@style/Secondary"
+                    style="@style/Secundario"
                     android:layout_width="wrap_content"
                     android:layout_height="36dp"
                     android:text="@string/vehicle3d_graphite_text" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/backSky"
-                    style="@style/Secondary"
+                    style="@style/Secundario"
                     android:layout_width="wrap_content"
                     android:layout_height="36dp"
                     android:text="@string/vehicle3d_sky_text" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/backMint"
-                    style="@style/Secondary"
+                    style="@style/Secundario"
                     android:layout_width="wrap_content"
                     android:layout_height="36dp"
                     android:text="@string/vehicle3d_mint_text" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/backBlack"
-                    style="@style/Secondary"
+                    style="@style/Secundario"
                     android:layout_width="wrap_content"
                     android:layout_height="36dp"
                     android:text="@string/vehicle3d_black_text" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/rotateToggle"
-                    style="@style/Secondary"
+                    style="@style/Secundario"
                     android:layout_width="wrap_content"
                     android:layout_height="36dp"
                     android:text="@string/vehicle3d_rotate_text" />

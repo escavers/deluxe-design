@@ -78,7 +78,7 @@ public class UiInteractionTest {
       onView(withId(R.id.favorite)).perform(scrollTo(), click());
       waitUntil(() -> vm.favorite("bmw") != previous);
       onView(withId(R.id.customize)).perform(scrollTo(), click());
-      onView(withId(R.id.preview)).check(matches(isDisplayed()));
+      onView(withId(R.id.heroFrame)).check(matches(isDisplayed()));
       onView(withText("Urban Dark")).perform(scrollTo(), click());
       assertEquals("urban_dark", vm.templateOfCurrent());
       pressBack();

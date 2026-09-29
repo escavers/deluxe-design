@@ -1,8 +1,29 @@
+# Artefactos de compilacion
 .gradle/
-.idea/
-local.properties
 **/build/
+build/
+*.iml
+.kotlin/
+.cxx/
+.externalNativeBuild/
+
+# IDE
+.idea/
 *.iml
 
-*.jks
+# Configuracion local de cada maquina
+local.properties
+*.log
 
+# Firmas: nunca se versionan claves privadas
+*.jks
+*.keystore
+keystore.properties
+
+# Credenciales de servicios auxiliares (descarga de imagenes)
+firebase/local.env
+
+# Secretos de Firebase: NO se versionan.
+# Para compartirlos se usa una via privada (ver firebase/SETUP.md).
+# Si tu proyecto no usa Firebase, descomenta la linea siguiente:
+# app/google-services.json

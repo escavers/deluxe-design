@@ -8,7 +8,7 @@
     android:background="@drawable/bg_cover"
     tools:context="com.deluxedesign.app.ui.auth.LoginFragment">
 
-    <!-- Top Left Back Button -->
+    <!--Botón de regreso superior izquierdo-->
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/back"
         android:layout_width="44dp"
@@ -51,7 +51,7 @@
             android:paddingTop="36dp"
             android:paddingBottom="24dp">
 
-            <!-- Welcome Title -->
+            <!--Título de bienvenida-->
             <TextView
                 android:id="@+id/welcomeTo"
                 android:layout_width="wrap_content"
@@ -63,7 +63,7 @@
                 android:gravity="center"
                 android:layout_marginBottom="4dp" />
 
-            <!-- Deluxe Design Brand -->
+            <!--Marca Deluxe Design-->
             <TextView
                 android:id="@+id/brand"
                 android:layout_width="wrap_content"
@@ -79,7 +79,7 @@
 
             <TextView
                 android:id="@+id/error"
-                style="@style/Body"
+                style="@style/Cuerpo"
                 android:textColor="@color/red"
                 android:gravity="center"
                 android:accessibilityLiveRegion="polite"
@@ -87,15 +87,13 @@
                 android:layout_marginBottom="12dp"
                 tools:text="Mensaje de validación" />
 
-            <!-- Email Label & Field -->
+            <!--Etiqueta y campo de correo-->
             <TextView
                 android:id="@+id/emailLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Correo:"
-                android:textColor="@color/white"
-                android:textSize="14sp"
-                android:textStyle="bold"
+                style="@style/TituloTarjeta"
                 android:layout_marginBottom="6dp" />
 
             <EditText
@@ -112,15 +110,13 @@
                 android:autofillHints="emailAddress"
                 android:layout_marginBottom="16dp" />
 
-            <!-- Password Label & Field -->
+            <!--Etiqueta y campo de contraseña-->
             <TextView
                 android:id="@+id/passwordLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Contraseña:"
-                android:textColor="@color/white"
-                android:textSize="14sp"
-                android:textStyle="bold"
+                style="@style/TituloTarjeta"
                 android:layout_marginBottom="6dp" />
 
             <FrameLayout
@@ -153,10 +149,10 @@
                     android:contentDescription="Mostrar contraseña" />
             </FrameLayout>
 
-            <!-- Login Button -->
+            <!--Botón de iniciar sesión-->
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/login"
-                style="@style/Primary"
+                style="@style/Primario"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:text="Ingresar"
@@ -165,7 +161,7 @@
                 android:letterSpacing="0.03"
                 android:layout_marginBottom="14dp" />
 
-            <!-- Google Sign In -->
+            <!--Inicio de sesión con Google-->
             <LinearLayout
                 android:id="@+id/googleSignIn"
                 android:layout_width="match_parent"
@@ -195,33 +191,29 @@
                     android:textStyle="bold" />
             </LinearLayout>
 
-            <!-- Forgot Password Link -->
+            <!--Enlace de recuperar contraseña-->
             <TextView
                 android:id="@+id/recover"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="¿Olvidaste tu contraseña?"
-                android:textColor="@color/cyan"
-                android:textSize="14sp"
+                style="@style/EnlacePrimario"
                 android:padding="8dp"
-                android:background="?attr/selectableItemBackgroundBorderless"
                 android:layout_marginBottom="8dp" />
 
-            <!-- Register Link -->
+            <!--Enlace de registro-->
             <TextView
                 android:id="@+id/register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="¿No tienes cuenta?  Regístrate"
-                android:textColor="@color/cyan"
-                android:textSize="14sp"
+                style="@style/EnlacePrimario"
                 android:padding="8dp"
-                android:background="?attr/selectableItemBackgroundBorderless"
                 android:layout_marginBottom="16dp" />
 
             <TextView
                 android:id="@+id/demoInfo"
-                style="@style/Label"
+                style="@style/EtiquetaClasica"
                 android:gravity="center"
                 android:text="@string/login_demoinfo_text"
                 android:textSize="12sp"

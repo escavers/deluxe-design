@@ -50,12 +50,12 @@ public class ProfileFragment extends BaseFragment {
     binding.back.setOnClickListener(v -> requireActivity().getOnBackPressedDispatcher().onBackPressed());
     binding.avatarContainer.setOnClickListener(v -> picker.launch(new String[] {"image/*"}));
 
-    // Stat Cards
+    // Tarjetas de estadísticas
     binding.statCardVehicles.setOnClickListener(v -> go(R.id.my_vehicles));
     binding.statCardQuotes.setOnClickListener(v -> go(R.id.quotes));
     binding.statCardProjects.setOnClickListener(v -> go(R.id.projects));
 
-    // Menu Options
+    // Opciones del menú
     binding.rowEditProfile.setOnClickListener(v -> go(R.id.edit_profile));
     binding.rowMyVehicles.setOnClickListener(v -> go(R.id.my_vehicles));
     binding.rowMyQuotes.setOnClickListener(v -> go(R.id.quotes));

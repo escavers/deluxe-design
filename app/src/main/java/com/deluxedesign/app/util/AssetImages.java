@@ -6,8 +6,8 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 
 /**
- * Resolves committed full images. Missing assets are explicitly marked, never disguised as finished
- * photography.
+ * Resuelve las imágenes completas que están en el repositorio. Los assets que faltan se marcan
+ * explícitamente como pendientes; nunca se disimulan como fotografía terminada.
  */
 public final class AssetImages {
   public static void show(ImageView view, String resource) {

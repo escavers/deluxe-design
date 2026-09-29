@@ -36,11 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
         android:layout_marginTop="12dp"
-        android:fontFamily="@font/inter"
-        android:maxLines="1"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        android:textStyle="bold"
+        style="@style/TituloTarjetaUnaLinea"
         app:layout_constraintStart_toEndOf="@id/iconCircle"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Proyecto completado" />

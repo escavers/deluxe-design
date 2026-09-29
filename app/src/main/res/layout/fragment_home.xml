@@ -3,33 +3,26 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/bg_screen"
-    tools:context="com.deluxedesign.app.ui.home.HomeFragment">
-
-    <!-- Top App Bar with User Avatar, Welcome and Notification Bell -->
+    style="@style/ContenedorPantalla"
+    tools:context="com.deluxedesign.app.ui.home.HomeFragment"
+>
+    <!--Barra superior con avatar, bienvenida y campana de notificaciones-->
     <LinearLayout
         android:id="@+id/header"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:paddingHorizontal="20dp"
-        android:paddingTop="20dp"
-        android:paddingBottom="12dp"
-        android:orientation="horizontal"
+        style="@style/Cabecera"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Hidden back button to preserve base binding -->
+        <!--Botón de regreso oculto para conservar el binding base-->
         <View
             android:id="@+id/back"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:visibility="gone" />
 
-        <!-- User Avatar with Red Border Ring -->
+        <!--Avatar de usuario con aro rojo-->
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/avatar"
             android:layout_width="44dp"
@@ -38,10 +31,10 @@
             android:background="@drawable/bg_avatar_ring"
             android:padding="2dp"
             android:scaleType="centerCrop"
-            app:shapeAppearanceOverlay="@style/ShapeAppearance.Deluxe.Circle"
+            app:shapeAppearanceOverlay="@style/FormaVisual.Circulo"
             android:contentDescription="@string/contentdesc_avatar" />
 
-        <!-- Welcome Text -->
+        <!--Texto de bienvenida-->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -50,10 +43,11 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/welcomeLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Bienvenido!"
-                android:textColor="#9CA3AF"
+                android:textColor="@color/text_dim"
                 android:textSize="13sp"
                 android:fontFamily="sans-serif" />
 
@@ -68,14 +62,11 @@
                 tools:text="Samuel Jimenez" />
         </LinearLayout>
 
-        <!-- Notification Bell Icon Button -->
+        <!--Botón de icono de campana de notificaciones-->
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/notifications"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
+            style="@style/BotonIcono"
             android:src="@drawable/ic_notification_bell"
-            android:scaleType="centerInside"
             android:contentDescription="@string/contentdesc_notifications" />
     </LinearLayout>
 
@@ -105,13 +96,13 @@
 
             <TextView
                 android:id="@+id/error"
-                style="@style/Body"
+                style="@style/Cuerpo"
                 android:textColor="@color/red"
                 android:accessibilityLiveRegion="polite"
                 android:visibility="gone"
                 tools:text="Mensaje de validación" />
 
-            <!-- Hidden screen title & hero view for binding preservation -->
+            <!--Título de pantalla y vista principal ocultos para conservar el binding-->
             <TextView
                 android:id="@+id/screenTitle"
                 android:layout_width="0dp"
@@ -125,7 +116,7 @@
                 android:visibility="gone"
                 android:importantForAccessibility="no" />
 
-            <!-- Headline: IDEAS QUE COBRAN VIDA -->
+            <!--Titular: IDEAS QUE COBRAN VIDA-->
             <TextView
                 android:id="@+id/headline"
                 android:layout_width="match_parent"
@@ -141,7 +132,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="28dp" />
 
-            <!-- 2x2 Glassmorphism Quick Action Grid -->
+            <!--Cuadrícula 2x2 de accesos rápidos con efecto cristal-->
             <GridLayout
                 android:id="@+id/actionGrid"
                 android:layout_width="match_parent"
@@ -149,7 +140,7 @@
                 android:columnCount="2"
                 android:layout_marginBottom="28dp">
 
-                <!-- Nuevo Proyecto -->
+                <!--Nuevo proyecto-->
                 <LinearLayout
                     android:id="@+id/newProject"
                     android:layout_width="0dp"
@@ -176,9 +167,8 @@
                         android:layout_marginTop="8dp"
                         android:gravity="center"
                         android:text="Nuevo\nProyecto"
-                        android:textColor="@color/white"
-                        android:textSize="13sp"
-                        android:fontFamily="sans-serif-medium" />
+                        style="@style/TituloSeccion" />
+
                 </LinearLayout>
 
                 <!-- Mis vehículos -->
@@ -208,9 +198,8 @@
                         android:layout_marginTop="8dp"
                         android:gravity="center"
                         android:text="Mis vehículos"
-                        android:textColor="@color/white"
-                        android:textSize="13sp"
-                        android:fontFamily="sans-serif-medium" />
+                        style="@style/TituloSeccion" />
+
                 </LinearLayout>
 
                 <!-- Mis diseños -->
@@ -240,12 +229,11 @@
                         android:layout_marginTop="8dp"
                         android:gravity="center"
                         android:text="Mis diseños"
-                        android:textColor="@color/white"
-                        android:textSize="13sp"
-                        android:fontFamily="sans-serif-medium" />
+                        style="@style/TituloSeccion" />
+
                 </LinearLayout>
 
-                <!-- Sucursales -->
+                <!--Sucursales-->
                 <LinearLayout
                     android:id="@+id/branches"
                     android:layout_width="0dp"
@@ -272,13 +260,12 @@
                         android:layout_marginTop="8dp"
                         android:gravity="center"
                         android:text="Sucursales"
-                        android:textColor="@color/white"
-                        android:textSize="13sp"
-                        android:fontFamily="sans-serif-medium" />
+                        style="@style/TituloSeccion" />
+
                 </LinearLayout>
             </GridLayout>
 
-            <!-- Section: Proyectos recientes with "Ver todos >" -->
+            <!--Sección: Proyectos recientes con "Ver todos >"-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -292,10 +279,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Proyectos recientes"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:fontFamily="sans-serif-black" />
+                    style="@style/TituloBienvenida" />
+
 
                 <TextView
                     android:id="@+id/viewAllProjects"
@@ -309,7 +294,7 @@
                     android:background="?attr/selectableItemBackgroundBorderless" />
             </LinearLayout>
 
-            <!-- Projects List -->
+            <!--Lista de proyectos-->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/list"
                 android:layout_width="match_parent"
@@ -320,11 +305,11 @@
 
             <TextView
                 android:id="@+id/empty"
-                style="@style/Label"
+                style="@style/EtiquetaClasica"
                 android:text="@string/branches_empty_text"
                 android:visibility="gone" />
 
-            <!-- Inspiration references -->
+            <!--Referencias de inspiración-->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/inspirationList"
                 android:layout_width="match_parent"

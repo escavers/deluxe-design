@@ -11,11 +11,8 @@
     <LinearLayout
         android:id="@+id/header"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
+        style="@style/Cabecera"
         android:visibility="gone"
-        android:paddingEnd="16dp"
-        android:orientation="horizontal"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -34,10 +31,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text=""
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:fontFamily="sans-serif-medium" />
+            style="@style/TituloPrincipal" />
+
     </LinearLayout>
 
     <ProgressBar
@@ -52,7 +47,7 @@
 
     <TextView
         android:id="@+id/error"
-        style="@style/Body"
+        style="@style/Cuerpo"
         android:textColor="@color/red"
         android:accessibilityLiveRegion="polite"
         android:visibility="gone"
@@ -61,7 +56,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         tools:text="Mensaje de validación" />
 
-    <!-- Circular Brand Emblem at Top -->
+    <!--Emblema circular de la marca en la parte superior-->
     <com.deluxedesign.app.ui.common.BrandLogoView
         android:id="@+id/hero"
         android:layout_width="190dp"
@@ -91,7 +86,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <!-- Bottom Slogan -->
+    <!--Lema inferior-->
     <TextView
         android:id="@+id/slogan"
         android:layout_width="0dp"
@@ -110,10 +105,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Bottom Button -->
+    <!--Botón inferior-->
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/start"
-        style="@style/Primary"
+        style="@style/Primario"
         android:layout_width="0dp"
         android:layout_height="56dp"
         android:layout_marginStart="24dp"

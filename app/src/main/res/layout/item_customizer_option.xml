@@ -28,9 +28,7 @@
             android:id="@+id/label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+            style="@style/EtiquetaAccion" />
 
         <TextView
             android:id="@+id/detail"
@@ -51,7 +49,7 @@
         android:id="@+id/check"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="✓"
+        android:text="âœ“"
         android:textColor="@color/cyan"
         android:textSize="18sp"
         android:textStyle="bold"

@@ -3,17 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/bg_screen"
-    tools:context="com.deluxedesign.app.ui.projects.ProjectReadyFragment">
-    <LinearLayout
+    style="@style/ContenedorPantalla"
+    tools:context="com.deluxedesign.app.ui.projects.ProjectReadyFragment"
+>    <LinearLayout
         android:id="@+id/header"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:paddingEnd="16dp"
-        android:orientation="horizontal"
+        style="@style/Cabecera"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -32,10 +27,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/project_ready_screentitle_text"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:fontFamily="sans-serif-medium" />
+            style="@style/TituloPrincipal" />
+
     </LinearLayout>
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scroll"
@@ -60,18 +53,18 @@
                 android:visibility="gone" />
             <TextView
                 android:id="@+id/error"
-                style="@style/Body"
+                style="@style/Cuerpo"
                 android:textColor="@color/red"
                 android:accessibilityLiveRegion="polite"
                 android:visibility="gone"
                 tools:text="Mensaje de validación" />
             <TextView
                 android:id="@+id/projectName"
-                style="@style/Title"
+                style="@style/Titulo"
                 android:text="@string/project_ready_projectname_text" />
             <TextView
                 android:id="@+id/projectMeta"
-                style="@style/Label"
+                style="@style/EtiquetaClasica"
                 android:text="@string/vehicle_detail_vehiclemeta_text" />
             <com.deluxedesign.app.util.VehicleView
                 android:id="@+id/hero"
@@ -84,27 +77,27 @@
                 tools:ignore="ContentDescription" />
             <TextView
                 android:id="@+id/saved"
-                style="@style/Label"
+                style="@style/EtiquetaClasica"
                 android:text="@string/project_ready_saved_text" />
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/save"
-                style="@style/Secondary"
+                style="@style/Secundario"
                 android:text="@string/project_ready_save_text" />
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/export"
-                style="@style/Secondary"
+                style="@style/Secundario"
                 android:text="@string/project_ready_export_text" />
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/share"
-                style="@style/Secondary"
+                style="@style/Secundario"
                 android:text="@string/project_ready_share_text" />
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/quote"
-                style="@style/Primary"
+                style="@style/Primario"
                 android:text="@string/new_quote_generate_text" />
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/home"
-                style="@style/Secondary"
+                style="@style/Secundario"
                 android:text="@string/project_ready_home_text" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

@@ -4,15 +4,24 @@
 
 Aplicación nativa de demostración académica para personalización automotriz. Java 11, Android Views XML, minSdk/targetSdk/compileSdk 31. APK de instalación directa.
 
+## Requisitos
+
+- **JDK 11** (el JDK 25 que trae Android Studio reciente no sirve para Gradle 7.3.3).
+- **Android SDK Platform 31** y **Build Tools 30.0.3**.
+- `app/google-services.json`, que ya viene en el repositorio.
+- Acceso a la consola de Firebase para **registrar tu SHA-1 de depuración** (obligatorio para el acceso con Google).
+
+No necesitas archivo de credenciales ni clave privada de firma: la compilación usa la firma de depuración que genera Android Studio.
+
 ## Abrir en Android Studio
 
 1. Abre esta carpeta como proyecto, no solamente la carpeta `app`.
 2. Instala Android SDK Platform 31 y Build Tools 30.0.3 desde SDK Manager.
-3. En Settings > Build, Execution, Deployment > Build Tools > Gradle selecciona un JDK **11**. El JDK 25 incorporado en versiones recientes de Android Studio no sirve para Gradle 7.3.3.
-4. Deja que Android Studio configure `local.properties` con la ruta de tu SDK.
+3. En Settings > Build, Execution, Deployment > Build Tools > Gradle selecciona un JDK **11**.
+4. Deja que Android Studio configure `local.properties` con la ruta de tu SDK. **No está versionado** (cada máquina tiene la suya) y Android Studio lo crea solo al abrir el proyecto.
 5. Sincroniza Gradle. Ejecuta en un teléfono o emulador Android 12/API 31.
 
-No se requieren Firebase, claves, cuentas remotas ni Internet para usar la demo después de instalarla. La primera sincronización sí descarga dependencias.
+La primera sincronización descarga dependencias de internet. Después de instalar, la app sí necesita conexión para usar Firebase.
 
 ## Compilar
 
@@ -25,18 +34,41 @@ Con JAVA_HOME apuntando a JDK 11:
 .\gradlew.bat connectedDebugAndroidTest
 ```
 
+**El build usa Firebase por defecto.** `app/build.gradle` activa el proveedor de nube salvo que se pase `-Plocal`, que compila la demo sin backend:
+
+```powershell
+.\gradlew.bat assembleDebug -Plocal   # solo demo local, sin Firebase
+```
+
+Si falta `app/google-services.json`, el build falla a propósito con un mensaje explicativo en lugar de generar un APK que no funcionaría.
+
 El APK se genera en `app/build/outputs/apk/debug/app-debug.apk`. Las pruebas instrumentadas requieren un dispositivo conectado. El APK de prueba no es la aplicación de usuario.
 
 El APK entregado utiliza una firma de depuración de esta compilación. Android Studio generará su propia firma local. Si aparece un conflicto de firmas al ejecutar tu recompilación, utiliza otro emulador o desinstala primero el APK entregado; **desinstalar elimina sus datos locales**. No se incluye ninguna clave privada de firma en el ZIP.
 
-## Cuenta de demostración
+## Cuentas
 
-- Correo: `demo@deluxedesign.app`
-- Contraseña: `Demo1234`
+**Con Firebase (build por defecto):** regístrate con tu correo real, o entra con **Continuar con Google**. Cada cuenta tiene sus datos en la nube. El correo `demo@deluxedesign.app` **no existe** en este proyecto de Firebase; créalo tú mismo si lo necesitas.
 
-También puedes registrar una cuenta local nueva. Los datos de cada cuenta quedan separados. Las contraseñas locales se almacenan con PBKDF2, sal aleatoria y 60 000 iteraciones; nunca en texto plano.
+**Solo en el build `-Plocal`:** existe la cuenta de demostración
+`demo@deluxedesign.app` / `Demo1234`. Puedes registrar una cuenta local nueva. Las contraseñas locales se almacenan con PBKDF2, sal aleatoria y 60 000 iteraciones; nunca en texto plano. La recuperación local entrega un **código de prueba visible en pantalla**, válido durante diez minutos y durante la sesión. No envía correos ni representa un mecanismo productivo. Con Firebase se utiliza el correo oficial de recuperación.
 
-La recuperación local entrega un **código de prueba visible en pantalla**, válido durante diez minutos y durante la sesión de la aplicación. No envía correos ni representa un mecanismo productivo. Con Firebase se utiliza el correo oficial de recuperación.
+## Acceso con Google (paso obligatorio)
+
+El botón «Continuar con Google» solo aparece si la consola de Firebase conoce tu SHA-1. Sin él, el acceso por correo funciona igual.
+
+1. Obtén tu SHA-1 de depuración:
+
+   ```powershell
+   keytool -list -v -keystore "$env:USERPROFILE\.android\debug.keystore" -alias androiddebugkey -storepass android
+   ```
+
+2. En [Firebase Console](https://console.firebase.google.com/) → **Project settings** (engranaje) → **Your apps** → tu app Android → **Add fingerprint**, y pega el SHA-1.
+3. Espera 2–5 minutos y vuelve a descargar `google-services.json` (**Download latest config**) para reemplazar el del repositorio.
+
+En Google Cloud Console, restringe la clave API por **paquete Android + SHA-1** para que no pueda usarse desde otras apps.
+
+La configuración completa del backend está en `firebase/SETUP.md`.
 
 ## Layout Editor
 
@@ -95,16 +127,17 @@ Seleccionar otra opción cambia **todo el preset**. Las categorías muestran est
 
 Los importes son ficticios, expresados en USD. Se almacenan como centavos enteros para evitar errores de redondeo. El desglose reparte el importe entre pintura, vinilos/accesorios, llantas/body kit y mano de obra.
 
-## Firebase opcional
+## Firebase
 
-La demo permanece como proveedor predeterminado incluso si se copia una configuración Firebase.
+Firebase es el proveedor de datos **predeterminado** de la app. `app/google-services.json` viene en el repositorio, pero el proyecto de la consola necesita estos pasos (solo una vez):
 
-1. Crea o utiliza un proyecto Firebase y registra la aplicación `com.deluxedesign.app` (necesitarás el SHA-1 del keystore para Google Sign-In).
-2. Coloca su configuración en `app/google-services.json` (nunca se versiona).
-3. Habilita Email/Password **y Google** en Authentication, Firestore y Storage.
-4. Publica las reglas proporcionadas en `firebase/`. No se despliegan automáticamente.
-5. Importa el catálogo inicial con el script `node firebase/seed/import.js <PROJECT_ID>` (usa `firebase/seed/*.json` y conserva los IDs que la app espera).
-6. Compila explícitamente con `.\gradlew.bat assembleDebug -Pfirebase=true`.
+1. Registra tu **SHA-1 de depuración** en *Project settings → Your apps* (obligatorio para Google Sign-In). Ver "Acceso con Google" más arriba.
+2. Habilita Email/Password **y Google** en Authentication, Firestore y Storage.
+3. Publica las reglas de `firebase/firestore.rules` y `firebase/storage.rules`. No se despliegan automáticamente.
+4. Importa el catálogo inicial: `node firebase/seed/import.js deluxe-design-32e6d` (usa `firebase/seed/*.json` y conserva los IDs que la app espera).
+5. Restringe la clave API por paquete + SHA-1 en Google Cloud Console.
+
+Solo si quieres trabajar sin backend: `.\gradlew.bat assembleDebug -Plocal`.
 
 Guía completa paso a paso: `firebase/SETUP.md`. Contrato de datos y reglas: `firebase/DATA.md`.
 

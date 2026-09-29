@@ -3,32 +3,22 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/bg_screen"
-    tools:context="com.deluxedesign.app.ui.catalog.CatalogFragment">
-
-    <!-- Top Bar with Back Button, Title and Notification Bell -->
+    style="@style/ContenedorPantalla"
+    tools:context="com.deluxedesign.app.ui.catalog.CatalogFragment"
+>
+    <!--Barra superior con botón de regreso, título y campana de notificaciones-->
     <LinearLayout
         android:id="@+id/header"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:paddingHorizontal="20dp"
-        android:paddingTop="20dp"
-        android:paddingBottom="8dp"
-        android:orientation="horizontal"
+        style="@style/Cabecera"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/back"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
+            style="@style/BotonAtras"
             android:src="@drawable/ic_arrow_back_circle"
-            android:scaleType="fitCenter"
             android:contentDescription="@string/back" />
 
         <TextView
@@ -38,18 +28,13 @@
             android:layout_weight="1"
             android:layout_marginStart="14dp"
             android:text="@string/catalog_screentitle_text"
-            android:textColor="@color/white"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            android:fontFamily="sans-serif-medium" />
+            style="@style/TituloPantalla" />
+
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/notifications"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
+            style="@style/BotonIcono"
             android:src="@drawable/ic_notification_bell"
-            android:scaleType="centerInside"
             android:contentDescription="@string/contentdesc_notifications" />
     </LinearLayout>
 
@@ -79,13 +64,13 @@
 
             <TextView
                 android:id="@+id/error"
-                style="@style/Body"
+                style="@style/Cuerpo"
                 android:textColor="@color/red"
                 android:accessibilityLiveRegion="polite"
                 android:visibility="gone"
                 tools:text="Mensaje de validación" />
 
-            <!-- Search Bar -->
+            <!--Barra de busqueda-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
@@ -109,16 +94,13 @@
                     android:layout_weight="1"
                     android:layout_marginStart="10dp"
                     android:background="@android:color/transparent"
+                    style="@style/CampoBusqueda"
                     android:hint="@string/catalog_search_hint"
-                    android:textColor="@color/white"
-                    android:textColorHint="#9CA3AF"
-                    android:textSize="14sp"
-                    android:singleLine="true"
                     android:inputType="text"
                     android:autofillHints="name" />
             </LinearLayout>
 
-            <!-- Dropdowns & Sliders Filter Row -->
+            <!--Fila de filtros con desplegables y deslizadores-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -153,7 +135,7 @@
                     android:paddingHorizontal="8dp" />
             </LinearLayout>
 
-            <!-- Horizontal Category Chips -->
+            <!--Chips horizontales de categorías-->
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -182,70 +164,59 @@
                         android:id="@+id/chipDeportivos"
                         android:layout_width="wrap_content"
                         android:layout_height="32dp"
-                        android:background="@drawable/bg_filter_chip_inactive"
                         android:gravity="center"
                         android:paddingHorizontal="14dp"
                         android:text="@string/catalog_chip_sports"
-                        android:textColor="#D1D5DB"
-                        android:textSize="13sp"
+                        style="@style/ChipFiltroInactivo"
                         android:layout_marginEnd="8dp" />
 
                     <TextView
                         android:id="@+id/chipSUV"
                         android:layout_width="wrap_content"
                         android:layout_height="32dp"
-                        android:background="@drawable/bg_filter_chip_inactive"
                         android:gravity="center"
                         android:paddingHorizontal="14dp"
                         android:text="@string/catalog_chip_suv"
-                        android:textColor="#D1D5DB"
-                        android:textSize="13sp"
+                        style="@style/ChipFiltroInactivo"
                         android:layout_marginEnd="8dp" />
 
                     <TextView
                         android:id="@+id/chipSedan"
                         android:layout_width="wrap_content"
                         android:layout_height="32dp"
-                        android:background="@drawable/bg_filter_chip_inactive"
                         android:gravity="center"
                         android:paddingHorizontal="14dp"
                         android:text="@string/catalog_chip_sedan"
-                        android:textColor="#D1D5DB"
-                        android:textSize="13sp"
+                        style="@style/ChipFiltroInactivo"
                         android:layout_marginEnd="8dp" />
 
                     <TextView
                         android:id="@+id/chipPickUp"
                         android:layout_width="wrap_content"
                         android:layout_height="32dp"
-                        android:background="@drawable/bg_filter_chip_inactive"
                         android:gravity="center"
                         android:paddingHorizontal="14dp"
                         android:text="@string/catalog_chip_pickup"
-                        android:textColor="#D1D5DB"
-                        android:textSize="13sp" />
+                        style="@style/ChipFiltroInactivo" />
                 </LinearLayout>
             </HorizontalScrollView>
 
-            <!-- Section Title: Resultados -->
+            <!--Título de sección: Resultados-->
             <TextView
                 android:id="@+id/sectionTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/catalog_results_text"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:fontFamily="sans-serif-black"
+                style="@style/TituloBienvenida"
                 android:layout_marginBottom="12dp" />
 
             <TextView
                 android:id="@+id/count"
-                style="@style/Label"
+                style="@style/EtiquetaClasica"
                 android:text="@string/catalog_count_text"
                 android:layout_marginBottom="4dp" />
 
-            <!-- Vehicles List -->
+            <!--Lista de vehículos-->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/list"
                 android:layout_width="match_parent"
@@ -256,7 +227,7 @@
 
             <TextView
                 android:id="@+id/empty"
-                style="@style/Label"
+                style="@style/EtiquetaClasica"
                 android:text="@string/branches_empty_text"
                 android:visibility="gone" />
 

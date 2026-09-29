@@ -14,7 +14,7 @@
     android:focusable="true"
     android:foreground="?attr/selectableItemBackground">
 
-    <!-- Car Thumbnail Preview -->
+    <!--Vista previa en miniatura del auto-->
     <ImageView
         android:id="@+id/thumbnail"
         android:layout_width="106dp"
@@ -26,7 +26,7 @@
         android:scaleType="fitCenter"
         android:importantForAccessibility="no" />
 
-    <!-- Details Column -->
+    <!--Columna de detalles-->
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -47,12 +47,11 @@
             android:id="@+id/projectName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#9CA3AF"
-            android:textSize="10sp"
+            style="@style/MetaDim"
             android:layout_marginBottom="5dp"
             tools:text="(nombre del proyecto)" />
 
-        <!-- Service Info Row -->
+        <!--Fila de información del servicio-->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -71,12 +70,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:textColor="#D1D5DB"
-                android:textSize="10sp"
+                style="@style/MetaClara"
                 tools:text="Vinilado completo" />
         </LinearLayout>
 
-        <!-- Date Info Row -->
+        <!--Fila de información de fecha-->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -94,20 +92,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:textColor="#D1D5DB"
-                android:textSize="10sp"
+                style="@style/MetaClara"
                 tools:text="02 Abr 2025" />
         </LinearLayout>
     </LinearLayout>
 
-    <!-- Vertical Divider -->
+    <!--Separador vertical-->
     <View
         android:layout_width="1dp"
         android:layout_height="56dp"
         android:background="#374151"
         android:layout_marginHorizontal="8dp" />
 
-    <!-- Price and Status Badge Column -->
+    <!--Columna de precio y pastilla de estado-->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -119,16 +116,14 @@
             android:id="@+id/quotePrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="13sp"
-            android:textStyle="bold"
+            style="@style/SubtituloNegrita"
             tools:text="$ 25,500" />
 
         <TextView
             android:id="@+id/priceLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#9CA3AF"
+            android:textColor="@color/text_dim"
             android:textSize="9sp"
             android:layout_marginBottom="4dp"
             android:text="Precio total" />

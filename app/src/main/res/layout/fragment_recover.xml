@@ -82,7 +82,7 @@
                 android:fontFamily="@font/inter"
                 android:lineSpacingExtra="4dp"
                 android:text="@string/recover_reference_intro"
-                android:textColor="#E0E2E7"
+                android:textColor="@color/text_bright"
                 android:textSize="13sp" />
 
             <TextView
@@ -91,9 +91,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:accessibilityLiveRegion="polite"
-                android:fontFamily="@font/inter"
-                android:textColor="#FF5964"
-                android:textSize="12sp"
+                style="@style/TextoError"
                 android:visibility="gone"
                 tools:text="Mensaje de validación"
                 tools:visibility="gone" />
@@ -102,11 +100,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="7dp"
-                android:fontFamily="@font/inter"
                 android:text="@string/recover_email_label"
-                android:textColor="@color/white"
-                android:textSize="13sp"
-                android:textStyle="bold" />
+                style="@style/EtiquetaPastilla" />
+
 
             <EditText
                 android:id="@+id/email"
@@ -114,28 +110,18 @@
                 android:layout_height="44dp"
                 android:layout_marginBottom="7dp"
                 android:autofillHints="emailAddress"
-                android:background="@drawable/bg_register_field"
-                android:fontFamily="@font/inter"
                 android:hint="@string/recover_reference_email_hint"
                 android:inputType="textEmailAddress"
-                android:paddingStart="14dp"
-                android:paddingEnd="14dp"
-                android:singleLine="true"
-                android:textColor="@color/white"
-                android:textColorHint="#7F828C"
-                android:textCursorDrawable="@null"
-                android:textSize="13sp" />
+                style="@style/CampoEntrada" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:layout_marginBottom="7dp"
-                android:fontFamily="@font/inter"
                 android:text="@string/recover_confirm_email_label"
-                android:textColor="@color/white"
-                android:textSize="13sp"
-                android:textStyle="bold" />
+                style="@style/EtiquetaPastilla" />
+
 
             <EditText
                 android:id="@+id/confirmEmail"
@@ -143,17 +129,9 @@
                 android:layout_height="44dp"
                 android:layout_marginBottom="24dp"
                 android:autofillHints="emailAddress"
-                android:background="@drawable/bg_register_field"
-                android:fontFamily="@font/inter"
                 android:hint="@string/recover_confirm_email_hint"
                 android:inputType="textEmailAddress"
-                android:paddingStart="14dp"
-                android:paddingEnd="14dp"
-                android:singleLine="true"
-                android:textColor="@color/white"
-                android:textColorHint="#7F828C"
-                android:textCursorDrawable="@null"
-                android:textSize="13sp" />
+                style="@style/CampoEntrada" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/send"
@@ -174,11 +152,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
-                android:fontFamily="@font/inter"
                 android:gravity="center"
                 android:lineSpacingExtra="3dp"
-                android:textColor="#E0E2E7"
-                android:textSize="12sp" />
+                style="@style/TextoSecundario" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/reset"
@@ -204,10 +180,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/inter"
                     android:text="@string/recover_remembered"
-                    android:textColor="#E0E2E7"
-                    android:textSize="12sp" />
+                    style="@style/TextoSecundario" />
 
                 <TextView
                     android:id="@+id/login"

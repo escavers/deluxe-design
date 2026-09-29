@@ -3,18 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/bg_screen"
-    tools:context="com.deluxedesign.app.ui.customizer.CustomizerFragment">
-
+    style="@style/ContenedorPantalla"
+    tools:context="com.deluxedesign.app.ui.customizer.CustomizerFragment"
+>
     <LinearLayout
         android:id="@+id/header"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:paddingEnd="12dp"
-        android:orientation="horizontal"
+        style="@style/Cabecera"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -35,14 +30,11 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/customizer_screentitle_text"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:fontFamily="sans-serif-medium" />
+            style="@style/TituloPrincipal" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/undo"
-            style="@style/Secondary"
+            style="@style/Secundario"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginEnd="6dp"
@@ -52,7 +44,7 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/redo"
-            style="@style/Secondary"
+            style="@style/Secundario"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:text="@string/customizer_redo_text" />
@@ -84,7 +76,7 @@
 
             <TextView
                 android:id="@+id/error"
-                style="@style/Body"
+                style="@style/Cuerpo"
                 android:textColor="@color/red"
                 android:accessibilityLiveRegion="polite"
                 android:visibility="gone"
@@ -92,7 +84,7 @@
 
             <TextView
                 android:id="@+id/vehicleName"
-                style="@style/Title"
+                style="@style/Titulo"
                 android:text="@string/customizer_vehiclename_text" />
 
             <FrameLayout
@@ -110,7 +102,7 @@
             </FrameLayout>
 
             <TextView
-                style="@style/Label"
+                style="@style/EtiquetaClasica"
                 android:text="@string/customizer_color_text" />
 
             <HorizontalScrollView
@@ -128,7 +120,7 @@
             </HorizontalScrollView>
 
             <TextView
-                style="@style/Label"
+                style="@style/EtiquetaClasica"
                 android:text="@string/customizer_configuration_text" />
 
             <LinearLayout
@@ -146,7 +138,7 @@
                 android:layout_marginTop="6dp">
 
                 <TextView
-                    style="@style/Label"
+                    style="@style/EtiquetaClasica"
                     android:text="@string/customizer_total_text"
                     android:layout_marginBottom="4dp" />
 
@@ -191,12 +183,12 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/reset"
-                style="@style/Secondary"
+                style="@style/Secundario"
                 android:text="@string/customizer_reset_text" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/save"
-                style="@style/Primary"
+                style="@style/Primario"
                 android:text="@string/customizer_save_text" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

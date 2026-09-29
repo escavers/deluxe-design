@@ -88,65 +88,63 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:accessibilityLiveRegion="polite"
-                android:fontFamily="@font/inter"
                 android:gravity="center"
-                android:textColor="#FF5964"
-                android:textSize="12sp"
+                style="@style/TextoError"
                 android:visibility="gone"
                 tools:text="Mensaje de validación"
                 tools:visibility="gone" />
 
             <TextView
-                style="@style/RegisterFieldLabel"
+                style="@style/EtiquetaCampoRegistro"
                 android:text="@string/register_name_label" />
 
             <EditText
                 android:id="@+id/name"
-                style="@style/RegisterField"
+                style="@style/CampoRegistro"
                 android:autofillHints="name"
                 android:hint="@string/register_name_example"
                 android:inputType="textPersonName|textCapWords" />
 
             <TextView
-                style="@style/RegisterFieldLabel"
+                style="@style/EtiquetaCampoRegistro"
                 android:text="@string/register_email_label" />
 
             <EditText
                 android:id="@+id/email"
-                style="@style/RegisterField"
+                style="@style/CampoRegistro"
                 android:autofillHints="emailAddress"
                 android:hint="@string/register_email_example"
                 android:inputType="textEmailAddress" />
 
             <TextView
-                style="@style/RegisterFieldLabel"
+                style="@style/EtiquetaCampoRegistro"
                 android:text="@string/register_phone_label" />
 
             <EditText
                 android:id="@+id/phone"
-                style="@style/RegisterField"
+                style="@style/CampoRegistro"
                 android:autofillHints="phone"
                 android:hint="@string/register_phone_example"
                 android:inputType="phone" />
 
             <TextView
-                style="@style/RegisterFieldLabel"
+                style="@style/EtiquetaCampoRegistro"
                 android:text="@string/register_password_label" />
 
             <EditText
                 android:id="@+id/password"
-                style="@style/RegisterField"
+                style="@style/CampoRegistro"
                 android:autofillHints="newPassword"
                 android:hint="@string/register_password_example"
                 android:inputType="textPassword" />
 
             <TextView
-                style="@style/RegisterFieldLabel"
+                style="@style/EtiquetaCampoRegistro"
                 android:text="@string/register_confirmation_label" />
 
             <EditText
                 android:id="@+id/confirmation"
-                style="@style/RegisterField"
+                style="@style/CampoRegistro"
                 android:autofillHints="newPassword"
                 android:hint="@string/register_password_example"
                 android:inputType="textPassword" />

@@ -3,17 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/bg_screen"
-    tools:context="com.deluxedesign.app.ui.customizer.ConfirmationFragment">
-    <LinearLayout
+    style="@style/ContenedorPantalla"
+    tools:context="com.deluxedesign.app.ui.customizer.ConfirmationFragment"
+>    <LinearLayout
         android:id="@+id/header"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:paddingEnd="16dp"
-        android:orientation="horizontal"
+        style="@style/Cabecera"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -32,10 +27,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/confirmation_screentitle_text"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:fontFamily="sans-serif-medium" />
+            style="@style/TituloPrincipal" />
+
     </LinearLayout>
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scroll"
@@ -60,7 +53,7 @@
                 android:visibility="gone" />
             <TextView
                 android:id="@+id/error"
-                style="@style/Body"
+                style="@style/Cuerpo"
                 android:textColor="@color/red"
                 android:accessibilityLiveRegion="polite"
                 android:visibility="gone"
@@ -79,29 +72,29 @@
             </FrameLayout>
             <TextView
                 android:id="@+id/section"
-                style="@style/Title"
+                style="@style/Titulo"
                 android:text="@string/confirmation_section_text" />
             <TextView
                 android:id="@+id/summary"
-                style="@style/Body"
+                style="@style/Cuerpo"
                 android:text="@string/confirmation_summary_text" />
             <TextView
                 android:id="@+id/price"
-                style="@style/Title"
+                style="@style/Titulo"
                 android:text="@string/confirmation_price_text" />
             <EditText
                 android:id="@+id/projectName"
-                style="@style/Field"
+                style="@style/Campo"
                 android:hint="@string/confirmation_projectname_hint"
                 android:inputType="text"
                 android:autofillHints="name" />
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/edit"
-                style="@style/Secondary"
+                style="@style/Secundario"
                 android:text="@string/confirmation_edit_text" />
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/confirm"
-                style="@style/Primary"
+                style="@style/Primario"
                 android:text="@string/confirmation_confirm_text" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

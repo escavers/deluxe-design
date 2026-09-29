@@ -3,32 +3,22 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/bg_screen"
-    tools:context="com.deluxedesign.app.ui.quotes.QuotesFragment">
-
-    <!-- Top Header Bar -->
+    style="@style/ContenedorPantalla"
+    tools:context="com.deluxedesign.app.ui.quotes.QuotesFragment"
+>
+    <!--Barra superior-->
     <LinearLayout
         android:id="@+id/header"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:paddingHorizontal="20dp"
-        android:paddingTop="20dp"
-        android:paddingBottom="8dp"
-        android:orientation="horizontal"
+        style="@style/Cabecera"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/back"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
+            style="@style/BotonAtras"
             android:src="@drawable/ic_arrow_back_circle"
-            android:scaleType="fitCenter"
             android:contentDescription="@string/back" />
 
         <TextView
@@ -38,10 +28,8 @@
             android:layout_weight="1"
             android:layout_marginStart="14dp"
             android:text="Cotizaciones"
-            android:textColor="@color/white"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            android:fontFamily="sans-serif-medium" />
+            style="@style/TituloPantallaGrande" />
+
     </LinearLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -70,13 +58,13 @@
 
             <TextView
                 android:id="@+id/error"
-                style="@style/Body"
+                style="@style/Cuerpo"
                 android:textColor="@color/red"
                 android:accessibilityLiveRegion="polite"
                 android:visibility="gone"
                 tools:text="Mensaje de validación" />
 
-            <!-- Hidden Views for Compatibility -->
+            <!--Vistas ocultas por compatibilidad-->
             <TextView
                 android:id="@+id/counters"
                 android:layout_width="0dp"
@@ -89,7 +77,7 @@
                 android:layout_height="0dp"
                 android:visibility="gone" />
 
-            <!-- Metrics Summary Card (Red Bordered Container) -->
+            <!--Tarjeta resumen de métricas (contenedor con borde rojo)-->
             <LinearLayout
                 android:id="@+id/metricsCard"
                 android:layout_width="match_parent"
@@ -101,7 +89,7 @@
                 android:paddingHorizontal="8dp"
                 android:layout_marginTop="12dp">
 
-                <!-- Metric 1: Pendientes Red -->
+                <!--Métrica 1: Pendientes en rojo-->
                 <LinearLayout
                     android:id="@+id/metricColPending"
                     android:layout_width="0dp"
@@ -129,26 +117,24 @@
                             android:layout_height="wrap_content"
                             android:text=""
                             tools:text="0"
-                            android:textColor="@color/white"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
+                            style="@style/TextoPrecio" />
+
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Pendientes"
-                            android:textColor="#9CA3AF"
-                            android:textSize="11sp" />
+                            style="@style/TextoMeta" />
                     </LinearLayout>
                 </LinearLayout>
 
-                <!-- Divider 1 -->
+                <!--Separador 1-->
                 <View
                     android:layout_width="1dp"
                     android:layout_height="38dp"
                     android:background="#4B2028" />
 
-                <!-- Metric 2: Aprobadas Green -->
+                <!--Métrica 2: Aprobadas en verde-->
                 <LinearLayout
                     android:id="@+id/metricColApproved"
                     android:layout_width="0dp"
@@ -176,26 +162,24 @@
                             android:layout_height="wrap_content"
                             android:text=""
                             tools:text="0"
-                            android:textColor="@color/white"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
+                            style="@style/TextoPrecio" />
+
 
 <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/quotes_metric_review"
-                            android:textColor="#9CA3AF"
-                            android:textSize="11sp" />
+                            style="@style/TextoMeta" />
                     </LinearLayout>
                 </LinearLayout>
 
-                <!-- Divider 2 -->
+                <!--Separador 2-->
                 <View
                     android:layout_width="1dp"
                     android:layout_height="38dp"
                     android:background="#4B2028" />
 
-                <!-- Metric 3: En Revision / Pendientes Orange -->
+                <!--Métrica 3: En revisión / Pendientes en naranja-->
                 <LinearLayout
                     android:id="@+id/metricColReview"
                     android:layout_width="0dp"
@@ -223,22 +207,20 @@
                             android:layout_height="wrap_content"
                             android:text=""
                             tools:text="0"
-                            android:textColor="@color/white"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
+                            style="@style/TextoPrecio" />
+
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Pendientes"
-                            android:textColor="#9CA3AF"
-                            android:textSize="11sp" />
+                            style="@style/TextoMeta" />
                     </LinearLayout>
                 </LinearLayout>
 
             </LinearLayout>
 
-            <!-- Big Red Action Button: Nueva cotizacion -->
+            <!--Botón de acción rojo: Nueva cotización-->
             <LinearLayout
                 android:id="@+id/create"
                 android:layout_width="match_parent"
@@ -277,7 +259,7 @@
                     android:importantForAccessibility="no" />
             </LinearLayout>
 
-            <!-- Section Title: Ultimas cotizaciones -->
+            <!--Título de sección: Últimas cotizaciones-->
             <TextView
                 android:id="@+id/sectionTitle"
                 android:layout_width="match_parent"
@@ -288,7 +270,7 @@
                 android:fontFamily="sans-serif-medium"
                 android:layout_marginBottom="14dp" />
 
-            <!-- Quotes RecyclerView -->
+            <!--RecyclerView de cotizaciones-->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/list"
                 android:layout_width="match_parent"
@@ -299,7 +281,7 @@
 
             <TextView
                 android:id="@+id/empty"
-                style="@style/Label"
+                style="@style/EtiquetaClasica"
                 android:gravity="center"
                 android:text="No tienes cotizaciones registradas."
                 android:visibility="gone" />

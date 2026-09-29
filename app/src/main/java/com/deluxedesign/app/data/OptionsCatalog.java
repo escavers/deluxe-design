@@ -22,6 +22,7 @@ public final class OptionsCatalog {
   public static List<CustomizationOption> options() {
     List<CustomizationOption> list = new ArrayList<>();
     String[][] rows = {
+      // Orden de columnas (nombres de campo de CustomizationOption):
       // id, category, label, detail, priceDeltaCents, swatch
       {"paint_rojo", "paint", "Rojo", "Rojo intenso", "0", "#E23B3B"},
       {"paint_azul", "paint", "Azul", "Azul eléctrico", "0", "#2A6FE0"},

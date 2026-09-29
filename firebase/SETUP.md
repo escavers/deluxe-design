@@ -1,28 +1,42 @@
 # Configuración del backend Firebase
 
-La app funciona en modo local (Base de datos Room + demo) sin Firebase. Para activar la nube debes crear un proyecto en Firebase e incorporar las credenciales. Todo el código de nube ya está escrito: autenticación por correo/contraseña y Google, Firestore (vehículos, estilos, sucursales, favoritos, proyectos, cotizaciones, notificaciones), Storage (avatar de perfil) y cambio/recuperación de contraseña por enlace de correo.
+**El build usa Firebase por defecto.** `app/build.gradle` activa el proveedor de nube siempre que no se pase el flag `-Plocal`. Todo el código de nube está escrito y operativo: autenticación por correo/contraseña y Google, Firestore (vehículos, estilos, sucursales, favoritos, proyectos, cotizaciones, notificaciones), Storage (avatar de perfil) y cambio/recuperación de contraseña por enlace de correo.
+
+`app/google-services.json` **ya está en el repositorio**, así que no hace falta descargarlo. Solo debes añadir tu SHA-1 (paso 4) para que funcione el acceso con Google.
 
 ## 1. Crear el proyecto y registrar la app
 
-1. Entra a [Firebase Console](https://console.firebase.google.com/) → “Crear proyecto”.
+Si partes de cero (el repositorio ya incluye el archivo de un proyecto existente):
+
+1. Entra a [Firebase Console](https://console.firebase.google.com/) → "Crear proyecto".
 2. Ve a **Project settings** (icono de engranaje) → sección *Your apps* → icono Android.
 3. Package name: `com.deluxedesign.app`.
 4. Registra los certificados:
    - Depuración: obtén el SHA-1 de tu `debug.keystore` con
-     `keytool -list -v -keystore %USERPROFILE%\.android\debug.keystore -alias androiddebugkey -storepass android` (o usa la huella que muestra Firebase si decides descargar el archivo sin SHA-1; el SHA-1 es obligatorio para Google Sign-In).
+     `keytool -list -v -keystore %USERPROFILE%\.android\debug.keystore -alias androiddebugkey -storepass android` (el SHA-1 es **obligatorio** para Google Sign-In).
    - Publicación (cuando la exportes): el SHA-1 del keystore de firma.
-5. Descarga `google-services.json` y colócalo en `app/google-services.json`. La referencia `firebase/google-services.json.example` muestra la estructura; el archivo real nunca se versiona (está en `.gitignore`).
+5. Descarga `google-services.json` y colócalo en `app/google-services.json`. La referencia `firebase/google-services.json.example` muestra la estructura.
 
-## 2. Compilar con Firebase
+En Google Cloud Console, restringe la clave API por **paquete Android + SHA-1**: así el archivo puede compartirse sin que otras apps consuman tu cuota.
 
-Sin `google-services.json` se compila el modo local (repositorio demo). Con él presente:
+## 2. Compilar
+
+Con `google-services.json` presente, el build normal ya usa la nube:
 
 ```powershell
 $env:JAVA_HOME="C:\dev\jdk17"
-.\gradlew.bat assembleDebug -Pfirebase=true
+.\gradlew.bat assembleDebug
 ```
 
-El botón **“Continuar con Google”** aparece en el inicio de sesión únicamente en el build de nube Y cuando `google-services.json` incluye el cliente web (`oauth_client`). Esa entrada se genera automáticamente al registrar el SHA‑1 del keystore en la consola; si el archivo descargado sale con `oauth_client: []`, espera 2–5 minutos tras registrar la huella, descarga de nuevo `google-services.json` desde **Project settings → Your apps → <tu app> → Download latest config** y reemplaza `app/google-services.json` (no hace falta recompilar desde cero; basta relanzar el build). Mientras tanto el botón queda oculto y el acceso con correo/contraseña funciona sin cambios.
+Para compilar la demo sin backend (Room en el dispositivo, cuenta `demo@deluxedesign.app` / `Demo1234`):
+
+```powershell
+.\gradlew.bat assembleDebug -Plocal
+```
+
+> No existe el flag `-Pfirebase`: la nube es el comportamiento por defecto y `-Plocal` es lo que la desactiva.
+
+El botón **"Continuar con Google"** aparece en el inicio de sesión únicamente en el build de nube Y cuando `google-services.json` incluye el cliente web (`oauth_client`). Esa entrada se genera automáticamente al registrar el SHA‑1 del keystore en la consola; si el archivo descargado sale con `oauth_client: []`, espera 2–5 minutos tras registrar la huella, descarga de nuevo `google-services.json` desde **Project settings → Your apps → <tu app> → Download latest config** y reemplaza `app/google-services.json` (no hace falta recompilar desde cero; basta relanzar el build). Mientras tanto el botón queda oculto y el acceso con correo/contraseña funciona sin cambios.
 
 ## 3. Activar los servicios
 
@@ -68,7 +82,7 @@ Resumen de `firestore.rules`:
 
 ## 6. Verificación end‑to‑end (opcional)
 
-Con `-Pfirebase=true` instalado en un dispositivo:
+Con el build de nube (el predeterminado) instalado en un dispositivo:
 
 1. Regístrate (o entra por Google); la app crea automáticamente `users/{uid}` y persiste favoritos en `favorites`.
 2. Guarda un proyecto → aparece como `Borrador`/avance 0 en `projects`. Crea una cotización → estado `Pendiente`.

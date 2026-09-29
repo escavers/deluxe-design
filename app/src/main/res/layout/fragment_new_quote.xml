@@ -3,31 +3,21 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/bg_screen"
-    tools:context="com.deluxedesign.app.ui.quotes.NewQuoteFragment">
-
+    style="@style/ContenedorPantalla"
+    tools:context="com.deluxedesign.app.ui.quotes.NewQuoteFragment"
+>
     <LinearLayout
         android:id="@+id/header"
         android:layout_width="0dp"
-        android:layout_height="64dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
+        style="@style/CabeceraCompacta"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/back"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
+            style="@style/BotonAtrasConRelleno"
             android:contentDescription="@string/back"
-            android:padding="5dp"
-            android:scaleType="fitCenter"
             android:src="@drawable/ic_arrow_back_circle" />
 
         <TextView
@@ -76,15 +66,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:accessibilityLiveRegion="polite"
-                android:fontFamily="@font/inter"
-                android:textColor="#FF5964"
-                android:textSize="12sp"
+                style="@style/TextoError"
                 android:visibility="gone"
                 tools:text="Mensaje de validación" />
 
             <TextView
                 android:id="@+id/section"
-                style="@style/NewQuoteLabel"
+                style="@style/EtiquetaNuevaCotizacion"
                 android:text="@string/new_quote_section_text" />
 
             <FrameLayout
@@ -134,7 +122,7 @@
                         android:layout_height="match_parent"
                         android:fontFamily="@font/inter"
                         android:gravity="center"
-                        android:text="›"
+                        android:text="â€º"
                         android:textColor="@color/white"
                         android:textSize="30sp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -151,18 +139,18 @@
             </FrameLayout>
 
             <TextView
-                style="@style/NewQuoteLabel"
+                style="@style/EtiquetaNuevaCotizacion"
                 android:text="@string/new_quote_customer_label" />
 
             <EditText
                 android:id="@+id/customer"
-                style="@style/NewQuoteField"
+                style="@style/CampoNuevaCotizacion"
                 android:autofillHints="name"
                 android:hint="@string/new_quote_customer_example"
                 android:inputType="textPersonName|textCapWords" />
 
             <TextView
-                style="@style/NewQuoteLabel"
+                style="@style/EtiquetaNuevaCotizacion"
                 android:text="@string/new_quote_notes_label" />
 
             <EditText
@@ -179,13 +167,13 @@
                 android:paddingStart="14dp"
                 android:paddingEnd="14dp"
                 android:textColor="@color/white"
-                android:textColorHint="#7F828C"
+                android:textColorHint="@color/hint_subtle"
                 android:textCursorDrawable="@null"
                 android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/summary"
-                style="@style/NewQuoteLabel"
+                style="@style/EtiquetaNuevaCotizacion"
                 android:layout_marginBottom="8dp"
                 android:text="@string/new_quote_summary_text" />
 
@@ -209,18 +197,14 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:fontFamily="@font/inter"
                         android:text="@string/new_quote_kit_label"
-                        android:textColor="#C2C5CD"
-                        android:textSize="11sp" />
+                        style="@style/SubtituloTenue" />
 
                     <TextView
                         android:id="@+id/total"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/inter"
-                        android:textColor="@color/white"
-                        android:textSize="12sp"
+                        style="@style/EtiquetaClasica"
                         tools:text="$ 18,900" />
                 </LinearLayout>
 
@@ -234,19 +218,15 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:fontFamily="@font/inter"
                         android:text="@string/new_quote_warranty_label"
-                        android:textColor="#C2C5CD"
-                        android:textSize="11sp" />
+                        style="@style/SubtituloTenue" />
 
                     <TextView
                         android:id="@+id/warranty"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/inter"
                         android:text="@string/new_quote_warranty_value"
-                        android:textColor="@color/white"
-                        android:textSize="12sp" />
+                        style="@style/EtiquetaClasica" />
                 </LinearLayout>
             </LinearLayout>
 

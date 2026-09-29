@@ -125,4 +125,9 @@
         android:name="com.deluxedesign.app.ui.profile.NotificationsFragment"
         android:label="NOTIFICACIONES"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/phantom"
+        android:name="com.deluxedesign.app.ui.phantom.PhantomFragment"
+        android:label=""
+        tools:layout="@layout/fragment_phantom" />
 </navigation>

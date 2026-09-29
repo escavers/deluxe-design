@@ -30,6 +30,7 @@ public class HomeFragment extends BaseFragment {
     click(R.id.notifications, () -> go(R.id.notifications));
     click(R.id.viewAllProjects, () -> go(R.id.projects));
     click(R.id.avatar, () -> go(R.id.profile));
+    installPhantomGesture();
     String[] photos = {
       "inspiration_audi",
       "inspiration_bmw",
@@ -74,6 +75,27 @@ public class HomeFragment extends BaseFragment {
         new androidx.recyclerview.widget.LinearLayoutManager(requireContext()));
     binding.inspirationList.setNestedScrollingEnabled(false);
     binding.inspirationList.setAdapter(new com.deluxedesign.app.ui.common.CardAdapter(gallery));
+  }
+
+  private void installPhantomGesture() {
+    View welcome = root.findViewById(R.id.welcomeLabel);
+    if (welcome == null) return;
+    long[] lastTap = {0};
+    int[] counter = {0};
+    welcome.setOnTouchListener(
+        (v, e) -> {
+          if (e.getActionMasked() == android.view.MotionEvent.ACTION_DOWN) {
+            long now = android.os.SystemClock.uptimeMillis();
+            if (counter[0] > 0 && now - lastTap[0] > 1500) counter[0] = 0;
+            lastTap[0] = now;
+            counter[0]++;
+            if (counter[0] >= 5) {
+              counter[0] = 0;
+              go(R.id.phantom);
+            }
+          }
+          return false;
+        });
   }
 
   protected void render() {

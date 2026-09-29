@@ -12,21 +12,15 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:fontFamily="@font/inter"
-        android:textColor="#AFB2BB"
-        android:textSize="12sp"
+        style="@style/EtiquetaFila"
         tools:text="Pintura" />
 
     <TextView
         android:id="@+id/changeValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/inter"
         android:gravity="end"
         android:maxWidth="230dp"
-        android:singleLine="true"
-        android:textColor="@color/white"
-        android:textSize="11sp"
-        android:textStyle="bold"
+        style="@style/ValorFila"
         tools:text="Rojo Metálico" />
 </LinearLayout>

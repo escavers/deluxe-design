@@ -3,17 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/background">
+    style="@style/ContenedorPrincipal">
     <TextView
         android:id="@+id/networkStatus"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/background"
-        android:textColor="@color/white"
-        android:textSize="12sp"
-        android:padding="8dp"
+        style="@style/AvisoEstado"
         android:visibility="gone"
         android:accessibilityLiveRegion="polite"
         tools:text="Sin conexión · modo local disponible"

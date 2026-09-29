@@ -18,9 +18,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Embeds the local GLB viewer (viewer.html + model-viewer.min.js) inside a WebView using a
- * WebViewAssetLoader. The loader must delegate shouldInterceptRequest, otherwise the WebView
- * resolves the virtual host externally and fails with ERR_NAME_NOT_RESOLVED.
+ * Incrusta el visor GLB local (viewer.html + model-viewer.min.js) dentro de un WebView mediante
+ * WebViewAssetLoader. El loader debe delegar shouldInterceptRequest; de lo contrario el WebView
+ * resuelve el host virtual de forma externa y falla con ERR_NAME_NOT_RESOLVED.
  */
 public final class Car3D {
   private final WebView webView;

@@ -3,17 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/bg_screen"
-    tools:context="com.deluxedesign.app.ui.auth.ResetFragment">
-    <LinearLayout
+    style="@style/ContenedorPantalla"
+    tools:context="com.deluxedesign.app.ui.auth.ResetFragment"
+>    <LinearLayout
         android:id="@+id/header"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:paddingEnd="16dp"
-        android:orientation="horizontal"
+        style="@style/Cabecera"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -32,10 +27,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/reset_screentitle_text"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:fontFamily="sans-serif-medium" />
+            style="@style/TituloPrincipal" />
+
     </LinearLayout>
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scroll"
@@ -54,7 +47,7 @@
             android:paddingBottom="@dimen/space_lg">
             <TextView
                 android:id="@+id/intro"
-                style="@style/Label"
+                style="@style/EtiquetaClasica"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="14dp"
@@ -67,47 +60,47 @@
                 android:visibility="gone" />
             <TextView
                 android:id="@+id/error"
-                style="@style/Body"
+                style="@style/Cuerpo"
                 android:textColor="@color/red"
                 android:accessibilityLiveRegion="polite"
                 android:visibility="gone"
                 tools:text="Mensaje de validación" />
             <TextView
-                style="@style/Label"
+                style="@style/EtiquetaClasica"
                 android:layout_marginTop="12dp"
                 android:layout_marginBottom="4dp"
                 android:text="@string/change_password_new_example" />
             <EditText
                 android:id="@+id/password"
-                style="@style/Field"
+                style="@style/Campo"
                 android:hint="@string/change_password_new_example"
                 android:inputType="textPassword"
                 android:autofillHints="newPassword" />
             <TextView
-                style="@style/Label"
+                style="@style/EtiquetaClasica"
                 android:layout_marginTop="12dp"
                 android:layout_marginBottom="4dp"
                 android:text="@string/change_password_confirmation_label" />
             <EditText
                 android:id="@+id/confirmation"
-                style="@style/Field"
+                style="@style/Campo"
                 android:hint="@string/change_password_confirmation_label"
                 android:inputType="textPassword"
                 android:autofillHints="newPassword" />
             <TextView
-                style="@style/Label"
+                style="@style/EtiquetaClasica"
                 android:layout_marginTop="12dp"
                 android:layout_marginBottom="4dp"
                 android:text="@string/change_password_confirmation_example" />
             <EditText
                 android:id="@+id/repeat"
-                style="@style/Field"
+                style="@style/Campo"
                 android:hint="@string/change_password_confirmation_example"
                 android:inputType="textPassword"
                 android:autofillHints="newPassword" />
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/save"
-                style="@style/Primary"
+                style="@style/Primario"
                 android:text="@string/reset_save_text" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
