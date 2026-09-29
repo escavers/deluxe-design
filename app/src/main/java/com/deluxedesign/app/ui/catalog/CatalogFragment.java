@@ -105,7 +105,9 @@ public class CatalogFragment extends BaseFragment {
               () -> {
                 vm.selectVehicle(v.id);
                 go(R.id.vehicle_detail);
-              }));
+              },
+              v.id,
+              com.deluxedesign.app.util.VehicleImages.DEFAULT_COLOR));
     }
     text(R.id.count, rows.size() + " vehículos disponibles");
     cards(R.id.list, rows);

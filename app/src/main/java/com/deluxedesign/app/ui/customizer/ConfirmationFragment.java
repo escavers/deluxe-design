@@ -8,7 +8,6 @@ import com.deluxedesign.app.databinding.FragmentConfirmationBinding;
 import com.deluxedesign.app.domain.model.CustomizationOption;
 import com.deluxedesign.app.domain.model.CustomizationPreset;
 import com.deluxedesign.app.ui.BaseFragment;
-import com.deluxedesign.app.util.AssetImages;
 import com.deluxedesign.app.util.Formatters;
 
 public class ConfirmationFragment extends BaseFragment {
@@ -32,11 +31,10 @@ public class ConfirmationFragment extends BaseFragment {
 
   private String defaultProjectName() {
     String vehicle = vm.vehicle() == null ? "" : vm.vehicle().name;
-    String template = vm.templateOfCurrent();
-    String style;
-    if (template == null || template.isEmpty()) style = "Personalizado";
-    else style = OptionsCatalog.templateName(template);
-    return (vehicle.isEmpty() ? "Proyecto" : vehicle) + " · " + style;
+    CustomizationOption paint = vm.option("paint");
+    return (vehicle.isEmpty() ? "Proyecto" : vehicle)
+        + " · "
+        + (paint == null ? "Personalizado" : paint.label);
   }
 
   protected void render() {
@@ -58,7 +56,10 @@ public class ConfirmationFragment extends BaseFragment {
         R.id.price,
         "Estimado: " + Formatters.money(vm.configurationPrice()));
 
-    AssetImages.show(binding.hero, config.image("front"));
+    CustomizationOption paint = vm.option("paint");
+    binding.hero.setColor(
+        vm.vehicle() == null ? "" : vm.vehicle().id,
+        paint == null ? com.deluxedesign.app.util.VehicleImages.DEFAULT_COLOR : paint.id);
   }
 
   @Override

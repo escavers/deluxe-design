@@ -14,4 +14,7 @@
     <color name="green">#59CE8F</color>
     <color name="blue">#3399FF</color>
     <color name="cyan">#00C2FF</color>
+    <color name="glow">#FF5252</color>
+    <color name="panel">#0F1116</color>
+    <color name="silver">#C9CDD6</color>
 </resources>

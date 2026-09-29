@@ -68,14 +68,13 @@
             <FrameLayout
                 android:id="@+id/heroFrame"
                 android:layout_width="match_parent"
-                android:layout_height="220dp"
+                android:layout_height="wrap_content"
                 android:background="@drawable/bg_card"
                 android:layout_marginBottom="12dp">
-                <ImageView
+                <com.deluxedesign.app.util.VehicleView
                     android:id="@+id/hero"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="fitCenter"
+                    android:layout_height="wrap_content"
                     android:contentDescription="@string/confirmation_hero_contentdescription" />
             </FrameLayout>
             <TextView

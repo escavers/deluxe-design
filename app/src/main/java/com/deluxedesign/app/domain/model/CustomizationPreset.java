@@ -41,20 +41,14 @@ public class CustomizationPreset {
     return "ci_" + s + "_" + suffix;
   }
 
-  public String summary() {
-    return "Pintura: "
+public String summary() {
+    return "Color: "
         + paint
-        + " · "
-        + finish
-        + "\nVinilos: "
-        + vinyl
         + "\nLlantas: "
         + wheels
-        + "\nBody kit: "
-        + bodyKit
         + "\nFaros: "
         + lights
-        + "\nAccesorios: "
+        + "\nAlerón: "
         + accessories
         + "\nInteriores: "
         + interior;

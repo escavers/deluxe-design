@@ -1,61 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="116dp"
+    android:layout_height="wrap_content"
     android:layout_marginBottom="12dp"
-    android:background="@drawable/bg_branch_card"
     android:clickable="true"
     android:focusable="true"
-    android:foreground="?attr/selectableItemBackground"
-    android:gravity="center_vertical"
-    android:orientation="vertical"
+    android:foreground="@drawable/premium_ripple"
     android:paddingStart="16dp"
-    android:paddingTop="12dp"
+    android:paddingTop="14dp"
     android:paddingEnd="16dp"
-    android:paddingBottom="10dp">
+    android:paddingBottom="14dp">
+
+    <View
+        android:id="@+id/accentBar"
+        android:layout_width="4dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_branch_accent"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/branchPin"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/bg_icon_circle_red"
+        app:layout_constraintBottom_toBottomOf="@id/branchAddress"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/branchName">
+
+        <ImageView
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/branches_view_map"
+            android:src="@drawable/ic_pin" />
+    </FrameLayout>
 
     <TextView
         android:id="@+id/branchName"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="8dp"
         android:fontFamily="@font/inter"
+        android:maxLines="1"
         android:textColor="@color/white"
         android:textSize="14sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/cityPill"
+        app:layout_constraintStart_toEndOf="@id/branchPin"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="Deluxe Central - La Paz" />
 
     <TextView
-        android:id="@+id/branchAddress"
-        android:layout_width="match_parent"
+        android:id="@+id/cityPill"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/bg_branch_city"
+        android:fontFamily="@font/inter"
+        android:paddingStart="9dp"
+        android:paddingTop="3dp"
+        android:paddingEnd="9dp"
+        android:paddingBottom="3dp"
+        android:textColor="@color/glow"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/branchName"
+        tools:text="La Paz" />
+
+    <TextView
+        android:id="@+id/branchAddress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
         android:layout_marginTop="5dp"
+        android:layout_marginEnd="8dp"
         android:fontFamily="@font/inter"
         android:singleLine="true"
         android:textColor="#B1B4BC"
         android:textSize="11sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/branchPin"
+        app:layout_constraintTop_toBottomOf="@id/branchName"
         tools:text="Av. Arce #2412, Edif. Torres Poeta" />
 
     <TextView
         android:id="@+id/branchInfo"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
         android:fontFamily="@font/inter"
         android:singleLine="true"
         android:textColor="#858994"
         android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/branchPin"
+        app:layout_constraintTop_toBottomOf="@id/branchAddress"
         tools:text="+591 73596502  |  Lun - Sáb  |  9:00 a 18:00" />
 
     <TextView
         android:id="@+id/mapLink"
-        android:layout_width="wrap_content"
-        android:layout_height="32dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="36dp"
+        android:background="@drawable/bg_premium_pill"
         android:fontFamily="@font/inter"
-        android:gravity="center_vertical"
+        android:gravity="center"
+        android:paddingTop="9dp"
+        android:paddingBottom="9dp"
         android:text="@string/branches_view_map"
-        android:textColor="#FF343E"
-        android:textSize="11sp"
-        android:textStyle="bold" />
-</LinearLayout>
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/branchPin"
+        app:layout_constraintTop_toBottomOf="@id/branchInfo" />
+</androidx.constraintlayout.widget.ConstraintLayout>

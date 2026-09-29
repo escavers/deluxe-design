@@ -13,7 +13,9 @@
     <string name="branches_hint_text">Ubicaciones de demostración. Confirma la dirección antes de visitar.</string>
     <string name="branches_empty_text">Todavía no hay elementos para mostrar.</string>
     <string name="branches_map_description">Mapa de sucursales Deluxe en La Paz</string>
-    <string name="branches_view_map">Ver en mapa &gt;</string>
+    <string name="branches_view_map">Ver en el mapa</string>
+    <string name="branches_in_map">Centrado en el mapa</string>
+    <string name="branches_map_hint_text">Toca una sucursal para centrar el mapa aquí</string>
     <string name="catalog_screentitle_text">CATÁLOGO</string>
     <string name="catalog_search_hint">Buscar marca, modelo o año</string>
     <string name="catalog_count_text">3 vehículos disponibles</string>
@@ -57,6 +59,7 @@
     <string name="vehicle3d_black_text">Negro</string>
     <string name="vehicle3d_rotate_text">Girar</string>
     <string name="customizer_templates_text">PLANTILLAS</string>
+    <string name="customizer_color_text">COLOR</string>
     <string name="customizer_configuration_text">CONFIGURACIÓN</string>
     <string name="customizer_total_text">Desglose del precio</string>
     <string name="customizer_total_label_text">Total estimado</string>

@@ -97,8 +97,13 @@ public abstract class BaseFragment extends Fragment {
     if (isAdded() && getView() != null) NavHostFragment.findNavController(this).navigate(id, args);
   }
 
+  private static android.widget.Toast pendingToast;
+
   protected void toast(String message) {
-    if (isAdded()) Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show();
+    if (!isAdded()) return;
+    if (pendingToast != null) pendingToast.cancel();
+    pendingToast = android.widget.Toast.makeText(requireContext(), message, android.widget.Toast.LENGTH_SHORT);
+    pendingToast.show();
   }
 
   protected void cards(int id, List<CardAdapter.Card> values) {

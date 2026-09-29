@@ -73,14 +73,10 @@
                 android:id="@+id/vehicleMeta"
                 style="@style/Label"
                 android:text="@string/vehicle_detail_vehiclemeta_text" />
-            <ImageView
+            <com.deluxedesign.app.util.TouchWebView
                 android:id="@+id/hero"
                 android:layout_width="match_parent"
                 android:layout_height="220dp"
-                android:src="@drawable/placeholder_vehicle"
-                android:background="@drawable/bg_card"
-                android:scaleType="fitCenter"
-                android:contentDescription="@string/confirmation_hero_contentdescription"
                 android:layout_marginBottom="12dp" />
             <LinearLayout
                 android:layout_width="match_parent"

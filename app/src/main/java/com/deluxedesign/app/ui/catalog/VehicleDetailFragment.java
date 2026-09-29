@@ -5,9 +5,12 @@ import androidx.viewbinding.ViewBinding;
 import com.deluxedesign.app.R;
 import com.deluxedesign.app.databinding.FragmentVehicleDetailBinding;
 import com.deluxedesign.app.ui.BaseFragment;
+import com.deluxedesign.app.util.Car3D;
 
 public class VehicleDetailFragment extends BaseFragment {
   private FragmentVehicleDetailBinding binding;
+  private Car3D car3d;
+  private String currentModel = "";
 
   @Override
   protected ViewBinding bind(LayoutInflater inflater, ViewGroup parent) {
@@ -18,7 +21,12 @@ public class VehicleDetailFragment extends BaseFragment {
   protected void configure() {
     for (int id : new int[] {R.id.front, R.id.side, R.id.rear})
       click(
-          id, () -> vm.set("angle", id == R.id.side ? "side" : id == R.id.rear ? "rear" : "front"));
+          id, () -> {
+            String angle =
+                id == R.id.side ? "side" : id == R.id.rear ? "rear" : "front34";
+            vm.set("angle", angle);
+            viewerMove(angle);
+          });
     click(R.id.customize, () -> go(R.id.customizer));
     click(
         R.id.favorite,
@@ -32,10 +40,9 @@ public class VehicleDetailFragment extends BaseFragment {
 
   protected void render() {
     com.deluxedesign.app.domain.model.Vehicle v = vm.vehicle();
-    com.deluxedesign.app.domain.model.CustomizationPreset p = vm.preset();
     if (v == null) return;
-    String angle = vm.value("angle", "front");
-    setActive(R.id.front, "front".equals(angle));
+    String angle = vm.value("angle", "front34");
+    setActive(R.id.front, "front".equals(angle) || "front34".equals(angle));
     setActive(R.id.side, "side".equals(angle));
     setActive(R.id.rear, "rear".equals(angle));
     text(R.id.vehicleName, v.name);
@@ -55,8 +62,24 @@ public class VehicleDetailFragment extends BaseFragment {
     text(
         R.id.favorite,
         vm.favorite(v.id) ? "♥  Guardado en mis vehículos" : "♡  Añadir a mis vehículos");
-    if (p != null)
-      com.deluxedesign.app.util.AssetImages.show(binding.hero, p.image(vm.value("angle", "front")));
+
+    String model = "vehicle_" + v.id + ".glb";
+    if (!model.equals(currentModel)) {
+      currentModel = model;
+      if (car3d != null) {
+        car3d.destroy();
+        car3d = null;
+      }
+      car3d = new Car3D(binding.hero, requireContext(), model);
+    }
+    viewerMove(angle);
+  }
+
+  private void viewerMove(String angle) {
+    if (car3d == null) return;
+    String preset =
+        "side".equals(angle) ? "side" : "rear".equals(angle) ? "rear" : "front34";
+    car3d.js("setPreset('view','" + preset + "')");
   }
 
   private void setActive(int id, boolean active) {
@@ -68,6 +91,10 @@ public class VehicleDetailFragment extends BaseFragment {
 
   @Override
   public void onDestroyView() {
+    if (car3d != null) {
+      car3d.destroy();
+      car3d = null;
+    }
     super.onDestroyView();
     binding = null;
   }

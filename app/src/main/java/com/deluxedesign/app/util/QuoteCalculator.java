@@ -8,13 +8,10 @@ import java.util.Locale;
 
 public final class QuoteCalculator {
   public static String categoryLabel(String category) {
-    if ("paint".equals(category)) return "Pintura";
-    if ("finish".equals(category)) return "Acabado";
-    if ("vinyl".equals(category)) return "Vinilos";
+    if ("paint".equals(category)) return "Color";
     if ("wheels".equals(category)) return "Llantas";
-    if ("bodykit".equals(category)) return "Body kit";
     if ("lights".equals(category)) return "Faros";
-    if ("accessories".equals(category)) return "Accesorios";
+    if ("spoiler".equals(category)) return "Alerón";
     if ("interior".equals(category)) return "Interiores";
     return "Personalización";
   }

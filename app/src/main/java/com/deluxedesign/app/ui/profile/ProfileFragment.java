@@ -60,7 +60,7 @@ public class ProfileFragment extends BaseFragment {
     binding.rowMyVehicles.setOnClickListener(v -> go(R.id.my_vehicles));
     binding.rowMyQuotes.setOnClickListener(v -> go(R.id.quotes));
     binding.rowMyProjects.setOnClickListener(v -> go(R.id.projects));
-    binding.rowFavorites.setOnClickListener(v -> go(R.id.catalog));
+    binding.rowFavorites.setOnClickListener(v -> go(R.id.my_vehicles));
     binding.rowNotifications.setOnClickListener(v -> go(R.id.notifications));
     binding.rowLogout.setOnClickListener(v -> showLogoutDialog());
   }

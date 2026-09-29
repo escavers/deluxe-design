@@ -2,13 +2,11 @@ package com.deluxedesign.app.ui.quotes;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import androidx.annotation.DrawableRes;
 import androidx.viewbinding.ViewBinding;
 import com.deluxedesign.app.R;
 import com.deluxedesign.app.databinding.FragmentNewQuoteBinding;
 import com.deluxedesign.app.domain.model.CustomizationPreset;
 import com.deluxedesign.app.domain.model.Project;
-import com.deluxedesign.app.domain.model.Vehicle;
 import com.deluxedesign.app.ui.AppViewModel;
 import com.deluxedesign.app.ui.BaseFragment;
 import com.deluxedesign.app.ui.common.Ui;
@@ -75,22 +73,16 @@ public class NewQuoteFragment extends BaseFragment {
       return;
     }
 
-    Vehicle vehicle = vm.vehicle(project.vehicleId);
+    com.deluxedesign.app.domain.model.Vehicle vehicle = vm.vehicle(project.vehicleId);
     binding.projectName.setText(vehicle == null ? project.name : vehicle.name);
-    binding.projectImage.setImageResource(vehicleImage(project.vehicleId));
+    com.deluxedesign.app.util.VehicleImages.show(
+        binding.projectImage, project.vehicleId, vm.projectColor(project));
     Long price = project.priceCents;
     if (price == null) {
       com.deluxedesign.app.domain.model.CustomizationPreset config = vm.configurationFor(project);
       if (config != null) price = config.priceCents;
     }
     binding.total.setText(price == null ? "" : Formatters.money(price));
-  }
-
-  @DrawableRes
-  private static int vehicleImage(String vehicleId) {
-    if ("bmw".equals(vehicleId)) return R.drawable.ci_bmw_front34;
-    if ("mustang".equals(vehicleId)) return R.drawable.ci_mustang_front34;
-    return R.drawable.ci_porsche_front34;
   }
 
   @Override

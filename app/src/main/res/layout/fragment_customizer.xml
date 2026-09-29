@@ -98,98 +98,34 @@
             <FrameLayout
                 android:id="@+id/heroFrame"
                 android:layout_width="match_parent"
-                android:layout_height="270dp"
+                android:layout_height="wrap_content"
                 android:background="@drawable/bg_card"
-                android:layout_marginBottom="10dp">
+                android:layout_marginBottom="14dp">
 
-                <ImageView
+                <com.deluxedesign.app.util.VehicleView
                     android:id="@+id/heroPhoto"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/ci_porsche_front34"
-                    android:scaleType="fitCenter"
-                    android:visibility="gone"
+                    android:layout_height="wrap_content"
                     android:contentDescription="@string/confirmation_hero_contentdescription" />
-
-                <WebView
-                    android:id="@+id/preview"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#0c0e14" />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/view3d"
-                    style="@style/Secondary"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_gravity="top|end"
-                    android:layout_margin="10dp"
-                    android:paddingStart="14dp"
-                    android:paddingEnd="14dp"
-                    android:text="@string/customizer_expand3d_text" />
             </FrameLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="10dp">
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/togglePreview"
-                    style="@style/Secondary"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="40dp"
-                    android:text="@string/customizer_preview_text" />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/togglePhoto"
-                    style="@style/Secondary"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="40dp"
-                    android:text="@string/customizer_photo_text" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/front"
-                    style="@style/Secondary"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:text="@string/customizer_front_text" />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/side"
-                    style="@style/Secondary"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:text="@string/customizer_side_text" />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/rear"
-                    style="@style/Secondary"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:text="@string/customizer_rear_text" />
-            </LinearLayout>
 
             <TextView
                 style="@style/Label"
-                android:text="@string/customizer_templates_text"
-                android:layout_marginTop="18dp" />
+                android:text="@string/customizer_color_text" />
 
-            <LinearLayout
-                android:id="@+id/templateChips"
+            <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="10dp" />
+                android:scrollbars="none"
+                android:layout_marginBottom="14dp">
+
+                <LinearLayout
+                    android:id="@+id/paintRow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingEnd="12dp" />
+            </HorizontalScrollView>
 
             <TextView
                 style="@style/Label"

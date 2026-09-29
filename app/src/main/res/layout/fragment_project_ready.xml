@@ -69,38 +69,19 @@
                 android:id="@+id/projectName"
                 style="@style/Title"
                 android:text="@string/project_ready_projectname_text" />
-            <ImageView
+            <TextView
+                android:id="@+id/projectMeta"
+                style="@style/Label"
+                android:text="@string/vehicle_detail_vehiclemeta_text" />
+            <com.deluxedesign.app.util.VehicleView
                 android:id="@+id/hero"
                 android:layout_width="match_parent"
-                android:layout_height="220dp"
+                android:layout_height="wrap_content"
                 android:background="@drawable/bg_card"
-                android:scaleType="fitCenter"
+                android:layout_marginTop="8dp"
                 android:layout_marginBottom="12dp"
                 android:contentDescription="@string/confirmation_hero_contentdescription"
                 tools:ignore="ContentDescription" />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/front"
-                    style="@style/Secondary"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:text="@string/customizer_front_text" />
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/side"
-                    style="@style/Secondary"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:text="@string/customizer_side_text" />
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/rear"
-                    style="@style/Secondary"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:text="@string/customizer_rear_text" />
-            </LinearLayout>
             <TextView
                 android:id="@+id/saved"
                 style="@style/Label"
@@ -109,10 +90,6 @@
                 android:id="@+id/save"
                 style="@style/Secondary"
                 android:text="@string/project_ready_save_text" />
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/gallery"
-                style="@style/Secondary"
-                android:text="@string/project_ready_gallery_text" />
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/export"
                 style="@style/Secondary"

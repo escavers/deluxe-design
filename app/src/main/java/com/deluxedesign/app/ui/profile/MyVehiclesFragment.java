@@ -3,7 +3,6 @@ package com.deluxedesign.app.ui.profile;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -59,13 +58,6 @@ public class MyVehiclesFragment extends BaseFragment {
     return vehicle.type;
   }
 
-  @DrawableRes
-  private static int vehicleImage(Vehicle vehicle) {
-    if ("bmw".equals(vehicle.id)) return R.drawable.ci_bmw_front34;
-    if ("mustang".equals(vehicle.id)) return R.drawable.ci_mustang_front34;
-    return R.drawable.ci_porsche_front34;
-  }
-
   private static final class VehicleAdapter
       extends RecyclerView.Adapter<VehicleAdapter.Holder> {
     private final List<Vehicle> vehicles;
@@ -88,8 +80,8 @@ public class MyVehiclesFragment extends BaseFragment {
       Vehicle vehicle = vehicles.get(position);
       holder.binding.vehicleName.setText(displayName(vehicle));
       holder.binding.vehicleMeta.setText(vehicleType(vehicle) + " | " + vehicle.brand);
-      holder.binding.vehicleImage.setImageResource(vehicleImage(vehicle));
-      holder.binding.vehicleImage.setContentDescription("Fotografía de " + displayName(vehicle));
+      com.deluxedesign.app.util.VehicleImages.show(
+          holder.binding.vehicleImage, vehicle.id, null);
       holder.binding.getRoot().setOnClickListener(view -> onSelected.accept(vehicle));
     }
 

@@ -134,11 +134,15 @@ public class AppViewModel extends AndroidViewModel {
     state.set("vehicle", p.vehicleId);
     state.set("angle", "front");
     List<String> ids = parseOptions(p.optionsJson);
-    if (ids.isEmpty() && OptionsCatalog.isTemplate(p.presetId))
-      ids = new ArrayList<>(OptionsCatalog.templateOptions(p.presetId).values());
-    for (int i = 0; i < OptionsCatalog.CATEGORIES.length && i < ids.size(); i++)
-      if (OptionsCatalog.option(ids.get(i)) != null)
-        state.set("c_" + OptionsCatalog.CATEGORIES[i], ids.get(i));
+    if (ids.isEmpty()) {
+      Map<String, String> defaults = OptionsCatalog.defaultOptions();
+      for (String category : OptionsCatalog.CATEGORIES) state.set("c_" + category, defaults.get(category));
+    } else {
+      for (String id : ids) {
+        CustomizationOption o = OptionsCatalog.option(id);
+        if (o != null) state.set("c_" + o.category, id);
+      }
+    }
     state.set("origSnapshot", snapshot());
     clearHistory();
     touch();
@@ -237,25 +241,29 @@ public class AppViewModel extends AndroidViewModel {
     long base = basePrice(vehicleId);
     CustomizationPreset p = new CustomizationPreset();
     Map<String, String> map = new LinkedHashMap<>();
-    for (int i = 0; i < OptionsCatalog.CATEGORIES.length && i < ids.size(); i++)
-      map.put(OptionsCatalog.CATEGORIES[i], ids.get(i));
+    for (String id : ids) {
+      CustomizationOption o = OptionsCatalog.option(id);
+      if (o != null) map.put(o.category, id);
+    }
+    Map<String, String> defaults = OptionsCatalog.defaultOptions();
     for (String category : OptionsCatalog.CATEGORIES) {
       String id = map.get(category);
-      if (OptionsCatalog.option(id) == null)
-        id = OptionsCatalog.templateOptions(OptionsCatalog.TEMPLATE_RACING).get(category);
+      if (OptionsCatalog.option(id) == null) id = defaults.get(category);
       map.put(category, id);
     }
-    String template = OptionsCatalog.templateFor(map);
-    p.id = vehicleId + "_" + template;
+    String pid = map.get("paint");
+    CustomizationOption paint = OptionsCatalog.option(pid);
+    p.id = vehicleId + "_" + (paint == null ? "config" : paint.label.toLowerCase(java.util.Locale.ROOT).replaceAll("[^a-z0-9_]", "_"));
     p.vehicleId = vehicleId;
-    p.name = OptionsCatalog.isTemplate(template) ? OptionsCatalog.templateName(template) : "Personalizado";
+    Vehicle v = SeedData.vehicle(vehicleId);
+    p.name = (v == null ? vehicleId : v.name) + " · " + (paint == null ? "Personalizado" : paint.label);
     p.paint = OptionsCatalog.option(map.get("paint")).label;
-    p.finish = OptionsCatalog.option(map.get("finish")).label;
-    p.vinyl = OptionsCatalog.option(map.get("vinyl")).label;
+    p.finish = "";
+    p.vinyl = "";
     p.wheels = OptionsCatalog.option(map.get("wheels")).label;
-    p.bodyKit = OptionsCatalog.option(map.get("bodykit")).label;
+    p.bodyKit = "";
     p.lights = OptionsCatalog.option(map.get("lights")).label;
-    p.accessories = OptionsCatalog.option(map.get("accessories")).label;
+    p.accessories = OptionsCatalog.option(map.get("spoiler")).label;
     p.interior = OptionsCatalog.option(map.get("interior")).label;
     p.priceCents = base;
     for (String category : OptionsCatalog.CATEGORIES) {
@@ -272,6 +280,16 @@ public class AppViewModel extends AndroidViewModel {
     p.side = "ci_" + vehicleId + "_side";
     p.rear = "ci_" + vehicleId + "_rear";
     return p;
+  }
+
+  /** Color guardado de un proyecto (ids de opciones), o el color por defecto. */
+  public String projectColor(Project p) {
+    if (p == null || p.optionsJson == null) return OptionsCatalog.defaultOptions().get("paint");
+    for (String id : parseOptions(p.optionsJson)) {
+      CustomizationOption o = OptionsCatalog.option(id);
+      if (o != null && "paint".equals(o.category)) return id;
+    }
+    return OptionsCatalog.defaultOptions().get("paint");
   }
 
   public void selectOption(String category, String optionId) {

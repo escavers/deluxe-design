@@ -96,7 +96,9 @@ public class HomeFragment extends BaseFragment {
               () -> {
                 vm.set("project", p.id);
                 go(R.id.project_detail);
-              }));
+              },
+              p.vehicleId,
+              vm.projectColor(p)));
       if (rows.size() == 3) break;
     }
     cards(R.id.list, rows);
